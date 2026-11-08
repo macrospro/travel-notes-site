@@ -226,8 +226,12 @@
        放大以光标为锚点，拖动时按图片边缘做 clamp，不会出现拖丢或大片空白。
    - 交互：页面点图打开 → 蒙层里单击放大 2×（再点回 1×）→ 滚轮连续缩放 →
      已放大时按住拖动 / 触屏双指捏合 → 点背景 / ESC / ✕ 关闭。
-   - 两档图片：页面 <img> 可用 data-full 指向高分辨率原图；打开时先显示已缓存的
-     缩略图，再异步换成高清图，避免白屏，放大 / 1:1 时看的都是高清像素。
+   - 三档图片（scripts/import-photo.py 从原盘生成）：
+       src          页面缩略图，首屏只加载它；
+       data-view    ≥4K 低码率版，蒙层「适应窗口 / 缩放」态用它；
+       data-original 全分辨率原盘原图，只有 scale > 1（放大）时才异步读取。
+     打开时先显示已缓存缩略图 → 换成 4K 视图；放大后换原图；回到 1× 换回 4K。
+     三档宽高比一致，所以换档不影响 transform / 平移，也不会白屏。
    ========================================================================== */
 (function () {
   var ID = 'wb-lightbox';
@@ -239,6 +243,11 @@
   var list = [], index = 0;
   var open = false, closing = false;
   var scale = 1, tx = 0, ty = 0;
+  /* 三档加载状态：gen 在每次换图时自增，tierGen 在每次换档请求时自增，
+     用来丢弃「切图 / 关闭之后才回来」的异步预加载回调。 */
+  var gen = 0, tierGen = 0, tier = 'thumb', wantTier = 'view';
+  /* 原图加载过一次后记住它的真实像素，1:1 永远瞄准原图、而不是当前 4K 档 */
+  var origNatural = null;
   var savedY = 0, savedPad = '', lastFocus = null, closeTimer = 0, pressTimer = 0;
   var pointers = typeof Map === 'function' ? new Map() : null;
   var active = [];                 /* 不支持 Map 时的退化实现用不到，现代浏览器走 Map */
@@ -248,7 +257,13 @@
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
   function srcOf(img) { return img.currentSrc || img.getAttribute('src') || ''; }
-  function hiSrc(img) { return img.getAttribute('data-full') || srcOf(img); }
+  /* data-view 是 ≥4K 低码率缩放档；data-full 是上一版的兼容别名。 */
+  function viewSrc(img) {
+    return img.getAttribute('data-view') || img.getAttribute('data-full') || srcOf(img);
+  }
+  /* 没有 data-original 的照片退化为 view 档，行为与旧版一致、不会多一次请求。 */
+  function origSrc(img) { return img.getAttribute('data-original') || viewSrc(img); }
+  function hasOriginal() { var it = list[index]; return !!(it && it.getAttribute('data-original')); }
 
   /* 哪些图可以放大：排除查看器自身、显式标记 data-no-lightbox 的缩略图，
      以及小于 24px 的装饰图 / 隐藏占位图。 */
@@ -332,7 +347,8 @@
 
   function originalRatio() {
     if (!view || !view.naturalWidth || !view.offsetWidth) return 1;
-    return clamp(view.naturalWidth / view.offsetWidth, 1, 20);
+    var nw = origNatural ? origNatural[0] : view.naturalWidth;
+    return clamp(nw / view.offsetWidth, 1, 20);
   }
   function maxScale() { return clamp(Math.max(MAX, Math.ceil(originalRatio())), MAX, 20); }
   function atOriginal() { return Math.abs(scale - originalRatio()) < 0.06; }
@@ -360,10 +376,58 @@
                            'px) scale(' + scale.toFixed(4) + ')';
   }
 
+  /* 按当前倍率决定该用哪一档：1×（适应窗口/缩放）用 4K 低码率档，
+     放大之后才切到原盘全分辨率原图。加载期间 HUD 给出「读取原图…」回执。 */
+  function requestTier(which) {
+    wantTier = which;
+    var item = list[index];
+    if (!item || !view || !overlay) return;
+    var v = viewSrc(item), url = which === 'original' ? origSrc(item) : v;
+    if (!url) return;
+    if (which === 'original' && url === v) {  /* 没有原图档：保持 view */
+      tier = 'view'; overlay.removeAttribute('data-loading-tier'); updateHud(); return;
+    }
+    if (tier === which && view.getAttribute('src') === url) { updateHud(); return; }
+    var g = gen, t = ++tierGen;
+    function stale() {
+      return closing || g !== gen || t !== tierGen || list[index] !== item || wantTier !== which;
+    }
+    if (which === 'view') {                 /* 4K 档已缓存，直接切回，不闪白 */
+      overlay.removeAttribute('data-loading-tier');
+      if (view.getAttribute('src') !== url) view.src = url;
+      tier = 'view'; updateHud(); return;
+    }
+    overlay.setAttribute('data-loading-tier', 'original');
+    updateHud();                       /* 立刻显示「读取原图…」 */
+    var pre = new Image();
+    pre.onload = function () {
+      if (stale()) return;
+      origNatural = [pre.naturalWidth, pre.naturalHeight];
+      view.src = url; tier = 'original';
+      overlay.removeAttribute('data-loading-tier');
+      updateHud();
+    };
+    pre.onerror = function () {             /* 原图读取失败：保留 4K 档，不白屏 */
+      if (stale()) return;
+      overlay.removeAttribute('data-loading-tier');
+      tier = 'view'; updateHud();
+    };
+    pre.src = url;
+  }
+  function syncTier() {
+    var w = scale > 1.001 ? 'original' : 'view';
+    if (w !== wantTier) requestTier(w); else updateHud();
+  }
+
   function updateHud() {
     if (!overlay) return;
     var mag = scale > 1.001;
-    zoomEl.textContent = Math.round(scale * 100) + '%' + (mag ? ' · 可拖动' : '');
+    var tag = '';
+    if (hasOriginal()) {
+      tag = overlay.hasAttribute('data-loading-tier') ? ' · 读取原图…'
+          : (tier === 'original' ? ' · 原图' : ' · 4K 视图');
+    }
+    zoomEl.textContent = Math.round(scale * 100) + '%' + (mag ? ' · 可拖动' : '') + tag;
     overlay.classList.toggle('is-magnified', mag);
     var on = atOriginal() && scale > 1.001;
     oneBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
@@ -374,7 +438,8 @@
     scale = 1; tx = 0; ty = 0;
     if (overlay) overlay.classList.remove('is-dragging', 'is-magnified');
     apply(false);
-    updateHud();
+    /* 初次打开时 open 还是 false、view.src 也还没设置，跳过换档（交给 paint）。 */
+    if (open && view && view.getAttribute('src')) syncTier(); else updateHud();
   }
 
   function zoomAt(ns, cx, cy) {
@@ -388,7 +453,7 @@
     if (scale <= 1.0001) { scale = 1; tx = 0; ty = 0; }
     clampPan();
     apply(false);
-    updateHud();
+    syncTier();
   }
 
   function zoomBy(f) { zoomAt(scale * f, null, null); }
@@ -432,7 +497,7 @@
     ty = c.y - k * (c.y - pinch.ty);
     scale = ns;
     if (scale <= 1.0001) { scale = 1; tx = 0; ty = 0; }
-    clampPan(); apply(true); updateHud();
+    clampPan(); apply(true); syncTier();
   }
 
   function onDown(e) {
@@ -532,31 +597,53 @@
     else if (act === 'out') zoomBy(1 / 1.4);
   }
 
+  /* 把显示盒子按「适应窗口」的结果固定成 px。三档图片宽高比完全一致，
+     换 src 时浏览器会短暂把 intrinsic size 归零，若不固定，拖动中的 tx/ty
+     会被 clampPan() 清零、画面跳回中心；固定后换档只换像素、不动布局。 */
+  function pinFit() {
+    if (!view || !viewport || !view.naturalWidth || !view.naturalHeight) return;
+    var vw = viewport.clientWidth, vh = viewport.clientHeight;
+    if (!vw || !vh) return;
+    var k = Math.min(vw / view.naturalWidth, vh / view.naturalHeight);
+    view.style.width = Math.max(1, Math.floor(view.naturalWidth * k)) + 'px';
+    view.style.height = Math.max(1, Math.floor(view.naturalHeight * k)) + 'px';
+  }
+
   function updateDim() {
     if (!view.naturalWidth) { dimEl.textContent = '— × —'; return; }
     dimEl.textContent = view.naturalWidth + ' × ' + view.naturalHeight;
+    pinFit();
     clampPan(); apply(true); updateHud();
   }
 
   function paint() {
     var item = list[index];
     if (!item) return;
+    gen++; tierGen++;                    /* 作废上一张图 / 上一次换档的异步回调 */
+    origNatural = null;                  /* 换图要重新记录原图像素 */
+    view.style.width = ''; view.style.height = '';   /* 换图重新按新比例适应窗口 */
+    tier = 'thumb'; wantTier = scale > 1.001 ? 'original' : 'view';
+    overlay.removeAttribute('data-loading-tier');
     view.onload = function () { view.removeAttribute('data-loading'); updateDim(); };
     view.onerror = function () { view.removeAttribute('data-loading'); dimEl.textContent = 'IMAGE UNAVAILABLE'; };
     view.alt = item.getAttribute('alt') || '';
     view.setAttribute('data-loading', '');
-    /* 先显示页面上已缓存的缩略图，再异步换成 data-full 的高清原图：
-       点开瞬间不白屏，放大 / 1:1 时用的是高分辨率版本。 */
-    var thumb = srcOf(item), full = hiSrc(item);
+    /* 先显示页面上已缓存的缩略图 → 换成 4K 视图；原图要等真正放大才请求。 */
+    var thumb = srcOf(item), v = viewSrc(item);
     view.src = thumb;
-    if (full && full !== thumb) {
-      var pre = new Image();
+    if (v && v !== thumb) {
+      var g = gen, pre = new Image();
       pre.onload = function () {
-        if (!open || list[index] !== item) return;   /* 期间切图 / 关闭就放弃 */
-        view.src = full;
+        if (closing || g !== gen || list[index] !== item) return;
+        view.src = v; tier = 'view';
+        /* 若用户在这期间已经放大，立刻接着去读原盘原图 */
+        if (wantTier === 'original') requestTier('original'); else updateHud();
       };
-      pre.onerror = function () {};                  /* 高清加载失败就保留缩略图 */
-      pre.src = full;
+      pre.onerror = function () { if (!closing && g === gen) { tier = 'view'; updateHud(); } };
+      pre.src = v;
+    } else {
+      tier = 'view';
+      if (wantTier === 'original') requestTier('original');
     }
     if (view.complete && view.naturalWidth) {
       view.removeAttribute('data-loading'); updateDim();
@@ -601,6 +688,9 @@
     if (!open || closing || !overlay) return;
     closing = true;
     open = false;
+    /* 立刻作废所有待返回的异步预加载，并归零档位状态 */
+    gen++; tierGen++; tier = 'thumb'; wantTier = 'view';
+    overlay.removeAttribute('data-loading-tier');
     /* 关闭瞬间归零内部状态（不重绘 transform，避免淡出时照片突然缩一下）；
        快速重新打开不会残留上一次的倍率，DOM 在淡出回调里再彻底复位。 */
     scale = 1; tx = 0; ty = 0;
@@ -615,6 +705,7 @@
       overlay.classList.remove('is-magnified');
       view.removeAttribute('data-loading');
       view.removeAttribute('src');
+      view.style.width = ''; view.style.height = '';
       resetView();
       if (pointers) pointers.clear(); else active = [];
       gesture = pinch = null;
@@ -694,7 +785,7 @@
 
   window.addEventListener('resize', function () {
     if (!open) return;
-    clampPan(); apply(true); updateHud();
+    pinFit(); clampPan(); apply(true); updateHud();
   });
 
   /* 给图片打标记，只用来显示 zoom-in 光标；动态插入的图由 MutationObserver 兜底。 */
@@ -735,7 +826,12 @@
     isOpen: function () { return open; },
     zoom: function (s, cx, cy) { if (open) zoomAt(s, cx, cy); },
     reset: function () { if (open) resetView(); },
-    state: function () { return { scale: scale, x: tx, y: ty, count: list.length, index: index }; },
+    state: function () {
+      return { scale: scale, x: tx, y: ty, count: list.length, index: index,
+               tier: tier, want: wantTier,
+               src: view ? view.getAttribute('src') : '',
+               natural: view ? [view.naturalWidth, view.naturalHeight] : [0, 0] };
+    },
   };
 })();
 </script></body></html>
