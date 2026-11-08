@@ -1,0 +1,1812 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>文章编辑器 · 行旅笔记</title><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#FAFDFB"><link rel="icon" type="image/svg+xml" href="/travel-notes-site/favicon.svg"><script>
+      try {
+        var t = localStorage.getItem('wb-theme');
+        if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script><link rel="stylesheet" href="/travel-notes-site/_astro/lightbox.CmMO6doX.css"><link rel="stylesheet" href="/travel-notes-site/_astro/index.DMjkyaC-.css"></head><body class="ed-page"><div class="ed-app"><header class="ed-top"><button type="button" class="ed-icon ed-side-toggle" data-top="toggle-side" title="显示 / 隐藏文章列表">☰</button><a class="ed-back" href="/travel-notes-site/">← 返回站点</a><div class="ed-title"><b>▤ ARTICLE EDITOR</b><small>WYSIWYG WORKSPACE · NO SERVER</small></div><div class="ed-top-actions"><button type="button" data-top="new" title="新建一篇空白文章（未保存的改动会提示）">＋ 新建</button><button type="button" data-top="save" title="把当前文章存进本机浏览器草稿">保存草稿</button><button type="button" data-top="import" title="从本机选择 .md / .mdx 导入（需含 frontmatter）">导入 .md</button><button type="button" data-top="copy" title="把完整 Markdown 复制到剪贴板">复制</button><button type="button" data-top="md" title="只下载 .md 文件，不含图片">仅 .md</button><button type="button" data-top="publish" title="打开 GitHub 直提面板（需 PAT，仅在线可用）">发布</button><button type="button" class="ed-primary" data-top="bundle" title="导出完整文件夹：1 篇 .md + images/ + 使用说明">↓ 导出文件夹</button><button type="button" class="ed-icon" data-top="help" title="使用提示：展开文章属性并查看操作要领">?</button></div></header><div class="ed-status" id="ed-status">READY.</div><div class="ed-workspace"><aside class="ed-side" id="ed-side"><section><span>PUBLISHED · 站点已有文章</span><b id="ed-count-published">0</b></section><ul id="ed-list-published"></ul><section><span>DRAFTS · 本机草稿</span><b id="ed-count-drafts">0</b></section><ul id="ed-list-drafts"></ul><div class="ed-side-foot">草稿在本机 <code>localStorage</code>，不上传。<br><code>Ctrl/⌘ + S</code> 保存 · <code>Esc</code> 关面板。<br>导出的是一个文件夹：<code>.md</code> + <code>images/</code>。</div></aside><main class="ed-main"><div class="ed-doc-head"><input id="ed-title" class="ed-title-input" type="text" placeholder="文章标题…" aria-label="文章标题"><div class="ed-doc-head-right"><button type="button" data-cmd="props" title="展开文章属性">▾ 文章属性</button><span class="ed-mode-switch"><button type="button" data-mode="visual" class="is-active" title="可视化编辑：选中文字即可用工具栏排版">可视化</button><button type="button" data-mode="source" title="源码模式：直接编辑完整 .md（含 frontmatter）">源码</button></span></div></div><div class="ed-props" id="ed-props" hidden></div><div class="ed-toolbar" id="ed-toolbar" role="toolbar" aria-label="格式工具栏"><span class="ed-tb-label">格式</span><button type="button" data-cmd="bold" title="粗体 Ctrl+B"><b>B</b></button><button type="button" data-cmd="italic" title="斜体 Ctrl+I"><i>I</i></button><button type="button" data-cmd="underline" title="下划线"><u>U</u></button><button type="button" data-cmd="mark" title="高亮选中文字">▮ 高亮</button><button type="button" data-cmd="code" title="行内代码">&lt;/&gt;</button><span class="ed-tb-sep"></span><button type="button" data-cmd="h2" title="二级标题">H2</button><button type="button" data-cmd="h3" title="三级标题">H3</button><button type="button" data-cmd="p" title="正文段落">¶</button><button type="button" data-cmd="quote" title="引用">❝</button><button type="button" data-cmd="ul" title="无序列表">• 列表</button><button type="button" data-cmd="ol" title="有序列表">1. 列表</button><button type="button" data-cmd="link" title="选中文字加链接">🔗 链接</button><button type="button" data-cmd="hr" title="分隔线">—</button><span class="ed-tb-sep"></span><button type="button" data-cmd="undo" title="撤销">↶</button><button type="button" data-cmd="redo" title="重做">↷</button><button type="button" data-cmd="clear" title="清除格式">⌫</button><span class="ed-tb-sep"></span><span class="ed-tb-label">图片</span><button type="button" class="ed-tb-photo" data-cmd="photo" title="把选中文字绑定到相册照片">▣ 绑定照片</button><button type="button" class="ed-tb-photo" data-cmd="hover" title="把选中文字挂上悬停小图">◌ 悬停小图</button><button type="button" data-cmd="assets" title="打开图片集">▤ 图片集 <b id="ed-asset-count">0</b></button><button type="button" data-cmd="upload" title="上传本地图片">＋ 上传</button></div><div class="ed-editor-wrap"><div id="ed-editor" class="ed-editor" contenteditable="true" spellcheck="false" role="textbox" aria-multiline="true" aria-label="文章正文" data-no-lightbox></div><textarea id="ed-source" class="ed-source-edit" hidden spellcheck="false" aria-label="Markdown 源码"></textarea></div><div class="ed-editor-foot"><span>选中文字 → 工具栏排版 · 拖入图片即上传 · <code>Ctrl/⌘+S</code> 保存草稿</span><span id="ed-statusbar-text">DOC —</span></div></main><aside class="ed-preview" id="ed-preview"><div class="ed-preview-head"><span>OUTPUT · 实时预览</span><button type="button" data-preview="render" class="is-active" title="预览排版效果与本文全部图片">渲染</button><button type="button" data-preview="source" title="预览最终导出的 Markdown 全文">源码 .md</button><button type="button" data-top="toggle-preview" title="显示 / 隐藏右侧预览栏">◂</button></div><div id="ed-preview-body"></div></aside></div><footer class="ed-statusbar"><span>ASTRO CONTENT COLLECTIONS · GITHUB PAGES · 100% STATIC</span><span>导出文件夹 = 1 篇 .md + images/ 相册集 + HOW-TO-USE.md</span></footer></div><!-- 图片集抽屉：所有照片集中管理，上传 / 绑定 / 设封面 / 删除 --><div class="ed-drawer" id="ed-drawer" hidden><div class="ed-drawer-head"><b>▤ 图片集</b><span>这篇文章的全部照片</span><button type="button" data-cmd="upload" title="从本机选择图片加入这篇文章的图片集">＋ 上传图片</button><button type="button" class="ed-icon" data-cmd="close-drawer" title="关闭">×</button></div><div class="ed-drawer-body" id="ed-asset-grid" data-lightbox-group="asset-grid"></div><div class="ed-drawer-foot">上传到这里的图片会随「导出文件夹」一起打包成 <code>images/</code>。 相册照片可在卡片里改相机型号；点「绑定选中文字」会生成 <code>#photo-N</code> 整句索引。</div></div><!-- 发布面板：md + 新增图片一起提交，token 只用于本次请求 --><div class="ed-modal" id="ed-pub-modal" hidden><div class="ed-modal-card"><div class="ed-modal-head"><b>↑ 发布到 GitHub</b><button type="button" class="ed-icon" data-top="close-publish" title="关闭发布面板">×</button></div><p class="ed-modal-note">会把 <code>.md</code> 与本次新增的图片一起提交；token 不会写入草稿。离线预览请用「导出文件夹」。</p><label>仓库 owner/repo<input type="text" data-pub="repo" placeholder="macrospro/travel-notes"></label><label>分支<input type="text" data-pub="branch" placeholder="main"></label><label>文章路径<input type="text" data-pub="path" placeholder="blog-base/src/content/blog/xxx.md"></label><label>图片目录<input type="text" data-pub="imageDir" placeholder="blog-base/public/images"></label><label>PAT（仅本次使用）<input type="password" data-pub="token" placeholder="github_pat_… 或 ghp_…" autocomplete="off"></label><pre class="ed-publish-log" id="ed-publish-log">填好后点「提交」。</pre><div class="ed-modal-actions"><button type="button" data-top="close-publish" title="取消并关闭发布面板">取消</button><button type="button" class="ed-primary" data-top="do-publish" title="把 .md 与新增图片提交到 GitHub，Actions 会自动部署">提交并触发部署</button></div></div></div><!-- 图片探测：pack 脚本会把这些 src 改成 data URI / 相对路径，编辑器据此取可显示地址 --><div id="ed-asset-probe" hidden aria-hidden="true" data-no-lightbox><img src="/travel-notes-site/images/hero-dali.jpg" data-asset-name="hero-dali.jpg" alt=""><img src="/travel-notes-site/images/hero-default.jpg" data-asset-name="hero-default.jpg" alt=""><img src="/travel-notes-site/images/hover-cangshan.jpg" data-asset-name="hover-cangshan.jpg" alt=""><img src="/travel-notes-site/images/hover-erhai.jpg" data-asset-name="hover-erhai.jpg" alt=""><img src="/travel-notes-site/images/hover-train.jpg" data-asset-name="hover-train.jpg" alt=""><img src="/travel-notes-site/images/hover-xizhou.jpg" data-asset-name="hover-xizhou.jpg" alt=""><img src="/travel-notes-site/images/journal-01.jpg" data-asset-name="journal-01.jpg" alt=""><img src="/travel-notes-site/images/journal-02.jpg" data-asset-name="journal-02.jpg" alt=""><img src="/travel-notes-site/images/journal-03.jpg" data-asset-name="journal-03.jpg" alt=""><img src="/travel-notes-site/images/journal-04.jpg" data-asset-name="journal-04.jpg" alt=""><img src="/travel-notes-site/images/journal-05.jpg" data-asset-name="journal-05.jpg" alt=""><img src="/travel-notes-site/images/journal-06.jpg" data-asset-name="journal-06.jpg" alt=""></div><input type="file" id="ed-file" accept=".md,.mdx,.txt" hidden><input type="file" id="ed-image-file" accept="image/*" multiple hidden><script type="application/json" id="ed-seed">{"posts":[{"id":"beijing-autumn","title":"北京的秋天，从一条胡同开始","filename":"beijing-autumn.md","data":{"title":"北京的秋天，从一条胡同开始","description":"避开热门景区，在老城里走一条有银杏的路线。","pubDate":"2026-09-28T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"北京","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 从鼓楼往东\n\n早上八点的胡同最舒服，自行车铃、早点摊的热气，还有墙根下晒太阳的猫。\n\n## 银杏与灰瓦\n\n十月底的银杏配灰砖灰瓦，颜色特别沉。不需要滤镜，随手拍都好看。\n\n## 一点实用信息\n\n- 胡同里多为居民区，注意别打扰住户。\n- 步行路线灵活，累了随时拐进一家咖啡馆。\n"},{"id":"chengdu-sichuan","title":"成都的茶馆与一条没有计划的路","filename":"chengdu-sichuan.md","data":{"title":"成都的茶馆与一条没有计划的路","description":"从人民公园到玉林路，把两天交给盖碗茶和小巷子。","pubDate":"2026-10-12T00:00:00.000Z","tags":["travel","food"],"draft":false,"province":"四川","city":"成都","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 人民公园的上午\n\n鹤鸣茶社的竹椅一坐就是一上午。掏耳朵的师傅敲着音叉走过，茶续到第三泡，时间就慢了下来。\n\n## 玉林路到芳草街\n\n没有特意找小酒馆，反而是菜市场门口的锅盔和巷子里的苍蝇馆子更让人记住。成都的好，多半藏在没有招牌的地方。\n\n## 一点实用信息\n\n- 茶馆一般按杯计费，可以自带书坐很久。\n- 想避开人流，工作日去更自在。\n"},{"id":"dali-yunnan","title":"大理的三天，风花雪月都很慢","filename":"dali-yunnan.md","data":{"title":"大理的三天，风花雪月都很慢","description":"从广东出发，飞机转绿皮再到古城，一份不用赶景点的云南行程。","pubDate":"2026-10-18T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"云南","city":"大理","hero":{"src":"/images/hero-dali.jpg","alt":"高山与湖水之间的木船，示例封面照片","caption":"示例封面照片来自 Unsplash，换成自己的高分辨率原图只改 hero.src","credit":"PHOTO / UNSPLASH · 示例素材","exif":"SAMPLE · 1400 × 933"},"journey":{"origin":"广东","destination":"云南","label":"广州 → 昆明 → 大理，示意路线非实际航路","note":"仅作位置示意，不作测绘用途"},"trips":[{"mode":"flight","code":"CZ3481","carrier":"中国南方航空","vehicle":"波音 787-9","from":{"place":"广州白云国际机场 T2","city":"广州","time":"2026-10-17 08:20"},"to":{"place":"昆明长水国际机场","city":"昆明","time":"2026-10-17 10:55"},"duration":"2h35m","fare":780,"seat":"经济舱 32A","note":"早班机，落地后坐地铁去昆明站附近住一晚，第二天接慢车。"},{"mode":"slow","code":"K9612","carrier":"中国铁路昆明局","vehicle":"25G 型客车 / HXD3C 牵引","from":{"place":"昆明站","city":"昆明","time":"2026-10-18 07:10"},"to":{"place":"大理站","city":"大理","time":"2026-10-18 13:42"},"duration":"6h32m","fare":64,"seat":"硬座 08 车 043","note":"特意挑了慢车。白天沿着山走，比动车慢大半天，但窗子能开一条缝、站台能下来透气，值。"},{"mode":"hsr","code":"D3856","carrier":"中国铁路","vehicle":"CRH2A 型动车组","from":{"place":"大理站","city":"大理","time":"2026-10-21 08:05"},"to":{"place":"广州南站","city":"广州","time":"2026-10-21 18:40"},"duration":"10h35m","fare":590,"seat":"二等座 05 车 12F","note":"返程动车，中途换乘。带一本书刚好，看完的时候已经进广东了。"}],"stays":[{"checkIn":"2026-10-18","checkOut":"2026-10-20","nights":3,"area":"大理古城 · 人民路","name":"古城南门白族小院","price":420,"unit":"每晚","note":"含早，步行到人民路 5 分钟，院子里有棵石榴树"},{"checkIn":"2026-10-20","checkOut":"2026-10-21","nights":1,"area":"才村 · 洱海西岸","name":"海西洱畔民宿","price":360,"unit":"每晚","note":"二楼湖景房，骑车 3 分钟到生态廊道"}],"gallery":[{"src":"/images/journal-01.jpg","alt":"山谷与开阔的草地，第一天到大理","camera":"Fujifilm X-T5"},{"src":"/images/journal-02.jpg","alt":"层叠的山脉与薄雾","camera":"Sony A7 IV"},{"src":"/images/journal-03.jpg","alt":"平静的湖面与远处的山","camera":"Canon EOS R5"},{"src":"/images/journal-04.jpg","alt":"树林与午后的光","camera":"Nikon Z7 II"},{"src":"/images/journal-05.jpg","alt":"湖边的清晨与安静的水面","camera":"Leica Q3"},{"src":"/images/journal-06.jpg","alt":"夜色里的山与天空","camera":"iPhone 15 Pro"}],"hoverImages":[{"key":"cangshan","src":"/images/hover-cangshan.jpg","alt":"层叠的山脊与薄雾","caption":"苍山 · 层叠的山脊"},{"key":"erhai","src":"/images/hover-erhai.jpg","alt":"湖面与远处的山","caption":"洱海 · 西岸水面"},{"key":"xizhou","src":"/images/hover-xizhou.jpg","alt":"午后的树林与光","caption":"喜洲 · 老院子门外"},{"key":"train","src":"/images/hover-train.jpg","alt":"站台与铁轨","caption":"K9612 · 昆明开往大理"}]},"body":"\n到大理的第一件事不是去景点，而是把行李放下、在古城里随便走走，抬头就能看见[苍山](hover:cangshan)。翻动左侧照片，右边对应的那句话会跟着变色；反过来点带颜色的整句话，照片也会翻过去。\n\n\u003e 这趟行程唯一的原则：**不赶**。三天里没有一处必须打卡的地方，走累了就坐下来。\n\n## 第一天：先学会慢下来\n\n人民路的坡不陡，下午的光落在白族民居的墙上，\u003cmark\u003e很适合什么都不做\u003c/mark\u003e。[城外那片草地上只有风声，这是那天的第一张照片。](#photo-1)\n\n[绿皮车](hover:train)坐了六个半小时，下车时腿有点软，反而自动把节奏降了下来。小院的老板娘给了一杯温水，说这几天早晚凉，让我把外套放在门口的藤椅上，出门随手拿。\n\n傍晚走到南门，城楼下面有人卖烤乳扇，焦香混着玫瑰酱的味道。没拍照，也没查什么必吃榜，站着吃完就回去了。[回过头才看见苍山在雾里一层层退开，那几分钟就留在了照片里。](#photo-2)\n\n## 第二天：环洱海\n\n租一辆自行车，从才村出发往北。生态廊道这一段车少、视野开阔，左手边一直是[洱海](hover:erhai)，中途在[喜洲](hover:xizhou)停下吃个破酥粑粑就够。\n\n上午的风从西边来，逆风骑得慢，倒是正好。水面一直是那种不太真实的蓝，云影一大块一大块地压过去，远处的苍山反而显得很近。有几段路两旁是农田，田埂上晒着稻子，偶尔有白鹭被车轮声惊起来。[那片压过来的云影，比洱海本身更像样。](#photo-3)\n\n[骑到喜洲刚过中午，把车靠在墙边，坐在老院子门槛上吃了两个粑粑，一个甜的一个咸的。](#photo-4) 老板问我要不要去严家大院，我摇头，说就坐一会儿。他笑了笑，没再推销。\n\n回程没有骑完全程，在半路搭了辆车把人和自行车一起带回去。后来证明这是这三天**最正确的决定**。\n\n## 第三天：什么都没安排\n\n住到才村这一晚，早上被鸟叫醒。[推开窗，洱海就在下面，水面平得几乎没有波纹，几只小船停着不动。](#photo-5)\n\n上午沿着生态廊道走了一段，没骑车，也没定终点。走累了就坐在石头上发呆，看对岸的山一点点从雾里显出来。中午退了房，把行李寄在民宿，下午在院子里写完明信片，才慢慢去车站。\n\n回程的动车开了十个半小时，中间换乘时站台上有很亮的太阳。车过广西以后天色暗下来，窗玻璃开始反光，[我在座位上把那本书看完了最后三十页。](#photo-6)\n\n## 一点实用信息\n\n1. 十月早晚温差大，带件外套；白天太阳很晒，\u003cmark\u003e别低估高原的紫外线\u003c/mark\u003e。\n2. 环海不必骑完全程，选一段慢慢走比打卡更值。\n3. 昆明到大理的慢车班次少，硬座票好买但时间长，介意的话直接换动车。\n4. 文中的车次、航班、酒店与价格是占位示例，替换成真实行程即可。\n\n照片的相机型号是编辑时填在 `gallery` 里的输入项，不读取 EXIF；想换图只改 frontmatter。正文里带虚线下划线的词会用小气泡弹出另一组图，它们来自独立的 ``hoverImages`` 图库，不进入左侧相册：正文里把**一整句话**写成 `` `[句子](#photo-N)` `` 就建立了一次图文索引：句子本身带颜色，翻到对应照片时整句加深变色，点句子则反向翻照片；序号与相册顺序一一对应。\n\n把一段文字写成 `` `[文字](hover:key)` `` 就能挂上一张悬停预览图，鼠标悬停、键盘聚焦或手机上点一下都可以打开。\n"},{"id":"extending-the-base","title":"把新能力加进基座","filename":"extending-the-base.mdx","data":{"title":"把新能力加进基座","description":"用 MDX 组件、内容集合和集成演示二次开发的三个入口。","pubDate":"2026-11-03T00:00:00.000Z","tags":["astro","engineering"],"draft":false,"trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\nimport Callout from '../../components/Callout.astro';\n\n\u003cCallout type=\"tip\" title=\"这是一段 MDX\"\u003e\n\n这个提示框是一个普通的 `.astro` 组件。因为启用了 `@astrojs/mdx`，文章里可以直接 `import` 组件并使用，也就是说：**加交互不必改主题、不必改路由**，写一个组件即可。\n\n\u003c/Callout\u003e\n\n## 三个扩展入口\n\n1. **内容层**：在 `src/content.config.ts` 里加一个 `defineCollection`，就能管理作品集、书单、项目等新内容类型，自动获得类型提示和校验。\n2. **集成层**：在 `astro.config.mjs` 的 `integrations` 数组里加官方集成，例如 `@astrojs/react`（交互岛）、`@astrojs/mdx`（已在）、Pagefind（本地搜索）。\n3. **页面层**：`src/pages/` 里新建 `.astro` 或 `.ts` 文件即新增路由；`getStaticPaths()` 可以把任意数据展开成一批静态页。\n\n## 构建时抓数据\n\nGitHub Pages 是纯静态托管，没有服务端。但构建阶段可以 `fetch` 任意 API，把结果烤进 HTML：\n\n```ts\nconst repos = await fetch('https://api.github.com/users/octocat/repos').then((r) =\u003e r.json());\n```\n\n适合 GitHub 项目列表、豆瓣记录、动态简历这类「一天更新一次就够」的内容。\n"},{"id":"guangzhou-food","title":"广州早茶笔记：一上午吃了六笼","filename":"guangzhou-food.md","data":{"title":"广州早茶笔记：一上午吃了六笼","description":"从虾饺到凤爪，记录一次不赶时间的早茶。","pubDate":"2026-09-20T00:00:00.000Z","tags":["travel","food"],"draft":false,"province":"广东","city":"广州","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 先占位，再点单\n\n老茶楼要自己找位、自己拿壶。普洱或菊花，一壶茶配几笼点心，节奏全由自己定。\n\n## 值得留到最后的\n\n虾饺、烧卖、凤爪是基本盘，最后来一份艇仔粥收尾最舒服。别一次点太多，蒸笼可以慢慢加。\n\n## 一点实用信息\n\n- 周末九点后基本要等位，八点半前到最稳。\n- 很多老店只收现金或本地支付，出门前备好。\n"},{"id":"hello-world","title":"从零开始的第一篇文章","filename":"hello-world.md","data":{"title":"从零开始的第一篇文章","description":"说明这套基座的基本写法，以及文章是如何变成页面的。","pubDate":"2026-11-01T00:00:00.000Z","tags":["astro","notes"],"draft":false,"trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 一篇 Markdown 就够了\n\n在 `src/content/blog/` 下新建一个 `.md` 文件，填好 frontmatter，构建时 `src/pages/blog/[...id].astro` 会自动为它生成一个静态页面。不需要注册路由，也不需要改配置。\n\n## 字段由内容层校验\n\n`src/content.config.ts` 用 Zod 定义了 `title`、`description`、`pubDate`、`tags`、`draft` 等字段。少写或写错类型，`astro build` 会直接报错，而不是等上线后页面崩掉。\n\n- `draft: true` 的文章在本地 `npm run dev` 可见，生产构建会被过滤掉。\n- `tags` 会自动生成 `/tags/\u003ctag\u003e/` 聚合页。\n\n## 图片与静态资源\n\n放 `public/` 下的文件按原路径输出；文章内引用时用 `${import.meta.env.BASE_URL}` 前缀，避免部署到 `/\u003crepo\u003e/` 子路径后 404。\n\n## 正文里的小图片\n\n把一段文字写成 `[词语](hover:cangshan)`，鼠标悬停、键盘聚焦，或手机上点一下，就会弹出一张小气泡图片。它是一组**独立素材**，不进入 03 屏左侧的沉浸式相册。\n\n试着把指针放到「[苍山](hover:cangshan)」或「[洱海](hover:erhai)」上。这篇文章没有写 `hoverImages`，所以用的是 `src/data/hover.ts` 里的默认图库；在 frontmatter 里声明 `hoverImages` 就能换成自己的图。\n"},{"id":"jiuzhaigou-sichuan","title":"从成都往北：九寨沟的四天","filename":"jiuzhaigou-sichuan.md","data":{"title":"从成都往北：九寨沟的四天","description":"第二次来四川，出了盆地才明白「蜀道」两个字。","pubDate":"2026-07-22T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"四川","city":"九寨沟","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 路本身就是行程\n\n从成都坐车往北，沿岷江一路海拔往上爬，窗外的植被一层层换。中途在松潘住了一晚，古城墙下有人卖刚烤好的牦牛肉串。\n\n## 沟里不用赶\n\n景区是 Y 字形，先把最远的原始森林坐到底，再一段段往回走。长海安静，五花海的颜色在阴天反而更沉。\n\n## 一点实用信息\n\n- 旺季建议提前订票，观光车按顺序走，别逆着人流。\n- 高原昼夜温差大，七月也要带外套。\n"},{"id":"lijiang-yunnan","title":"又去云南：丽江的两场雨","filename":"lijiang-yunnan.md","data":{"title":"又去云南：丽江的两场雨","description":"第二次到云南，把时间留给束河的雨和一顿漫长的晚饭。","pubDate":"2026-08-14T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"云南","city":"丽江","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 雨把行程改了\n\n原本打算一早上玉龙雪山，结果雨从七点下到中午。索性退掉票，在束河找了家有屋檐的院子坐着，看雨水从瓦当连成线。\n\n## 慢一点的一顿饭\n\n下午雨停，去忠义市场买了菌子，交给客栈附近的小店加工。等菜的一个小时里，老板把炭火拨了两次，说急不得。\n\n## 一点实用信息\n\n- 雨季（六到九月）雪山经常临时停运，行程别排太满。\n- 束河比大研安静，适合把一天只安排一件事。\n"},{"id":"westlake-zhejiang","title":"西湖边走一圈，把秋天收进口袋","filename":"westlake-zhejiang.md","data":{"title":"西湖边走一圈，把秋天收进口袋","description":"从断桥到茅家埠，一条避开人潮的杭州秋日散步路线。","pubDate":"2026-10-05T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"浙江","city":"杭州","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 绕开断桥\n\n节假日断桥人最多，不如从北山街往西走，梧桐叶子落下来的时候，湖面会安静很多。\n\n## 茅家埠的下午\n\n这一带水面窄、树影密，比湖滨更像旧时候的西湖。带一杯热茶坐到太阳偏西，是本趟最舒服的两小时。\n\n## 一点实用信息\n\n- 全程步行约 6 公里，穿好走的鞋。\n- 十月底到十一月初是梧桐最好看的时候。\n"},{"id":"wuzhen-zhejiang","title":"二刷浙江：乌镇的清晨与夜","filename":"wuzhen-zhejiang.md","data":{"title":"二刷浙江：乌镇的清晨与夜","description":"同一条水巷，早上七点和晚上八点是两个地方。","pubDate":"2026-03-19T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"浙江","city":"乌镇","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 住一晚才看得到的东西\n\n上次只在杭州转了一圈，这回特意在乌镇住下。旅行团还没进来的清晨，西栅的石板上只有扫地的声音；等灯亮起，又是另一副样子。\n\n## 坐着船过一段\n\n不长的一段水路，从桥下穿过去的时候，两岸的窗都亮着。船工说这条河他划了十几年，旺季一天要来回十几趟。\n\n## 一点实用信息\n\n- 想拍空景就住在景区内，早晚凭房卡可以自由进出。\n- 三月多雨，石板路滑，鞋底要防滑。\n"},{"id":"xishuangbanna-yunnan","title":"第三次进云南，往南走到西双版纳","filename":"xishuangbanna-yunnan.md","data":{"title":"第三次进云南，往南走到西双版纳","description":"泼水节前后的景洪、植物园里的夜风，以及一顿吃到天黑的傣味。","pubDate":"2026-04-06T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"云南","city":"西双版纳","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 从干燥的高原到湿热的坝子\n\n前两次都在滇西北，这次想看看云南的另一半。落地景洪是晚上，空气里全是湿润的草木味，和丽江完全是两个季节。\n\n## 植物园值得留一整天\n\n勐仑那片园区很大，东区是雨林、西区是分类园。傍晚坐在王莲池边等天黑，比赶景点有意思得多。\n\n## 一点实用信息\n\n- 四月白天很晒，防晒和驱蚊都要带。\n- 告庄夜市热闹但价格偏高，想吃地道傣味可以往曼听公园周边的小店走。\n"}],"provinces":["北京","天津","河北","山西","内蒙古","辽宁","吉林","黑龙江","上海","江苏","浙江","安徽","福建","江西","山东","河南","湖北","湖南","广东","广西","海南","重庆","四川","贵州","云南","西藏","陕西","甘肃","青海","宁夏","新疆","台湾","香港","澳门"],"defaults":[{"key":"cangshan","src":"/images/hover-cangshan.jpg","alt":"层叠的山脊与薄雾","caption":"苍山 · 山脊线"},{"key":"erhai","src":"/images/hover-erhai.jpg","alt":"湖面与远处的山","caption":"洱海 · 水面"},{"key":"xizhou","src":"/images/hover-xizhou.jpg","alt":"午后的树林与光","caption":"喜洲 · 老院子"},{"key":"train","src":"/images/hover-train.jpg","alt":"站台与铁轨","caption":"绿皮车 · 途中"}],"images":["hero-dali.jpg","hero-default.jpg","hover-cangshan.jpg","hover-erhai.jpg","hover-train.jpg","hover-xizhou.jpg","journal-01.jpg","journal-02.jpg","journal-03.jpg","journal-04.jpg","journal-05.jpg","journal-06.jpg"],"repo":"macrospro/travel-notes","branch":"main","base":"/travel-notes-site/"}</script><script>/* ==========================================================================
+   WBZip · 零依赖 ZIP 打包器（store 模式，UTF-8 文件名）
+   --------------------------------------------------------------------------
+   静态站里没有 npm / 服务端，导出「一个文件夹（.md + 图片集）」只能在浏览器里
+   自己拼 ZIP。只实现 store（不压缩）—— 图片本来已是 JPEG，压缩没有收益。
+   暴露 window.WBZip.build(files) -> Blob；files: [{ name, data: Uint8Array|string }]
+   本文件被 editor/index.astro 以纯文本内联，file:// / about:srcdoc 均可运行。
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  var CRC_TABLE = (function () {
+    var t = new Uint32Array(256);
+    for (var n = 0; n < 256; n++) {
+      var c = n;
+      for (var k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+      t[n] = c >>> 0;
+    }
+    return t;
+  })();
+
+  function crc32(bytes) {
+    var c = 0xFFFFFFFF;
+    for (var i = 0; i < bytes.length; i++) c = CRC_TABLE[(c ^ bytes[i]) & 0xFF] ^ (c >>> 8);
+    return (c ^ 0xFFFFFFFF) >>> 0;
+  }
+
+  function Writer() { this.parts = []; this.length = 0; }
+  Writer.prototype.bytes = function (arr) {
+    var u = arr instanceof Uint8Array ? arr : new Uint8Array(arr);
+    this.parts.push(u); this.length += u.length; return this;
+  };
+  Writer.prototype.u16 = function (v) { return this.bytes([v & 255, (v >>> 8) & 255]); };
+  Writer.prototype.u32 = function (v) { return this.bytes([v & 255, (v >>> 8) & 255, (v >>> 16) & 255, (v >>> 24) & 255]); };
+
+  function dosTime(d) {
+    var time = ((d.getHours() & 31) << 11) | ((d.getMinutes() & 63) << 5) | ((d.getSeconds() / 2) & 31);
+    var date = (((d.getFullYear() - 1980) & 127) << 9) | (((d.getMonth() + 1) & 15) << 5) | (d.getDate() & 31);
+    return { time: time, date: date };
+  }
+
+  function toBytes(data) {
+    if (typeof data === 'string') return new TextEncoder().encode(data);
+    if (data instanceof Uint8Array) return data;
+    if (data instanceof ArrayBuffer) return new Uint8Array(data);
+    return new TextEncoder().encode(String(data == null ? '' : data));
+  }
+
+  function build(files) {
+    var now = dosTime(new Date());
+    var w = new Writer();
+    var central = [];
+    (files || []).forEach(function (f) {
+      var nameBytes = new TextEncoder().encode(String(f.name).replace(/^\/+/, ''));
+      var data = toBytes(f.data);
+      var crc = crc32(data);
+      var offset = w.length;
+      w.u32(0x04034B50).u16(20).u16(0x0800).u16(0)
+        .u16(now.time).u16(now.date).u32(crc).u32(data.length).u32(data.length)
+        .u16(nameBytes.length).u16(0).bytes(nameBytes).bytes(data);
+      central.push({ name: nameBytes, crc: crc, size: data.length, offset: offset });
+    });
+    var cdStart = w.length;
+    central.forEach(function (c) {
+      w.u32(0x02014B50).u16(20).u16(20).u16(0x0800).u16(0)
+        .u16(now.time).u16(now.date).u32(c.crc).u32(c.size).u32(c.size)
+        .u16(c.name.length).u16(0).u16(0).u16(0).u16(0).u32(0).u32(c.offset)
+        .bytes(c.name);
+    });
+    var cdSize = w.length - cdStart;
+    w.u32(0x06054B50).u16(0).u16(0).u16(central.length).u16(central.length)
+      .u32(cdSize).u32(cdStart).u16(0);
+    return new Blob(w.parts, { type: 'application/zip' });
+  }
+
+  /** data URI -> Uint8Array；不是 data URI 时返回 null */
+  function decodeDataUri(src) {
+    if (!/^data:/i.test(src || '')) return null;
+    try {
+      var comma = src.indexOf(',');
+      var meta = src.slice(5, comma);
+      var body = src.slice(comma + 1);
+      if (/;base64/i.test(meta)) {
+        var bin = atob(body), u = new Uint8Array(bin.length);
+        for (var i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+        return u;
+      }
+      return new TextEncoder().encode(decodeURIComponent(body));
+    } catch (e) { return null; }
+  }
+
+  window.WBZip = { build: build, crc32: crc32, decodeDataUri: decodeDataUri };
+})();
+</script><script>/* ==========================================================================
+   WBMarkdown · 论坛编辑器用的轻量 Markdown ⇄ HTML 双向转换
+   --------------------------------------------------------------------------
+   只覆盖本博客正文实际用到的语法，目的不是替代 marked，而是让「可视化输入区」
+   与「导出的 .md」严格一一对应、且零依赖、可内联到离线单文件。
+     toHtml(md)       Markdown -> 编辑器 / 预览用的 HTML
+     toMd(root)       contenteditable DOM -> Markdown
+   支持：h1-h4 / p / br / blockquote / ul / ol / li / pre / hr / 表格 /
+         figure+img / **粗** / *斜* / `行内码` / <mark>高亮</mark> /
+         [文字](链接) / [整句](#photo-N) / [词](hover:key)
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function escAttr(s) { return esc(s).replace(/'/g, '&#39;'); }
+
+  function linkHtml(text, href) {
+    var cls = '', extra = '';
+    if (/^#photo-\d+$/.test(href)) { cls = ' class="md-ref md-ref--photo"'; extra = ' data-photo="' + href.slice(7) + '"'; }
+    else if (/^hover:/.test(href)) { cls = ' class="md-ref md-ref--hover"'; extra = ' data-hover-key="' + escAttr(href.slice(6)) + '"'; }
+    else extra = ' target="_blank" rel="noopener"';
+    return '<a href="' + escAttr(href) + '"' + cls + extra + '>' + text + '</a>';
+  }
+
+  function inlineToHtml(s) {
+    var out = esc(s);
+    // 行内代码先占位（先双反引号、再单反引号），避免内部星号被当成强调
+    var codes = [];
+    // 双反引号允许内部含单反引号（例如 `` `[文字](hover:key)` ``），否则会被链接正则拆开
+    out = out.replace(/``([\s\S]+?)``/g, function (_, c) { codes.push(c); return '\u0001' + (codes.length - 1) + '\u0001'; });
+    out = out.replace(/`([^`]+)`/g, function (_, c) { codes.push(c); return '\u0001' + (codes.length - 1) + '\u0001'; });
+    out = out.replace(/!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)/g,
+      function (_, alt, src, title) {
+        return '<img src="' + escAttr(src) + '" alt="' + escAttr(alt) + '"' +
+          (title ? ' title="' + escAttr(title) + '"' : '') + '>';
+      });
+    out = out.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (_, text, href) { return linkHtml(text, href); });
+    out = out.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    out = out.replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>');
+    out = out.replace(/&lt;mark&gt;([\s\S]*?)&lt;\/mark&gt;/g, '<mark>$1</mark>');
+    out = out.replace(/&lt;br\s*\/?&gt;/g, '<br>');
+    out = out.replace(/\u0001(\d+)\u0001/g, function (_, i) { return '<code>' + esc(codes[Number(i)]) + '</code>'; });
+    return out;
+  }
+
+  function toHtml(md) {
+    var lines = String(md == null ? '' : md).replace(/\r\n?/g, '\n').split('\n');
+    var html = [], para = [], inCode = false, list = '';
+    function closePara() {
+      if (!para.length) return;
+      html.push('<p>' + para.map(inlineToHtml).join('<br>') + '</p>');
+      para = [];
+    }
+    function closeList() { if (list) { html.push('</' + list + '>'); list = ''; } }
+    for (var i = 0; i < lines.length; i++) {
+      var s = lines[i].replace(/\s+$/, '');
+      if (/^```/.test(s)) {
+        closePara(); closeList();
+        if (inCode) html.push('</pre>'); else html.push('<pre>');
+        inCode = !inCode; continue;
+      }
+      if (inCode) { html.push(esc(s) + (i < lines.length - 1 ? '\n' : '')); continue; }
+      if (!s.trim()) { closePara(); closeList(); continue; }
+      var h = /^(#{1,6})\s+(.*)$/.exec(s);
+      if (h) { closePara(); closeList(); html.push('<h' + h[1].length + '>' + inlineToHtml(h[2]) + '</h' + h[1].length + '>'); continue; }
+      if (/^(---+|\*\*\*+)\s*$/.test(s.trim())) { closePara(); closeList(); html.push('<hr>'); continue; }
+      if (/^>\s?/.test(s)) { closePara(); closeList(); html.push('<blockquote>' + inlineToHtml(s.replace(/^>\s?/, '')) + '</blockquote>'); continue; }
+      var ol = /^\s*\d+[.)]\s+(.*)$/.exec(s), ul = /^\s*[-*+]\s+(.*)$/.exec(s);
+      if (ol || ul) {
+        closePara();
+        var want = ol ? 'ol' : 'ul';
+        if (list !== want) { closeList(); html.push('<' + want + '>'); list = want; }
+        html.push('<li>' + inlineToHtml((ol || ul)[1]) + '</li>');
+        continue;
+      }
+      // 单独一行的图片 -> figure，便于在编辑器里选中/删除
+      var img = /^!\[([^\]]*)\]\(([^)\s]+)\)\s*$/.exec(s.trim());
+      if (img) {
+        closePara(); closeList();
+        html.push('<figure><img src="' + escAttr(img[2]) + '" alt="' + escAttr(img[1]) + '"><figcaption>' + esc(img[1]) + '</figcaption></figure>');
+        continue;
+      }
+      // 极简表格：| a | b | + 分隔行
+      if (/^\s*\|.*\|\s*$/.test(s)) {
+        closePara(); closeList();
+        var rows = [], j = i;
+        while (j < lines.length && /^\s*\|.*\|\s*$/.test(lines[j])) { rows.push(lines[j].trim()); j++; }
+        var cells = function (r) { return r.replace(/^\||\|$/g, '').split('|').map(function (x) { return x.trim(); }); };
+        var head = cells(rows[0]), start = 1;
+        if (rows[1] && /^[\s|:-]+$/.test(rows[1])) start = 2;
+        var t = '<table><thead><tr>' + head.map(function (c) { return '<th>' + inlineToHtml(c) + '</th>'; }).join('') + '</tr></thead><tbody>';
+        for (var k = start; k < rows.length; k++) t += '<tr>' + cells(rows[k]).map(function (c) { return '<td>' + inlineToHtml(c) + '</td>'; }).join('') + '</tr>';
+        html.push(t + '</tbody></table>');
+        i = j - 1; continue;
+      }
+      closeList();
+      para.push(s);
+    }
+    closePara(); closeList();
+    if (inCode) html.push('</pre>');
+    return html.join('\n');
+  }
+
+  /* ---------------- DOM -> Markdown ---------------- */
+  function inlineMd(node) {
+    if (!node) return '';
+    if (node.nodeType === 3) {
+      // 编辑器里的文本就是用户想输出的文本：不做 Markdown 反斜杠转义，
+      // 否则已有文章里的 `**说明文字**`、双反引号代码块会被越转越乱。
+      return String(node.nodeValue || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+    if (node.nodeType !== 1) return '';
+    var tag = node.tagName.toLowerCase();
+    var inner = '';
+    for (var i = 0; i < node.childNodes.length; i++) inner += inlineMd(node.childNodes[i]);
+    if (tag === 'br') return '\n';
+    if (tag === 'img') return '![' + (node.getAttribute('alt') || '') + '](' + (node.getAttribute('src') || '') + ')';
+    if (tag === 'a') {
+      var href = node.getAttribute('href') || '';
+      if (/^#photo-\d+$/.test(href) || /^hover:/.test(href) || href) return '[' + inner + '](' + href + ')';
+      return inner;
+    }
+    if (tag === 'strong' || tag === 'b') return '**' + inner + '**';
+    if (tag === 'em' || tag === 'i') return '*' + inner + '*';
+    if (tag === 'mark') return '<mark>' + inner + '</mark>';
+    if (tag === 'code') {
+      var tick = /`/.test(inner) ? '``' : '`';
+      return tick + inner + tick;
+    }
+    if (tag === 'span' && node.classList && node.classList.contains('md-ref')) {
+      // 还原由预览产生的 span（编辑器里始终是 a，这里只是兜底）
+      return inner;
+    }
+    if (tag === 'figure' || tag === 'figcaption') return inner;
+    return inner;
+  }
+
+  function blockMd(el) {
+    var tag = el.tagName ? el.tagName.toLowerCase() : '';
+    var h = /^h([1-6])$/.exec(tag);
+    if (h) return new Array(Number(h[1]) + 1).join('#') + ' ' + inlineMd(el).replace(/\n/g, ' ') + '\n\n';
+    if (tag === 'p') return inlineMd(el).replace(/\n{2,}/g, '\n') + '\n\n';
+    if (tag === 'blockquote') return '> ' + inlineMd(el).replace(/\n/g, '\n> ') + '\n\n';
+    if (tag === 'pre') return '```\n' + String(el.textContent || '').replace(/\s+$/, '') + '\n```\n\n';
+    if (tag === 'hr') return '---\n\n';
+    if (tag === 'ul' || tag === 'ol') {
+      var out = '', n = 1;
+      for (var i = 0; i < el.children.length; i++) {
+        var li = el.children[i];
+        if (li.tagName && li.tagName.toLowerCase() === 'li') out += (tag === 'ol' ? (n++) + '. ' : '- ') + inlineMd(li).replace(/\n/g, ' ') + '\n';
+      }
+      return out + '\n';
+    }
+    if (tag === 'figure') {
+      var img = el.querySelector('img');
+      var cap = el.querySelector('figcaption');
+      if (!img) return '';
+      var line = '![' + (img.getAttribute('alt') || '') + '](' + (img.getAttribute('src') || '') + ')';
+      return line + '\n\n' + (cap && cap.textContent ? '*' + cap.textContent + '*\n\n' : '');
+    }
+    if (tag === 'table') {
+      var rows = [], trs = el.querySelectorAll('tr');
+      for (var t = 0; t < trs.length; t++) {
+        var cs = [], tds = trs[t].children;
+        for (var c = 0; c < tds.length; c++) cs.push(inlineMd(tds[c]).trim());
+        rows.push('| ' + cs.join(' | ') + ' |');
+        if (t === 0) rows.push('| ' + cs.map(function () { return '---'; }).join(' | ') + ' |');
+      }
+      return rows.join('\n') + '\n\n';
+    }
+    if (tag === 'div') {
+      // contenteditable 里浏览器有时会插入裸 div，按段落处理
+      var kids = el.children;
+      if (!kids.length) return inlineMd(el) + '\n\n';
+      var acc = '';
+      for (var d = 0; d < el.childNodes.length; d++) {
+        var ch = el.childNodes[d];
+        acc += ch.nodeType === 1 && /^(P|H[1-6]|UL|OL|BLOCKQUOTE|PRE|HR|FIGURE|TABLE)$/.test(ch.tagName) ? blockMd(ch) : inlineMd(ch) + '\n\n';
+      }
+      return acc;
+    }
+    return inlineMd(el) + '\n\n';
+  }
+
+  function toMd(root) {
+    if (!root) return '';
+    var out = '';
+    for (var i = 0; i < root.childNodes.length; i++) {
+      var n = root.childNodes[i];
+      if (n.nodeType === 3) { if (n.nodeValue && n.nodeValue.trim()) out += inlineMd(n) + '\n\n'; continue; }
+      if (n.nodeType === 1) out += blockMd(n);
+    }
+    return out.replace(/\n{3,}/g, '\n\n').replace(/\s+$/, '') + '\n';
+  }
+
+  window.WBMarkdown = { toHtml: toHtml, toMd: toMd, inlineToHtml: inlineToHtml, esc: esc };
+})();
+</script><script>/* ==========================================================================
+   行旅笔记 · 站内文章编辑器 v2（论坛式富文本工作台）
+   --------------------------------------------------------------------------
+   与 v1（九张表单 Tab）的区别：只有一个输入区 + 顶部工具栏，选中文字即可改格式、
+   绑定照片 / 悬停小图；所有图片集中在「图片集」抽屉；导出的是一个完整文件夹
+   （.zip：1 篇 .md + images/ 相册集 + 使用说明），而不只是单个 .md 文件。
+
+   零后端、零依赖：构建时把全部文章注入 #ed-seed，脚本以纯文本内联，
+   所以离线单文件预览 / zip / 线上都能跑（只有「直提 GitHub」需要网络）。
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  var seedNode = document.getElementById('ed-seed');
+  if (!seedNode) return;
+  var SEED;
+  try { SEED = JSON.parse(seedNode.textContent); } catch (e) { SEED = { posts: [], provinces: [], defaults: [], images: [] }; }
+  var ZIP = window.WBZip, MD = window.WBMarkdown;
+
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var LS_KEY = 'wb-editor-drafts-v2';
+  var PUB_KEY = 'wb-editor-publish-v1';
+  var esc = MD.esc;
+
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+  function isPlain(o) { return o && typeof o === 'object' && !Array.isArray(o); }
+  function today() { return new Date().toISOString().slice(0, 10); }
+  function dateOnly(v) { return v ? String(v).slice(0, 10) : ''; }
+  function slug(s) {
+    var v = String(s || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    return v || 'post-' + today().replace(/-/g, '');
+  }
+  function safeName(s) {
+    return String(s || 'image').replace(/[^A-Za-z0-9._-]+/g, '-').replace(/^-+|-+$/g, '') || 'image';
+  }
+  function status(msg, kind) {
+    var el = $('#ed-status');
+    if (!el) return;
+    el.textContent = msg;
+    el.className = 'ed-status' + (kind ? ' ed-status--' + kind : '');
+  }
+
+  /* ----------------------------------------------------------------------
+     1. YAML frontmatter（只覆盖本项目 schema 用到的子集）
+     ---------------------------------------------------------------------- */
+  var DATE_KEYS = { pubDate: 1, updatedDate: 1, checkIn: 1, checkOut: 1 };
+  function scalar(v, key) {
+    if (v == null) return "''";
+    if (typeof v === 'number') return String(v);
+    if (typeof v === 'boolean') return v ? 'true' : 'false';
+    var s = String(v);
+    var safe = /^[A-Za-z0-9_\-\/. ]+$/.test(s) && !/^\d+$/.test(s) && !DATE_KEYS[key];
+    if (safe) return s;
+    return "'" + s.replace(/'/g, "''") + "'";
+  }
+  function isEmpty(v) {
+    return v == null || v === '' || (Array.isArray(v) && !v.length) || (isPlain(v) && !Object.keys(v).length);
+  }
+  function yamlLines(value, indent) {
+    var out = [], pad = new Array(indent + 1).join(' ');
+    if (Array.isArray(value)) {
+      value.forEach(function (item) {
+        if (isPlain(item)) {
+          var sub = yamlLines(item, indent + 2);
+          if (!sub.length) { out.push(pad + '- {}'); return; }
+          sub[0] = pad + '- ' + sub[0].slice(indent + 2);
+          out = out.concat(sub);
+        } else out.push(pad + '- ' + scalar(item));
+      });
+    } else if (isPlain(value)) {
+      Object.keys(value).forEach(function (k) {
+        var v = value[k];
+        if (isEmpty(v)) return;
+        if (Array.isArray(v) && v.length && !isPlain(v[0])) {
+          out.push(pad + k + ': [' + v.map(function (x) { return scalar(x); }).join(', ') + ']');
+        } else if (Array.isArray(v) || isPlain(v)) {
+          var sub2 = yamlLines(v, indent + 2);
+          if (!sub2.length) return;
+          out.push(pad + k + ':');
+          out = out.concat(sub2);
+        } else out.push(pad + k + ': ' + scalar(v, k));
+      });
+    }
+    return out;
+  }
+  function stripComment(s) {
+    var q = null;
+    for (var i = 0; i < s.length; i++) {
+      var c = s.charAt(i);
+      if (q) { if (c === q) q = null; }
+      else if (c === "'" || c === '"') q = c;
+      else if (c === '#' && (i === 0 || /\s/.test(s.charAt(i - 1)))) return s.slice(0, i).replace(/\s+$/, '');
+    }
+    return s;
+  }
+  function parseScalar(raw) {
+    var s = stripComment(String(raw == null ? '' : raw).trim());
+    if (s.length >= 2 && s.charAt(0) === "'" && s.charAt(s.length - 1) === "'") return s.slice(1, -1).replace(/''/g, "'");
+    if (s.length >= 2 && s.charAt(0) === '"' && s.charAt(s.length - 1) === '"') {
+      try { return JSON.parse(s); } catch (e) { return s.slice(1, -1); }
+    }
+    if (s.charAt(0) === '[' && s.charAt(s.length - 1) === ']') {
+      var inner = s.slice(1, -1).trim();
+      return inner ? inner.split(',').map(function (x) { return parseScalar(x); }) : [];
+    }
+    if (s === 'true' || s === 'false') return s === 'true';
+    if (s === 'null' || s === '~' || s === '') return null;
+    if (/^-?\d+(\.\d+)?$/.test(s)) return Number(s);
+    return s;
+  }
+  function splitKV(text) { var m = /^([\w.\-]+):\s*(.*)$/.exec(text); return m ? { k: m[1], v: m[2] } : null; }
+  function parseNode(lines, i, indent) {
+    if (i >= lines.length) return { v: null, i: i };
+    if (/^-\s/.test(lines[i].t)) return parseList(lines, i, indent);
+    return parseMap(lines, i, indent);
+  }
+  function parseMap(lines, i, indent) {
+    var o = {};
+    while (i < lines.length) {
+      var L = lines[i];
+      if (L.n < indent || /^-\s/.test(L.t)) break;
+      if (L.n > indent) { i++; continue; }
+      var kv = splitKV(L.t);
+      if (!kv) { i++; continue; }
+      var j = i + 1, child = [];
+      while (j < lines.length && lines[j].n > indent) { child.push(lines[j]); j++; }
+      if (child.length) {
+        o[kv.k] = kv.v === '' ? parseNode(child, 0, child[0].n).v : parseScalar(kv.v);
+        i = j;
+      } else { o[kv.k] = kv.v === '' ? {} : parseScalar(kv.v); i++; }
+    }
+    return { v: o, i: i };
+  }
+  function parseList(lines, i, indent) {
+    var a = [], itemIndent = indent + 2;
+    while (i < lines.length) {
+      var L = lines[i];
+      if (L.n !== indent || !/^-\s/.test(L.t)) break;
+      var rest = L.t.replace(/^-\s*/, '');
+      var j = i + 1, child = [];
+      while (j < lines.length && lines[j].n > indent) { child.push(lines[j]); j++; }
+      if (/^[\w.\-]+:/.test(rest)) a.push(parseMap([{ n: itemIndent, t: rest }].concat(child), 0, itemIndent).v);
+      else a.push(parseScalar(rest));
+      i = j;
+    }
+    return { v: a, i: i };
+  }
+  function parseYaml(text) {
+    var lines = [];
+    String(text).split(/\r?\n/).forEach(function (raw) {
+      if (!raw.trim() || /^\s*#/.test(raw)) return;
+      var n = /^\s*/.exec(raw)[0].length;
+      lines.push({ n: n, t: raw.slice(n).replace(/\s+$/, '') });
+    });
+    return lines.length ? parseNode(lines, 0, lines[0].n).v || {} : {};
+  }
+  function splitMarkdown(text) {
+    var m = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?/.exec(String(text));
+    if (!m) return null;
+    return { fm: parseYaml(m[1]), body: String(text).slice(m[0].length).replace(/^\s*\n/, '') };
+  }
+  function toMarkdown(doc) {
+    return '---\n' + yamlLines(doc.meta, 0).join('\n') + '\n---\n\n' + String(doc.body || '').replace(/\s+$/, '') + '\n';
+  }
+
+  /* ----------------------------------------------------------------------
+     2. 文档模型：meta 就是 frontmatter 原样，body 始终是 Markdown
+     ---------------------------------------------------------------------- */
+  function blankDoc() {
+    return {
+      id: 'post-' + today().replace(/-/g, ''), filename: '',
+      meta: {
+        title: '', description: '', pubDate: today(), tags: [], draft: true,
+        province: '', city: '', hero: { src: '', alt: '' }, journey: { origin: '广东' },
+      },
+      body: '从这里开始写。选中一段文字，用上面的工具栏加粗、标题或高亮；也可以把一整句话「绑定照片」，让它在正文里和左侧相册联动。\n',
+      assets: [],
+    };
+  }
+  function normalize(src, body, extra) {
+    var d = blankDoc(), s = isPlain(src) ? src : {};
+    d.id = String(s.id || (extra && extra.id) || d.id);
+    d.filename = (extra && extra.filename) || '';
+    d.meta = isPlain(s) ? clone(s) : clone(d.meta);
+    d.meta.title = String(d.meta.title || '');
+    d.meta.pubDate = dateOnly(d.meta.pubDate) || today();
+    d.meta.draft = d.meta.draft === true || d.meta.draft === 'true';
+    if (!Array.isArray(d.meta.tags)) d.meta.tags = d.meta.tags ? String(d.meta.tags).split(/[,，]/).map(function (x) { return x.trim(); }).filter(Boolean) : [];
+    if (!isPlain(d.meta.hero)) d.meta.hero = { src: '', alt: '' };
+    d.body = String(body == null ? '' : body).replace(/^\s*\n/, '');
+    d.assets = [];
+    return d;
+  }
+  function fromSeed(p) { return normalize(p.data, p.body, { id: p.id, filename: p.filename }); }
+
+  var state = {
+    doc: blankDoc(), key: '', origin: 'new', mode: 'visual', preview: 'render',
+    dirty: false, drafts: {}, pub: {}, drawer: false, props: false,
+    savedRange: null, seq: 1,
+  };
+  try { state.drafts = JSON.parse(localStorage.getItem(LS_KEY) || '{}') || {}; } catch (e) {}
+  try { state.pub = JSON.parse(localStorage.getItem(PUB_KEY) || '{}') || {}; } catch (e) {}
+
+  /* 图片探测：<img> 由构建期静态渲染，pack 脚本会把它们的 src 改成
+     data URI（单文件）/ 相对路径（zip）/ 线上绝对路径 —— 编辑器从这里取可显示的地址。 */
+  var PROBE = {};
+  function probeMap() {
+    if (Object.keys(PROBE).length) return PROBE;
+    $$('#ed-asset-probe img[data-asset-name]').forEach(function (img) {
+      PROBE[img.getAttribute('data-asset-name')] = img.getAttribute('src') || '';
+    });
+    return PROBE;
+  }
+  function assetPath(a) { return '/images/' + a.name; }
+  function assetDisplay(a) {
+    if (a.data) return a.data;
+    var p = probeMap()[a.name];
+    return p || assetPath(a);
+  }
+  function displayize(md) {
+    var out = String(md || '');
+    state.doc.assets.forEach(function (a) {
+      var p = assetPath(a), d = assetDisplay(a);
+      if (d !== p) out = out.split(p).join(d);
+    });
+    return out;
+  }
+  function canonicalize(md) {
+    var out = String(md || '');
+    state.doc.assets.forEach(function (a) {
+      var p = assetPath(a), d = assetDisplay(a);
+      if (d !== p) out = out.split(d).join(p);
+    });
+    return out;
+  }
+
+  /** 把 meta 里的图片字段登记为资源项。
+      preserve=true 时复用同名旧项的二进制（源码模式往返不能丢刚上传的图片）。 */
+  function registerAssets(doc, preserve) {
+    var list = [];
+    var prior = preserve && Array.isArray(doc.assets) ? doc.assets : [];
+    function add(src, role, extra) {
+      if (!src) return;
+      var m = /images\/([^/?#]+)/.exec(String(src));
+      var name = m ? safeName(m[1]) : '';
+      if (!name) return;                       // 外链图片不纳入本地文件夹
+      // 同一张图可以同时是相册照片与悬停小图，按 name + role 区分两条资源项
+      var hit = list.filter(function (x) { return x.name === name && x.role === role; })[0];
+      if (hit) { Object.assign(hit, extra || {}); return; }
+      var reuse = prior.filter(function (x) { return x.name === name && x.role === role; })[0] ||
+                  prior.filter(function (x) { return x.name === name; })[0];
+      list.push(Object.assign(
+        { id: 'a' + (state.seq++), name: name, role: role, data: '', alt: '', camera: '', key: '', caption: '' },
+        reuse ? { id: reuse.id, data: reuse.data, camera: reuse.camera, key: reuse.key, caption: reuse.caption } : {},
+        { role: role },
+        extra || {}
+      ));
+    }
+    var meta = doc.meta || {};
+    if (meta.hero && meta.hero.src) add(meta.hero.src, 'hero', { alt: meta.hero.alt || '' });
+    (meta.gallery || []).forEach(function (g) { add(g.src, 'gallery', { alt: g.alt || '', camera: g.camera || '', caption: g.caption || '' }); });
+    (meta.hoverImages || []).forEach(function (h) { add(h.src, 'hover', { alt: h.alt || '', key: h.key || '', caption: h.caption || '' }); });
+    /* 兼容：历史文章若已含正文图仍登记进资源池，导出时不丢文件；现已无插图入口。 */
+    (String(doc.body).match(/!\[[^\]]*\]\(([^)]+)\)/g) || []).forEach(function (s) {
+      var m = /!\[[^\]]*\]\(([^)]+)\)/.exec(s);
+      if (m) add(m[1], 'inline', {});
+    });
+    doc.assets = list;
+  }
+
+  /** 资源项 → frontmatter 字段（保留原条目里的额外字段，如 lens / place） */
+  function syncMetaFromAssets() {
+    var meta = state.doc.meta, list = state.doc.assets;
+    function oldMap(key) {
+      var m = {};
+      (meta[key] || []).forEach(function (x) { if (x && x.src) m[x.src] = x; });
+      return m;
+    }
+    var oldG = oldMap('gallery'), oldH = oldMap('hoverImages');
+    var gallery = list.filter(function (a) { return a.role === 'gallery'; }).map(function (a) {
+      var o = Object.assign({}, oldG[assetPath(a)] || {});
+      o.src = assetPath(a); o.alt = a.alt || a.name; o.camera = a.camera || '（未填写）';
+      return o;
+    });
+    var hover = list.filter(function (a) { return a.role === 'hover'; }).map(function (a) {
+      var o = Object.assign({}, oldH[assetPath(a)] || {});
+      o.src = assetPath(a); o.alt = a.alt || a.name; o.key = a.key || safeName(a.name.replace(/\.[^.]+$/, ''));
+      if (a.caption) o.caption = a.caption;
+      return o;
+    });
+    var hero = list.filter(function (a) { return a.role === 'hero'; })[0];
+    if (hero) meta.hero = Object.assign({}, isPlain(meta.hero) ? meta.hero : {}, { src: assetPath(hero), alt: hero.alt || meta.hero && meta.hero.alt || '' });
+    if (gallery.length) meta.gallery = gallery; else delete meta.gallery;
+    if (hover.length) meta.hoverImages = hover; else delete meta.hoverImages;
+  }
+  function galleryIndex(asset) {
+    var list = state.doc.assets.filter(function (a) { return a.role === 'gallery'; });
+    return list.indexOf(asset) + 1;
+  }
+
+  /* ----------------------------------------------------------------------
+     3. 渲染
+     ---------------------------------------------------------------------- */
+  var META_FIELDS = [
+    { k: 'description', l: '摘要', t: 'textarea' },
+    { k: 'pubDate', l: '发布日期', t: 'text' },
+    { k: 'updatedDate', l: '更新日期', t: 'text' },
+    { k: 'tags', l: '标签（逗号分隔）', t: 'text' },
+    { k: 'province', l: '省份', t: 'select' },
+    { k: 'city', l: '城市', t: 'text' },
+    { k: 'journey.origin', l: '常驻出发地', t: 'text' },
+    { k: 'journey.destination', l: '目的地省份', t: 'text' },
+    { k: 'hero.caption', l: '封面说明', t: 'text' },
+    { k: 'hero.credit', l: '封面版权', t: 'text' },
+  ];
+  function getPath(o, p) {
+    var cur = o, parts = p.split('.');
+    for (var i = 0; i < parts.length; i++) { if (cur == null) return ''; cur = cur[parts[i]]; }
+    return cur == null ? '' : cur;
+  }
+  function setPath(o, p, v) {
+    var parts = p.split('.'), cur = o;
+    for (var i = 0; i < parts.length - 1; i++) {
+      if (!isPlain(cur[parts[i]])) cur[parts[i]] = {};
+      cur = cur[parts[i]];
+    }
+    cur[parts[parts.length - 1]] = v;
+  }
+  function renderProps() {
+    var box = $('#ed-props');
+    if (!box) return;
+    var provinces = [''].concat(SEED.provinces || []);
+    box.innerHTML = '<div class="ed-props-grid">' + META_FIELDS.map(function (f) {
+      var v = getPath(state.doc.meta, f.k);
+      if (Array.isArray(v)) v = v.join(', ');
+      var input;
+      if (f.t === 'select') input = '<select data-meta="' + f.k + '">' + provinces.map(function (p) {
+        return '<option value="' + esc(p) + '"' + (p === v ? ' selected' : '') + '>' + esc(p || '— 未选 —') + '</option>';
+      }).join('') + '</select>';
+      else if (f.t === 'textarea') input = '<textarea rows="2" data-meta="' + f.k + '">' + esc(v) + '</textarea>';
+      else input = '<input type="text" data-meta="' + f.k + '" value="' + esc(v) + '">';
+      return '<label class="ed-prop"><span>' + esc(f.l) + '</span>' + input + '</label>';
+    }).join('') + '<label class="ed-prop ed-prop--check"><input type="checkbox" data-meta="draft"' +
+      (state.doc.meta.draft ? ' checked' : '') + '><span>草稿 draft（勾选后生产构建不发布）</span></label></div>';
+    box.hidden = !state.props;
+    var btn = $('[data-cmd="props"]');
+    if (btn) btn.classList.toggle('is-active', state.props);
+  }
+  function renderEditor() {
+    var el = $('#ed-editor'), src = $('#ed-source');
+    if (!el || !src) return;
+    el.innerHTML = MD.toHtml(displayize(state.doc.body)) || '<p><br></p>';
+    src.value = toMarkdown(state.doc);
+    el.hidden = state.mode !== 'visual';
+    src.hidden = state.mode !== 'source';
+    $$('[data-mode]').forEach(function (b) { b.classList.toggle('is-active', b.getAttribute('data-mode') === state.mode); });
+    renderFooter();
+  }
+  /* inline 只用于识别历史文章里的正文图，新文章不会再产生这个角色 */
+  var ROLE_NAME = { hero: '封面', gallery: '相册', hover: '悬停', inline: '正文' };
+  function renderPreview() {
+    var box = $('#ed-preview-body');
+    if (!box) return;
+    $$('[data-preview]').forEach(function (b) { b.classList.toggle('is-active', b.getAttribute('data-preview') === state.preview); });
+    if (state.preview === 'source') {
+      box.innerHTML = '<pre class="ed-source-view">' + esc(toMarkdown(state.doc)) + '</pre>';
+      return;
+    }
+    var meta = state.doc.meta;
+    /* 右侧预览里的「本文图片集」：封面 / 相册 / 悬停图都能在这里看到并放大。
+       inline 仅用于兼容历史文章里已有的正文图；编辑器不再提供插图入口。 */
+    var assets = state.doc.assets.filter(function (a) { return !!assetDisplay(a); });
+    var strip = assets.length ? '<section class="ed-render-assets">' +
+      '<div class="ed-render-assets-head">PHOTO SET · ' + assets.length + ' IMAGES · 点击放大</div>' +
+      '<div class="ed-render-assets-grid" data-lightbox-group="preview-assets">' +
+      assets.map(function (a) {
+        var role = ROLE_NAME[a.role] || '图片';
+        var key = a.key || a.name.replace(/\.[^.]+$/, '');
+        return '<button type="button" class="ed-render-asset is-' + esc(a.role) + '" data-asset-preview="' + esc(a.id) + '"' +
+          ' title="' + esc(role + ' · ' + a.name + '（点击放大预览）') + '">' +
+          '<img src="' + esc(assetDisplay(a)) + '" alt="' + esc(a.alt || a.name) + '" width="74" height="54"' +
+          ' data-asset-key="' + esc(key) + '">' +
+          '<span>' + esc(role) + '</span></button>';
+      }).join('') + '</div></section>' : '';
+    box.innerHTML = '<article class="ed-render"><h1>' + esc(meta.title || '未命名文章') + '</h1>' +
+      '<p class="ed-render-meta">' + esc(dateOnly(meta.pubDate)) + ' · ' + esc(meta.province || '') + ' ' + esc(meta.city || '') + '</p>' +
+      (meta.hero && meta.hero.src ? '<img class="ed-render-hero" src="' + esc(displayize(meta.hero.src)) + '" alt="">' : '') +
+      MD.toHtml(displayize(state.doc.body)) + strip + '</article>';
+  }
+  /* 换封面之后把右侧预览滚到刚变化的位置，让「有没有生效」立刻可见 */
+  function focusPreview(sel) {
+    var box = $('#ed-preview-body');
+    if (!box) return;
+    var all = box.querySelectorAll(sel || '.ed-render-hero');
+    var el = all.length ? all[all.length - 1] : null;   // 插到正文末尾时滚到最新那张
+    if (el) setTimeout(function () { try { el.scrollIntoView({ block: 'center' }); } catch (err) {} }, 30);
+  }
+  function renderFooter() {
+    var words = String(state.doc.body || '').replace(/[#*`>\-\[\]()!]/g, '').replace(/\s/g, '').length;
+    var el = $('#ed-statusbar-text');
+    if (el) el.textContent = (state.dirty ? '● 未保存 · ' : '✓ ') + (state.doc.meta.title || '未命名') +
+      ' · ' + words + ' 字 · ' + state.doc.assets.length + ' 张图片 · ' + state.doc.assets.filter(function (a) { return a.role === 'gallery'; }).length + ' 张相册';
+  }
+  function refreshTitle() {
+    var t = $('#ed-title');
+    if (t && document.activeElement !== t) t.value = state.doc.meta.title || '';
+    var c = $('#ed-asset-count');
+    if (c) c.textContent = String(state.doc.assets.length);
+  }
+  function renderList() {
+    var pub = $('#ed-list-published'), drafts = $('#ed-list-drafts');
+    if (pub) pub.innerHTML = (SEED.posts || []).map(function (p) {
+      return '<li><button type="button" data-load="published" data-id="' + esc(p.id) + '"' +
+        ' title="载入站点文章「' + esc(p.title) + '」到编辑器（含它的图片集）"' +
+        (state.origin === 'published' && state.key === p.id ? ' class="is-active"' : '') + '><b>' + esc(p.title) + '</b><span>' + esc(p.filename) + '</span></button></li>';
+    }).join('') || '<li class="ed-empty">暂无文章</li>';
+    if (drafts) drafts.innerHTML = Object.keys(state.drafts).map(function (k) {
+      var d = state.drafts[k];
+      return '<li><button type="button" data-load="draft" data-id="' + esc(k) + '"' +
+        ' title="载入本机草稿「' + esc((d.doc && d.doc.meta && d.doc.meta.title) || k) + '」"' +
+        (state.origin === 'draft' && state.key === k ? ' class="is-active"' : '') + '><b>' + esc((d.doc && d.doc.meta && d.doc.meta.title) || k) + '</b><span>本机草稿</span></button>' +
+        '<button type="button" class="ed-del" data-deldraft="' + esc(k) + '" title="删除草稿">×</button></li>';
+    }).join('') || '<li class="ed-empty">还没有草稿</li>';
+    var a = $('#ed-count-published'), b = $('#ed-count-drafts');
+    if (a) a.textContent = String((SEED.posts || []).length);
+    if (b) b.textContent = String(Object.keys(state.drafts).length);
+  }
+  function renderAssets() {
+    var grid = $('#ed-asset-grid');
+    if (!grid) return;
+    var roleName = { hero: '封面', gallery: '相册', hover: '悬停', inline: '正文' };
+    grid.innerHTML = state.doc.assets.map(function (a) {
+      var idx = a.role === 'gallery' ? galleryIndex(a) : 0;
+      var extra = a.role === 'gallery'
+        ? '<label class="ed-asset-input"><span>相机</span><input type="text" data-asset-camera="' + a.id + '" value="' + esc(a.camera || '') + '" placeholder="例如 Fujifilm X-T5"></label>'
+        : (a.role === 'hover' ? '<label class="ed-asset-input"><span>引用 key</span><input type="text" data-asset-key="' + a.id + '" value="' + esc(a.key || '') + '"></label>' : '');
+      return '<div class="ed-asset-card" data-asset-id="' + a.id + '">' +
+        '<div class="ed-asset-thumb"><img src="' + esc(assetDisplay(a)) + '" alt="' + esc(a.alt || a.name) + '"' +
+        ' width="108" height="82" data-tip="点击放大预览 · ' + esc(a.name) + '"></div>' +
+        '<div class="ed-asset-info"><b title="' + esc(a.name) + '">' + esc(a.name) + '</b>' +
+        '<span class="ed-role ed-role--' + a.role + '">' + roleName[a.role] + (idx ? ' #' + idx : '') + '</span>' + extra +
+        '<div class="ed-asset-btns">' +
+        '<button type="button" data-asset-act="bind" data-id="' + a.id + '" title="把选中的一整句话绑定到相册第 ' + (idx || 1) + ' 张（生成 #photo-N 索引）">绑定选中文字</button>' +
+        '<button type="button" data-asset-act="hover" data-id="' + a.id + '" title="把选中文字挂上悬停小图（生成 hover:key 引用）">悬停小图</button>' +
+        '<button type="button" data-asset-act="hero" data-id="' + a.id + '" title="把这张图设为文章封面首图">设为封面</button>' +
+        '<button type="button" data-asset-act="del" data-id="' + a.id + '" title="从图片集移除，并重排正文里的 #photo-N 编号">删除</button>' +
+        '</div></div></div>';
+    }).join('') || '<p class="ed-empty">还没有图片。点上方「＋ 上传图片」添加，或在站点已有文章里载入它的相册。</p>';
+    var d = $('#ed-drawer');
+    if (d) d.hidden = !state.drawer;
+    /* 抽屉打开时给整个工作台让出右侧 420px，预览栏不再被盖住 */
+    var app = $('.ed-app');
+    if (app) app.classList.toggle('ed-drawer-open', state.drawer);
+    refreshTitle();
+  }
+  function renderAll() {
+    renderProps(); renderEditor(); renderPreview(); renderList(); renderAssets(); refreshTitle();
+  }
+  function markDirty() { state.dirty = true; renderFooter(); }
+  function syncFromDom() {
+    if (state.mode !== 'visual') return;
+    var el = $('#ed-editor');
+    if (!el) return;
+    state.doc.body = canonicalize(MD.toMd(el));
+    markDirty(); renderPreview(); renderFooter();
+  }
+  function syncFromSource() {
+    if (state.mode !== 'source') return;
+    var ta = $('#ed-source');
+    if (!ta) return;
+    var parsed = splitMarkdown(ta.value);
+    if (!parsed) { status('源码缺少开头的 --- frontmatter ---，暂不解析', 'warn'); return; }
+    state.doc.meta = parsed.fm;
+    state.doc.meta.draft = state.doc.meta.draft === true || state.doc.meta.draft === 'true';
+    state.doc.body = canonicalize(parsed.body);
+    registerAssets(state.doc, true);
+    markDirty(); renderPreview(); renderProps(); refreshTitle();
+  }
+
+  /* ----------------------------------------------------------------------
+     4. 工具栏：选区 + 命令
+     ---------------------------------------------------------------------- */
+  function saveSel() {
+    var s = window.getSelection(), ed = $('#ed-editor');
+    if (s && s.rangeCount && ed && ed.contains(s.anchorNode)) state.savedRange = s.getRangeAt(0).cloneRange();
+  }
+  function restoreSel() {
+    var ed = $('#ed-editor');
+    if (!ed) return;
+    ed.focus();
+    if (state.savedRange && ed.contains(state.savedRange.commonAncestorContainer)) {
+      var s = window.getSelection();
+      s.removeAllRanges(); s.addRange(state.savedRange);
+    }
+  }
+  function selectedText() {
+    var s = window.getSelection();
+    return s ? String(s) : '';
+  }
+  function insertHtml(html) {
+    restoreSel();
+    if (document.queryCommandSupported && document.queryCommandSupported('insertHTML')) {
+      document.execCommand('insertHTML', false, html);
+    } else {
+      document.execCommand('insertText', false, html);
+    }
+    syncFromDom();
+  }
+  function exec(cmd, val) {
+    restoreSel();
+    try { document.execCommand(cmd, false, val == null ? null : val); } catch (e) {}
+    syncFromDom();
+  }
+  function refreshToolbar() {
+    var ed = $('#ed-editor');
+    if (!ed || state.mode !== 'visual') return;
+    ['bold', 'italic', 'insertUnorderedList', 'insertOrderedList'].forEach(function (c) {
+      var b = $('[data-cmd="' + c + '"]');
+      if (!b) return;
+      var on = false;
+      try { on = document.queryCommandState(c); } catch (e) {}
+      b.classList.toggle('is-active', !!on);
+    });
+  }
+  function ensureGallery(a) {
+    if (a.role !== 'gallery') {
+      state.doc.assets.forEach(function (x) { if (x.role === 'hero' && a.role === 'hero') x.role = 'gallery'; });
+      a.role = 'gallery';
+      if (!a.camera) a.camera = '（未填写）';
+    }
+    syncMetaFromAssets();
+    return galleryIndex(a);
+  }
+  function ensureHover(a) {
+    // 已经是相册照片且正文里存在 #photo 引用时，克隆一条 hover 资源项，
+    // 避免把 gallery 角色覆盖掉导致已建立的整句索引失效（同一图片文件只打包一份）。
+    if (a.role === 'gallery' && /\]\(#photo-\d+\)/.test(state.doc.body)) {
+      var copy = Object.assign({}, a, {
+        id: 'a' + (state.seq++), role: 'hover',
+        key: safeName(a.name.replace(/\.[^.]+$/, '')),
+      });
+      state.doc.assets.push(copy);
+      syncMetaFromAssets();
+      return copy.key;
+    }
+    if (a.role !== 'hover') {
+      a.role = 'hover';
+      if (!a.key) a.key = safeName(a.name.replace(/\.[^.]+$/, ''));
+    }
+    syncMetaFromAssets();
+    return a.key;
+  }
+  function bindPhoto(a) {
+    var n = ensureGallery(a), text = selectedText() || '这一刻的照片';
+    insertHtml(MD.inlineToHtml('[' + text + '](#photo-' + n + ')'));
+    state.preview = 'render';
+    syncMetaFromAssets(); renderAssets(); renderPreview();
+    status('已把选中文字绑定到相册第 ' + n + ' 张（#photo-' + n + '）', 'ok');
+  }
+  function bindHover(a) {
+    var key = ensureHover(a), text = selectedText() || '这里';
+    insertHtml(MD.inlineToHtml('[' + text + '](hover:' + key + ')'));
+    state.preview = 'render';
+    syncMetaFromAssets(); renderAssets(); renderPreview();
+    status('已把选中文字挂上悬停小图 hover:' + key, 'ok');
+  }
+  function toolbar(cmd) {
+    var ed = $('#ed-editor');
+    if (!ed) return;
+    if (state.mode !== 'visual') { setMode('visual'); }
+    switch (cmd) {
+      case 'bold': exec('bold'); break;
+      case 'italic': exec('italic'); break;
+      case 'underline': exec('underline'); break;
+      case 'h2': exec('formatBlock', '<h2>'); break;
+      case 'h3': exec('formatBlock', '<h3>'); break;
+      case 'p': exec('formatBlock', '<p>'); break;
+      case 'ul': exec('insertUnorderedList'); break;
+      case 'ol': exec('insertOrderedList'); break;
+      case 'quote': exec('formatBlock', '<blockquote>'); break;
+      case 'undo': exec('undo'); break;
+      case 'redo': exec('redo'); break;
+      case 'clear': exec('removeFormat'); exec('formatBlock', '<p>'); break;
+      case 'mark': insertHtml('<mark>' + esc(selectedText() || '高亮文字') + '</mark>'); break;
+      case 'code': insertHtml('<code>' + esc(selectedText() || 'code') + '</code>'); break;
+      case 'hr': insertHtml('<hr><p><br></p>'); break;
+      case 'link': {
+        var url = window.prompt('链接地址（普通 URL / #photo-N / hover:key）', 'https://');
+        if (url) insertHtml(MD.inlineToHtml('[' + (selectedText() || '链接文字') + '](' + url + ')'));
+        break;
+      }
+      case 'photo': saveSel(); openDrawer(); status('图片集已打开：点某张图的「绑定选中文字」', 'ok'); break;
+      case 'hover': saveSel(); openDrawer(); status('图片集已打开：点某张图的「悬停小图」', 'ok'); break;
+      case 'assets':
+        openDrawer(!state.drawer);
+        status(state.drawer ? '图片集已打开：缩略图可放大，按钮可绑定 / 悬停 / 设为封面' : '图片集已关闭', 'ok');
+        break;
+      case 'props':
+        state.props = !state.props; renderProps();
+        status(state.props ? '已展开文章属性：摘要 / 日期 / 省份 / 城市 / 草稿开关' : '已收起文章属性', 'ok');
+        break;
+      case 'upload': status('请选择本机图片（可多选），或把图片拖进输入区', 'ok'); $('#ed-image-file').click(); break;
+      case 'close-drawer': openDrawer(false); status('图片集已关闭', 'ok'); break;
+    }
+    refreshToolbar();
+  }
+  function setMode(mode) {
+    if (mode === state.mode) return;
+    if (state.mode === 'visual') syncFromDom(); else syncFromSource();
+    state.mode = mode;
+    renderEditor();
+    status(mode === 'source' ? '源码模式：可直接编辑完整 .md（含 frontmatter）' : '可视化模式：选中文字用工具栏排版', 'ok');
+  }
+  function openDrawer(on) {
+    state.drawer = on == null ? true : !!on;
+    renderAssets();
+  }
+
+  /* ----------------------------------------------------------------------
+     5. 图片上传 / 删除
+     ---------------------------------------------------------------------- */
+  function addUploaded(file) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      var data = String(reader.result || '');
+      var ext = (/\.([A-Za-z0-9]+)$/.exec(file.name) || [, 'jpg'])[1].toLowerCase();
+      var name = safeName(slug(state.doc.meta.title || state.doc.id) + '-' +
+        String(state.doc.assets.length + 1).padStart(2, '0')) + '.' + (ext === 'jpeg' ? 'jpg' : ext);
+      var a = { id: 'a' + (state.seq++), name: name, role: 'gallery', data: data,
+        alt: file.name.replace(/\.[^.]+$/, ''), camera: '（未填写）', key: '', caption: '' };
+      state.doc.assets.push(a);
+      syncMetaFromAssets(); markDirty(); renderAssets(); renderPreview(); renderFooter();
+      status('已加入图片集：' + name + '（可改相机型号、绑定到正文）', 'ok');
+    };
+    reader.readAsDataURL(file);
+  }
+  function removeAsset(a) {
+    var idx = galleryIndex(a);
+    state.doc.assets = state.doc.assets.filter(function (x) { return x.id !== a.id; });
+    if (a.role === 'gallery') {
+      state.doc.body = state.doc.body
+        .replace(new RegExp('\\[([^\\]]+)\\]\\(#photo-' + idx + '\\)', 'g'), '$1')
+        .replace(/\[([^\]]+)\]\(#photo-(\d+)\)/g, function (all, text, n) {
+          return Number(n) > idx ? '[' + text + '](#photo-' + (Number(n) - 1) + ')' : all;
+        });
+    }
+    if (a.role === 'hover' && a.key) {
+      state.doc.body = state.doc.body.replace(new RegExp('\\[([^\\]]+)\\]\\(hover:' + a.key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\)', 'g'), '$1');
+    }
+    if (a.role === 'hero') delete state.doc.meta.hero.src;
+    syncMetaFromAssets(); markDirty(); renderAll();
+    status('已移除 ' + a.name + '，正文引用编号已自动重排', 'ok');
+  }
+
+  /* ----------------------------------------------------------------------
+     6. 草稿 / 激活文章
+     ---------------------------------------------------------------------- */
+  function persistDrafts() {
+    try { localStorage.setItem(LS_KEY, JSON.stringify(state.drafts)); return true; }
+    catch (e) {
+      // 图片 data URI 可能撑爆配额：退而求其次只存结构，提示及时导出整包
+      state.drafts = {};
+      try { localStorage.setItem(LS_KEY, '{}'); } catch (e2) {}
+      return false;
+    }
+  }
+  function saveDraft(silent) {
+    var key = state.origin === 'draft' && state.key ? state.key : slug(state.doc.meta.title || state.doc.id);
+    var snap = clone(state.doc);
+    try { state.drafts[key] = { doc: snap, savedAt: new Date().toISOString() }; } catch (e) { return; }
+    var ok = persistDrafts();
+    state.key = key; state.origin = 'draft'; state.dirty = false;
+    renderList(); renderFooter();
+    if (!silent) status(ok ? '草稿已保存到本机浏览器' : '浏览器存储不足：草稿未能保存图片，请及时「导出文件夹」', ok ? 'ok' : 'warn');
+  }
+  function activate(origin, key, doc) {
+    state.doc = doc; state.origin = origin; state.key = key; state.dirty = false;
+    state.props = false; state.drawer = false;
+    syncMetaFromAssets();
+    state.doc.body = canonicalize(state.doc.body);
+    renderAll();
+  }
+
+  /* ----------------------------------------------------------------------
+     7. 导出：一个文件夹 = .md + images/ 相册集 + 说明
+     ---------------------------------------------------------------------- */
+  function fileName() { return (state.doc.filename || slug(state.doc.meta.title || state.doc.id) + '.md').replace(/\.md$/, '') + '.md'; }
+  /** 导出文件夹名：已有文章用它的 slug（dali-yunnan），新建文章用标题 slug；
+      纯中文标题没有 ASCII slug 时退回 id / 日期，不会出现空文件夹名。 */
+  function bundleSlug(doc) {
+    var fromTitle = slug(doc.meta.title || '');
+    var fallback = /^post-\d{8}$/.test(fromTitle);
+    if (!fallback) return safeName(fromTitle);
+    var id = safeName(String(doc.id || ''));
+    if (id && !/^post-\d{8}$/.test(id)) return id;
+    if (doc.filename) return safeName(doc.filename.replace(/\.mdx?$/, ''));
+    return id || fromTitle;
+  }
+  function warnings() {
+    var w = [];
+    if (!state.doc.meta.title) w.push('标题未填');
+    if (!state.doc.meta.province) w.push('省份未填（首页地图不会归档）');
+    if (state.doc.meta.draft) w.push('draft=true，生产构建不会发布');
+    state.doc.assets.filter(function (a) { return a.role === 'gallery'; }).forEach(function (a, i) {
+      if (!a.camera || a.camera === '（未填写）') w.push('相册第 ' + (i + 1) + ' 张未填相机型号');
+    });
+    return w;
+  }
+  function downloadBlob(blob, name) {
+    try {
+      var url = URL.createObjectURL(blob), a = document.createElement('a');
+      a.href = url; a.download = name; a.style.display = 'none';
+      document.body.appendChild(a); a.click();
+      setTimeout(function () { a.remove(); URL.revokeObjectURL(url); }, 2000);
+      return true;
+    } catch (e) { status('当前环境不允许下载，请用「复制 Markdown」', 'warn'); return false; }
+  }
+  /** 同名图片只打包 / 提交一次（一张图可同时属于相册与悬停图库） */
+  function uniqueAssets() {
+    var seen = {};
+    return state.doc.assets.filter(function (a) {
+      if (seen[a.name]) return false;
+      seen[a.name] = 1; return true;
+    });
+  }
+  function assetBytes(a) {
+    if (a.data) return Promise.resolve(ZIP.decodeDataUri(a.data));
+    var src = assetDisplay(a);
+    if (/^data:/i.test(src)) return Promise.resolve(ZIP.decodeDataUri(src));
+    return fetch(src).then(function (r) { return r.ok ? r.arrayBuffer() : null; })
+      .then(function (b) { return b ? new Uint8Array(b) : null; })
+      .catch(function () { return null; });
+  }
+  function buildBundle() {
+    if (state.mode === 'source') syncFromSource(); else syncFromDom();
+    var doc = state.doc, folder = bundleSlug(doc);
+    var md = toMarkdown(doc), skipped = [];
+    var files = [
+      { name: folder + '/' + folder + '.md', data: md },
+    ];
+    var jobs = uniqueAssets().map(function (a) {
+      return assetBytes(a).then(function (bytes) {
+        if (bytes && bytes.length) files.push({ name: folder + '/images/' + a.name, data: bytes });
+        else skipped.push(a.name);
+      });
+    });
+    return Promise.all(jobs).then(function () {
+      var note = '# 怎么把这个文件夹放进项目\n\n' +
+        '压缩包里是一个完整的文章文件夹：\n\n```\n' + folder + '/\n' +
+        '  ' + folder + '.md          文章正文 + frontmatter\n' +
+        '  images/                 这篇文章用到的全部图片\n' +
+        '  HOW-TO-USE.md           本说明\n```\n\n' +
+        '1. 把 `' + folder + '.md` 复制到 `blog-base/src/content/blog/`（文件名即路由 slug）。\n' +
+        '2. 把 `images/` 里的图片全部复制到 `blog-base/public/images/`。`.md` 里的图片路径都是 `/images/文件名`，与项目现有结构一致。\n' +
+        '3. `git push` 到 main，GitHub Actions 约 1 分钟自动构建发布。\n\n' +
+        '> 只想改文字也可以只复制 `.md`；但如果它引用了新图片，记得一并复制 images/。\n' +
+        (skipped.length ? '\n## 未打包的站点已有素材\n\n以下图片没有可用的二进制数据（离线 zip / file:// 环境不能读取），它们已经存在于项目的 `blog-base/public/images/`，直接从原项目复制即可：\n\n' +
+          skipped.map(function (n) { return '- `' + n + '`'; }).join('\n') + '\n' : '') +
+        '\n## 正文里的图片索引\n\n- 相册照片：`[一整句话](#photo-N)`，N 与 frontmatter `gallery` 顺序一致。\n' +
+        '- 悬停小图：`[词语](hover:key)`，对应 `hoverImages` 里的 key。\n' +
+        '- 行内图片：`![说明](/images/文件名.jpg)`。\n\n' +
+        '导出时检查：' + (warnings().length ? warnings().join('；') : '无') + '\n';
+      files.push({ name: folder + '/HOW-TO-USE.md', data: note });
+      return { blob: ZIP.build(files), files: files, folder: folder, skipped: skipped, md: md };
+    });
+  }
+  function exportBundle() {
+    status('正在打包文件夹（.md + images/ + 使用说明）…', 'ok');
+    buildBundle().then(function (r) {
+      var ok = downloadBlob(r.blob, r.folder + '.zip');
+      if (ok) status('已导出文件夹 ' + r.folder + '.zip：1 篇 .md + ' + (r.files.length - 2) + ' 张图片 + 说明', warnings().length ? 'warn' : 'ok');
+      if (r.skipped.length) status('已导出；' + r.skipped.length + ' 张站点已有素材需在 HOW-TO-USE.md 里按说明复制', 'warn');
+      if (warnings().length) console.info('[editor] 导出提醒：' + warnings().join('；'));
+    }).catch(function (e) {
+      status('打包失败：' + (e && e.message ? e.message : String(e)) + '（可先用「仅 .md」或「复制」）', 'warn');
+    });
+  }
+  function exportMd() {
+    if (state.mode === 'source') syncFromSource(); else syncFromDom();
+    downloadBlob(new Blob([toMarkdown(state.doc)], { type: 'text/markdown;charset=utf-8' }), fileName());
+    status('已导出 ' + fileName() + '（不含图片文件，完整交付请用「导出文件夹」）', 'ok');
+  }
+  function copyMd() {
+    var text = toMarkdown(state.doc), done = false;
+    status('正在复制 Markdown…', 'ok');
+    function fallback() {
+      if (done) return;
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+      ta.remove(); done = true;
+      status(ok ? 'Markdown 已复制' : '剪贴板不可用：请切到「源码」模式手动复制', ok ? 'ok' : 'warn');
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        if (done) return; done = true; status('Markdown 已复制', 'ok');
+      }, fallback);
+      /* iframe srcdoc / file:// 下 Promise 可能永远不 settle，兜底走一次同步复制 */
+      setTimeout(fallback, 700);
+    } else fallback();
+  }
+  function importMd(file) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      var parsed = splitMarkdown(String(reader.result || ''));
+      if (!parsed) { status('导入失败：文件开头没有 --- YAML frontmatter ---', 'warn'); return; }
+      var doc = normalize(parsed.fm, parsed.body, { filename: file.name });
+      doc.id = slug(file.name.replace(/\.mdx?$/, ''));
+      registerAssets(doc);
+      activate('draft', slug(doc.id), doc);
+      saveDraft(true);
+      status('已导入 ' + file.name + '；图片请到「图片集」上传或复用站点素材', 'ok');
+    };
+    reader.readAsText(file, 'utf-8');
+  }
+
+  /* ----------------------------------------------------------------------
+     8. 发布到 GitHub（md + 新增图片，多文件 PUT）
+     ---------------------------------------------------------------------- */
+  function b64(bytes) {
+    var bin = '';
+    for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    return btoa(bin);
+  }
+  function b64utf8(s) { return b64(new TextEncoder().encode(s)); }
+  function pubCfg() {
+    var c = {};
+    $$('[data-pub]').forEach(function (el) { c[el.getAttribute('data-pub')] = el.value.trim(); });
+    return c;
+  }
+  function pubLog(msg) { var el = $('#ed-publish-log'); if (el) el.textContent = msg; }
+  async function putFile(base, headers, cfg, path, content, message) {
+    var url = base + path.split('/').map(encodeURIComponent).join('/');
+    var sha = null;
+    var r = await fetch(url + '?ref=' + encodeURIComponent(cfg.branch), { headers: headers });
+    if (r.ok) sha = (await r.json()).sha;
+    else if (r.status !== 404) throw new Error('读取 ' + path + ' 失败：HTTP ' + r.status);
+    var payload = { message: message, content: content, branch: cfg.branch };
+    if (sha) payload.sha = sha;
+    var res = await fetch(url, { method: 'PUT', headers: Object.assign({}, headers, { 'Content-Type': 'application/json' }), body: JSON.stringify(payload) });
+    var out = await res.json();
+    if (!res.ok) throw new Error(path + '：HTTP ' + res.status + ' · ' + (out.message || '未知错误'));
+    return out;
+  }
+  async function publish() {
+    var cfg = pubCfg();
+    if (!cfg.repo || !cfg.branch || !cfg.token || !cfg.path) {
+      pubLog('请填完整：仓库 / 分支 / md 路径 / token');
+      status('发布面板：还缺 ' + (!cfg.token ? 'PAT' : !cfg.repo ? '仓库' : !cfg.path ? 'md 路径' : '分支') + '，离线请改用「导出文件夹」', 'warn');
+      return;
+    }
+    state.pub = { repo: cfg.repo, branch: cfg.branch, path: cfg.path, imageDir: cfg.imageDir };
+    try { localStorage.setItem(PUB_KEY, JSON.stringify(state.pub)); } catch (e) {}
+    var headers = { 'Accept': 'application/vnd.github+json', 'Authorization': 'Bearer ' + cfg.token, 'X-GitHub-Api-Version': '2022-11-28' };
+    var base = 'https://api.github.com/repos/' + cfg.repo + '/contents/';
+    pubLog('提交中…\n' + cfg.path);
+    try {
+      await putFile(base, headers, cfg, cfg.path, b64utf8(toMarkdown(state.doc)), 'editor: ' + (state.doc.meta.title || state.doc.id));
+      var n = 0, unique = uniqueAssets();
+      for (var i = 0; i < unique.length; i++) {
+        var a = unique[i];
+        var bytes = await assetBytes(a);
+        if (!bytes || !bytes.length) continue;
+        var p = (cfg.imageDir || 'blog-base/public/images').replace(/\/$/, '') + '/' + a.name;
+        pubLog('提交中…\n' + p);
+        await putFile(base, headers, cfg, p, b64(bytes), 'editor: asset ' + a.name);
+        n++;
+      }
+      pubLog('✓ 提交成功：1 篇 .md + ' + n + ' 张图片\n\nGitHub Actions 会自动构建，约 1 分钟后 Pages 更新。');
+      status('已提交到 ' + cfg.repo + '，等待自动部署', 'ok');
+    } catch (e) {
+      pubLog('✕ 发布失败\n' + (e && e.message ? e.message : String(e)) + '\n\n离线预览没有网络属正常，请改用「导出文件夹」。');
+      status('发布失败，详见发布面板日志', 'warn');
+    }
+  }
+  function openPublish() {
+    var m = $('#ed-pub-modal');
+    if (!m) return;
+    var c = state.pub || {};
+    m.hidden = false;
+    var set = function (k, v) { var el = $('[data-pub="' + k + '"]', m); if (el && !el.value) el.value = v || ''; };
+    set('repo', c.repo || SEED.repo || 'macrospro/travel-notes');
+    set('branch', c.branch || 'main');
+    set('path', 'blog-base/src/content/blog/' + fileName());
+    set('imageDir', c.imageDir || 'blog-base/public/images');
+  }
+
+  /* ----------------------------------------------------------------------
+     9. 事件
+     ---------------------------------------------------------------------- */
+  function onClick(e) {
+    var t = e.target;
+    var b = t && t.closest ? t.closest('button, [data-load], [data-mode], [data-preview]') : null;
+    if (!b) return;
+
+    var cmd = b.getAttribute('data-cmd');
+    if (cmd) { toolbar(cmd); return; }
+    var mode = b.getAttribute('data-mode');
+    if (mode) { setMode(mode); return; }
+    var pv = b.getAttribute('data-preview');
+    if (pv) {
+      state.preview = pv; renderPreview();
+      status(pv === 'source' ? '右侧预览：最终导出的 Markdown 源码' : '右侧预览：排版效果 + 本文图片集', 'ok');
+      return;
+    }
+
+    var top = b.getAttribute('data-top');
+    if (top) {
+      if (top === 'new') {
+        if (state.dirty && !confirm('当前改动还没存成草稿，确定新建？')) return;
+        activate('new', '', blankDoc()); status('新建文章：先写标题，再在输入区写正文', 'ok');
+      } else if (top === 'save') saveDraft(false);
+      else if (top === 'bundle') exportBundle();
+      else if (top === 'md') exportMd();
+      else if (top === 'copy') copyMd();
+      else if (top === 'import') { status('请选择本机 .md / .mdx 文件（开头需有 --- frontmatter ---）', 'ok'); $('#ed-file').click(); }
+      else if (top === 'publish') { openPublish(); status('发布面板已打开：需填 PAT，离线请改用「导出文件夹」', 'ok'); }
+      else if (top === 'help') { state.props = true; renderProps(); status('提示：选中文字 → 工具栏；图片 → 图片集；导出 → 文件夹 .zip', 'ok'); }
+      else if (top === 'close-publish') { $('#ed-pub-modal').hidden = true; status('已关闭发布面板', 'ok'); }
+      else if (top === 'do-publish') publish();
+      else if (top === 'toggle-preview') {
+        var app = $('.ed-app');
+        app.classList.toggle('ed-preview-hidden');
+        var hidden = app.classList.contains('ed-preview-hidden');
+        b.textContent = hidden ? '▸ 预览' : '◂ 隐藏';
+        status(hidden ? '已隐藏右侧预览栏' : '已显示右侧预览栏', 'ok');
+      } else if (top === 'toggle-side') {
+        $('.ed-app').classList.toggle('ed-side-hidden');
+        status($('.ed-app').classList.contains('ed-side-hidden') ? '已隐藏左侧文章列表' : '已显示左侧文章列表', 'ok');
+      }
+      return;
+    }
+
+    var load = b.getAttribute('data-load');
+    if (load === 'published') {
+      var p = (SEED.posts || []).filter(function (x) { return x.id === b.getAttribute('data-id'); })[0];
+      if (p) {
+        var d = fromSeed(p); registerAssets(d); activate('published', p.id, d);
+        status('已载入 ' + p.title + '；图片已自动登记到图片集', 'ok');
+      }
+      return;
+    }
+    if (load === 'draft') {
+      var k = b.getAttribute('data-id'), rec = state.drafts[k];
+      if (rec) {
+        var doc = rec.doc ? clone(rec.doc) : normalize(rec.doc, rec.body, {});
+        if (!doc.assets || !doc.assets.length) registerAssets(doc);
+        activate('draft', k, doc);
+      }
+      return;
+    }
+    var del = b.getAttribute('data-deldraft');
+    if (del) {
+      if (!confirm('删除草稿「' + del + '」？不可撤销。')) return;
+      delete state.drafts[del]; persistDrafts();
+      if (state.key === del) activate('new', '', blankDoc()); else renderList();
+      status('已删除草稿', 'ok'); return;
+    }
+    /* 右侧预览的「本文图片集」缩略图：按钮里包着 img，事件委托只会命中按钮，
+       这里主动把里面的 img 交给全站 lightbox 放大（同组可 ← → 切换）。 */
+    var apv = b.getAttribute('data-asset-preview');
+    if (apv) {
+      var im = b.querySelector('img');
+      if (im && window.WBLightbox) window.WBLightbox.open(im);
+      return;
+    }
+    var act = b.getAttribute('data-asset-act');
+    if (act) {
+      var a = state.doc.assets.filter(function (x) { return x.id === b.getAttribute('data-id'); })[0];
+      if (!a) return;
+      if (state.mode !== 'visual') setMode('visual');
+      restoreSel();
+      if (act === 'bind') bindPhoto(a);
+      else if (act === 'hover') bindHover(a);
+      else if (act === 'hero') {
+        state.doc.assets.forEach(function (x) { if (x.role === 'hero') x.role = 'gallery'; });
+        a.role = 'hero'; state.preview = 'render';
+        syncMetaFromAssets(); markDirty(); renderAssets(); renderPreview(); renderFooter();
+        focusPreview('.ed-render-hero');
+        status('已设为封面：' + a.name + ' · 右侧预览首图已更新', 'ok');
+      } else if (act === 'del') {
+        if (!confirm('从图片集移除 ' + a.name + '？')) return;
+        removeAsset(a);
+      }
+      return;
+    }
+  }
+  function onInput(e) {
+    var t = e.target;
+    if (!t) return;
+    if (t.id === 'ed-editor') { syncFromDom(); return; }
+    if (t.id === 'ed-source') { syncFromSource(); return; }
+    if (t.id === 'ed-title') { state.doc.meta.title = t.value; markDirty(); renderPreview(); refreshTitle(); return; }
+    if (t.hasAttribute && t.hasAttribute('data-meta')) {
+      var k = t.getAttribute('data-meta');
+      var v = t.type === 'checkbox' ? t.checked : t.value;
+      if (k === 'tags') v = String(v).split(/[,，]/).map(function (x) { return x.trim(); }).filter(Boolean);
+      setPath(state.doc.meta, k, v);
+      markDirty(); renderPreview(); renderFooter(); return;
+    }
+    if (t.hasAttribute && t.hasAttribute('data-asset-camera')) {
+      var a1 = state.doc.assets.filter(function (x) { return x.id === t.getAttribute('data-asset-camera'); })[0];
+      if (a1) { a1.camera = t.value; syncMetaFromAssets(); markDirty(); renderPreview(); }
+      return;
+    }
+    if (t.hasAttribute && t.hasAttribute('data-asset-key')) {
+      var a2 = state.doc.assets.filter(function (x) { return x.id === t.getAttribute('data-asset-key'); })[0];
+      if (a2) { a2.key = t.value; syncMetaFromAssets(); markDirty(); }
+      return;
+    }
+    if (t.hasAttribute && t.hasAttribute('data-pub') && t.getAttribute('data-pub') !== 'token') {
+      state.pub[t.getAttribute('data-pub')] = t.value.trim();
+    }
+  }
+  function boot() {
+    // 防止点工具栏按钮时输入区失焦导致选区丢失
+    document.addEventListener('mousedown', function (e) {
+      var b = e.target && e.target.closest ? e.target.closest('[data-cmd], [data-asset-act]') : null;
+      if (b) e.preventDefault();
+    }, true);
+    document.addEventListener('click', onClick);
+    document.addEventListener('input', onInput);
+    document.addEventListener('change', onInput);
+    document.addEventListener('selectionchange', function () { saveSel(); refreshToolbar(); });
+    document.addEventListener('keydown', function (e) {
+      var mod = e.ctrlKey || e.metaKey;
+      if (mod && (e.key === 's' || e.key === 'S')) { e.preventDefault(); saveDraft(false); }
+      else if (mod && e.shiftKey && (e.key === 'z' || e.key === 'Z')) { e.preventDefault(); setMode('source'); }
+      else if (e.key === 'Escape') { openDrawer(false); var m = $('#ed-pub-modal'); if (m) m.hidden = true; }
+    });
+    $('#ed-file').addEventListener('change', function (e) {
+      var f = e.target.files && e.target.files[0];
+      if (f) importMd(f);
+      e.target.value = '';
+    });
+    $('#ed-image-file').addEventListener('change', function (e) {
+      var fs = Array.prototype.slice.call(e.target.files || []);
+      fs.forEach(addUploaded);
+      e.target.value = '';
+      if (fs.length) openDrawer(true);
+    });
+    // 拖图片进编辑区 = 上传
+    var wrap = $('.ed-editor-wrap');
+    if (wrap) {
+      wrap.addEventListener('dragover', function (e) { e.preventDefault(); wrap.classList.add('is-dragover'); });
+      wrap.addEventListener('dragleave', function () { wrap.classList.remove('is-dragover'); });
+      wrap.addEventListener('drop', function (e) {
+        e.preventDefault(); wrap.classList.remove('is-dragover');
+        var fs = Array.prototype.slice.call((e.dataTransfer && e.dataTransfer.files) || []).filter(function (f) { return /^image\//.test(f.type); });
+        fs.forEach(addUploaded);
+        if (fs.length) { openDrawer(true); status('已加入 ' + fs.length + ' 张图片', 'ok'); }
+      });
+    }
+    window.__WB_EDITOR__ = {
+      toMarkdown: function () { return toMarkdown(state.doc); },
+      parse: splitMarkdown,
+      htmlToMd: function () { return MD.toMd($('#ed-editor')); },
+      exportBundle: exportBundle,
+      buildBundle: buildBundle,
+      get doc() { return state.doc; },
+      get drafts() { return state.drafts; },
+      get assets() { return state.doc.assets; },
+      activateSeed: function (id) {
+        var p = (SEED.posts || []).filter(function (x) { return x.id === id; })[0];
+        if (p) { var d = fromSeed(p); registerAssets(d); activate('published', id, d); }
+      },
+    };
+    var first = Object.keys(state.drafts)[0];
+    if (first && state.drafts[first].doc) {
+      var doc = clone(state.drafts[first].doc);
+      if (!doc.assets || !doc.assets.length) registerAssets(doc);
+      activate('draft', first, doc);
+    } else if ((SEED.posts || []).length) {
+      var p = (SEED.posts || []).filter(function (x) { return x.id === 'dali-yunnan'; })[0] || SEED.posts[0];
+      var d = fromSeed(p); registerAssets(d); activate('published', p.id, d);
+      status('已载入示例文章 ' + p.title + '；选中文字试试工具栏，或点「＋ 新建」', 'ok');
+    } else activate('new', '', blankDoc());
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script><!-- 实时预览 / 图片集里的图片都能点开放大；编辑区与图片探测保持 data-no-lightbox --><script>/* ==========================================================================
+   全局图片放大查看器（Lightbox）—— 点一下放大，再点一下缩小
+   --------------------------------------------------------------------------
+   覆盖全站所有展示图片：封面大图、03 相册、正文 / 散文里的插图、悬停气泡里的图。
+   - 零依赖、纯文本内联；单文件预览、zip、file:// 与 GitHub Pages 都可直接跑。
+   - 图片地址一律从页面上已存在的 <img> 的 src / currentSrc 读取，绝不拼 URL：
+     离线打包把 src 改成 data URI / 相对路径后，这里拿到的就是改好的地址。
+   - 事件委托挂在 document 捕获阶段，先于文章页的分屏滚动控制器和相册联动脚本，
+     点图片只放大，不会顺带翻页、切屏或触发正文句子跳转。
+   - 同一组图片（相册 / 悬停图库 / 正文）支持 ← → 与左右按钮切换；
+     「1:1」按钮切到原始像素看细节，再点回到适应窗口。
+   ========================================================================== */
+(function () {
+  var ID = 'wb-lightbox';
+  var overlay = null, view = null, stage = null;
+  var countEl = null, dimEl = null, prevBtn = null, nextBtn = null, zoomBtn = null, closeBtn = null;
+  var list = [], index = 0, anchor = null;
+  var open = false, closing = false, zoomed = false;
+  var savedY = 0, savedPad = '', lastFocus = null, closeTimer = 0;
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function srcOf(img) { return img.currentSrc || img.getAttribute('src') || ''; }
+
+  /* 哪些图可以放大：排除查看器自身、显式标记 data-no-lightbox 的缩略图、
+     以及小于 24px 的装饰图 / 隐藏占位图。 */
+  function zoomable(img) {
+    if (!img || img.tagName !== 'IMG') return false;
+    if (img.hasAttribute('data-no-lightbox') || img.closest('[data-no-lightbox]')) return false;
+    if (img.closest('#' + ID)) return false;
+    if (!srcOf(img)) return false;
+    var r = img.getBoundingClientRect();
+    /* rect 为 0 有两种正常情况：布局尚未完成、或图片在隐藏容器里（悬停图库）。
+       这时退回 HTML 的 width/height 属性判断，避免把真图片误判成装饰图。 */
+    if (r.width >= 24 && r.height >= 24) return true;
+    var w = parseInt(img.getAttribute('width'), 10) || 0;
+    var h = parseInt(img.getAttribute('height'), 10) || 0;
+    return w >= 24 && h >= 24;
+  }
+
+  /* 分组：同一容器内可放大的图组成一组，用于左右切换。
+     用 closest 推断容器，组件不需要额外加属性；新写的文章 / 组件自动生效。 */
+  function groupOf(img) {
+    var root = img.closest('[data-lightbox-group]') ||
+               img.closest('.pj-track, .hover-bubble-shots, .journal-prose, .prose');
+    if (!root) return [img];
+    var all = Array.prototype.slice.call(root.querySelectorAll('img')).filter(zoomable);
+    if (all.indexOf(img) < 0) { all.push(img); all.sort(function (a, b) {
+      return (a.compareDocumentPosition(b) & 4) ? -1 : 1;
+    }); }
+    return all;
+  }
+
+  function build() {
+    overlay = document.createElement('div');
+    overlay.id = ID;
+    overlay.className = 'wb-lightbox';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', '图片放大预览');
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.hidden = true;
+    /* 注意：这里不写任何 src 字面量，离线打包的路径改写不会受影响。 */
+    overlay.innerHTML =
+      '<div class="wb-lb-bar">' +
+        '<span class="wb-lb-brand">▣ IMAGE VIEWER</span>' +
+        '<span class="wb-lb-count"><b>01</b> / 01</span>' +
+        '<span class="wb-lb-dim">— × —</span>' +
+        '<span class="wb-lb-spacer"></span>' +
+        '<button class="wb-lb-btn" type="button" data-lb-nav="zoom" aria-pressed="false">⤢ 1:1</button>' +
+        '<button class="wb-lb-btn wb-lb-btn--nav" type="button" data-lb-nav="prev" aria-label="上一张">‹</button>' +
+        '<button class="wb-lb-btn wb-lb-btn--nav" type="button" data-lb-nav="next" aria-label="下一张">›</button>' +
+        '<button class="wb-lb-btn wb-lb-btn--close" type="button" data-lb-nav="close" aria-label="关闭预览">✕</button>' +
+      '</div>' +
+      '<div class="wb-lb-stage"><img class="wb-lb-img" alt="" /></div>' +
+      '<div class="wb-lb-foot">' +
+        '<span>点击任意位置 / ESC 缩小</span>' +
+        '<span>← → 切换 · ⤢ 查看原尺寸</span>' +
+      '</div>';
+    document.body.appendChild(overlay);
+    view = overlay.querySelector('.wb-lb-img');
+    stage = overlay.querySelector('.wb-lb-stage');
+    countEl = overlay.querySelector('.wb-lb-count');
+    dimEl = overlay.querySelector('.wb-lb-dim');
+    prevBtn = overlay.querySelector('[data-lb-nav="prev"]');
+    nextBtn = overlay.querySelector('[data-lb-nav="next"]');
+    zoomBtn = overlay.querySelector('[data-lb-nav="zoom"]');
+    closeBtn = overlay.querySelector('[data-lb-nav="close"]');
+
+    overlay.addEventListener('click', function (e) {
+      var nav = e.target && e.target.closest ? e.target.closest('[data-lb-nav]') : null;
+      if (!nav) { close(); return; }              /* 点照片或空白处 → 缩小还原 */
+      var act = nav.getAttribute('data-lb-nav');
+      if (act === 'close') close();
+      else if (act === 'prev') step(-1);
+      else if (act === 'next') step(1);
+      else if (act === 'zoom') setZoom(!zoomed);
+    });
+  }
+
+  function updateDim() {
+    if (!view.naturalWidth) { dimEl.textContent = '— × —'; return; }
+    dimEl.textContent = view.naturalWidth + ' × ' + view.naturalHeight;
+  }
+
+  function setZoom(on) {
+    zoomed = !!on;
+    if (!overlay) return;
+    overlay.classList.toggle('is-zoomed', zoomed);
+    zoomBtn.setAttribute('aria-pressed', zoomed ? 'true' : 'false');
+    zoomBtn.textContent = zoomed ? '⤡ 适应窗口' : '⤢ 1:1';
+    if (!zoomed && stage) { stage.scrollLeft = 0; stage.scrollTop = 0; }
+  }
+
+  function paint() {
+    var item = list[index];
+    if (!item) return;
+    anchor = item;
+    view.onload = function () { view.removeAttribute('data-loading'); updateDim(); };
+    view.onerror = function () { view.removeAttribute('data-loading'); dimEl.textContent = 'IMAGE UNAVAILABLE'; };
+    view.alt = item.getAttribute('alt') || '';
+    view.setAttribute('data-loading', '');
+    view.src = srcOf(item);
+    if (view.complete && view.naturalWidth) {
+      view.removeAttribute('data-loading'); updateDim();
+    } else {
+      dimEl.textContent = item.naturalWidth ? item.naturalWidth + ' × ' + item.naturalHeight : '…';
+    }
+    countEl.innerHTML = '<b>' + pad(index + 1) + '</b> / ' + pad(list.length);
+    var single = list.length < 2;
+    prevBtn.disabled = single;
+    nextBtn.disabled = single;
+  }
+
+  function openAt(img) {
+    if (!overlay) build();
+    img.setAttribute('data-wb-zoom', '');   /* 动态插入的图也补上光标反馈 */
+    list = groupOf(img);
+    index = Math.max(0, list.indexOf(img));
+    lastFocus = document.activeElement;
+    savedY = window.scrollY || window.pageYOffset || 0;
+    savedPad = document.body.style.paddingRight;
+    clearTimeout(closeTimer);
+    closing = false;
+    setZoom(false);
+    paint();
+    overlay.hidden = false;
+    overlay.setAttribute('aria-hidden', 'false');
+    /* 锁背景滚动，并补偿滚动条消失带来的宽度变化 */
+    var sbw = window.innerWidth - document.documentElement.clientWidth;
+    if (sbw > 0) document.body.style.paddingRight = (parseInt(savedPad, 10) || 0) + sbw + 'px';
+    document.documentElement.classList.add('wb-lb-open');
+    open = true;
+    if (window.requestAnimationFrame) {
+      requestAnimationFrame(function () { if (open) overlay.classList.add('is-open'); });
+    } else { overlay.classList.add('is-open'); }
+    /* 让悬停气泡收到通知后自行收起，避免两个浮层叠在一起 */
+    try { document.dispatchEvent(new CustomEvent('wb:lightbox-open')); } catch (err) {}
+    try { closeBtn.focus({ preventScroll: true }); } catch (err) { try { closeBtn.focus(); } catch (e2) {} }
+  }
+
+  function close() {
+    if (!open || closing || !overlay) return;
+    closing = true;
+    open = false;
+    overlay.classList.remove('is-open');
+    document.documentElement.classList.remove('wb-lb-open');
+    document.body.style.paddingRight = savedPad;
+    if ((window.scrollY || window.pageYOffset || 0) !== savedY) window.scrollTo(0, savedY);
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(function () {
+      overlay.hidden = true;
+      overlay.setAttribute('aria-hidden', 'true');
+      overlay.classList.remove('is-zoomed');
+      view.removeAttribute('data-loading');
+      view.removeAttribute('src');
+      setZoom(false);
+      closing = false;
+      if (lastFocus && lastFocus.focus) {
+        try { lastFocus.focus({ preventScroll: true }); } catch (err) { try { lastFocus.focus(); } catch (e2) {} }
+      }
+    }, 200);
+  }
+
+  function step(d) {
+    if (list.length < 2) return;
+    index = (index + d + list.length) % list.length;
+    setZoom(false);
+    paint();
+  }
+
+  /* 找出这次点击想放大哪张图。封面被渐变遮罩 / 标题覆盖，
+     所以整块 .post-hero 都作为触发区（链接和按钮仍然优先保持原行为）。 */
+  function findTarget(e) {
+    var t = e.target;
+    if (!t || !t.closest || t.closest('#' + ID)) return null;
+    var img = t.tagName === 'IMG' ? t : t.closest('img');
+    if (img && zoomable(img)) return img;
+    if (t.closest('a, button, input, textarea, select, [contenteditable="true"]')) return null;
+    var cover = t.closest('.post-hero');
+    if (cover) {
+      var hero = cover.querySelector('.post-hero-img');
+      if (hero && zoomable(hero)) return hero;
+    }
+    return null;
+  }
+
+  function onDocClick(e) {
+    if (open || closing) return;
+    var img = findTarget(e);
+    if (!img) return;
+    e.preventDefault();
+    e.stopPropagation();      /* 不惊动分屏滚动 / 相册翻页 / 正文句子联动 */
+    openAt(img);
+  }
+
+  document.addEventListener('click', onDocClick, true);
+
+  document.addEventListener('keydown', function (e) {
+    if (!open) return;
+    e.stopPropagation();      /* 别让文章页的方向键 / 空格触发换屏 */
+    if (e.key === 'Escape' || e.key === 'Esc') { e.preventDefault(); close(); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+  }, true);
+
+  /* 打开期间吞掉滚轮 / 触摸，背景不会跟着切屏或滚动；
+     1:1 模式放行默认滚动，才能拖动查看原图细节。 */
+  function blockScroll(e) {
+    if (!open) return;
+    e.stopPropagation();
+    if (!zoomed) e.preventDefault();
+  }
+  try {
+    document.addEventListener('wheel', blockScroll, { capture: true, passive: false });
+    document.addEventListener('touchmove', blockScroll, { capture: true, passive: false });
+  } catch (err) {
+    document.addEventListener('wheel', blockScroll, true);
+    document.addEventListener('touchmove', blockScroll, true);
+  }
+  window.addEventListener('resize', function () {
+    if (open && !zoomed && stage) { stage.scrollLeft = 0; stage.scrollTop = 0; }
+  });
+
+  /* 给图片打标记，只用来显示 zoom-in 光标；动态插入的图（编辑器实时预览、
+     相册切换）由 MutationObserver + 事件委托兜底，不依赖页面重新初始化。 */
+  function mark() {
+    Array.prototype.slice.call(document.querySelectorAll('img')).forEach(function (img) {
+      if (zoomable(img)) img.setAttribute('data-wb-zoom', '');
+    });
+    Array.prototype.slice.call(document.querySelectorAll('.post-hero')).forEach(function (c) {
+      if (c.querySelector('.post-hero-img')) c.classList.add('wb-zoom-zone');
+    });
+  }
+  function observe() {
+    if (!window.MutationObserver) return;
+    new MutationObserver(function (muts) {
+      muts.forEach(function (m) {
+        Array.prototype.slice.call(m.addedNodes).forEach(function (n) {
+          if (!n || n.nodeType !== 1 || n.closest('#' + ID)) return;
+          if (n.tagName === 'IMG' && zoomable(n)) n.setAttribute('data-wb-zoom', '');
+          else if (n.querySelectorAll) {
+            Array.prototype.slice.call(n.querySelectorAll('img')).forEach(function (im) {
+              if (zoomable(im)) im.setAttribute('data-wb-zoom', '');
+            });
+          }
+        });
+      });
+    }).observe(document.body, { childList: true, subtree: true });
+  }
+  function init() { mark(); observe(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+
+  /* 供编辑器等组件在按钮里主动打开某张图（缩略图常被 <button> 包着，
+     事件委托只会命中 button，不会命中里面的 img），也方便写回归测试。 */
+  window.WBLightbox = {
+    /* 组件主动调用时不看屏幕尺寸（缩略图可能刚插入还没完成布局），
+       只要有 src 且不在查看器自身里，就按用户明确意图放大。 */
+    open: function (img) {
+      if (img && srcOf(img) && !img.closest('#' + ID)) openAt(img);
+    },
+    close: close,
+    isOpen: function () { return open; },
+  };
+})();
+</script><!-- 按钮功能气泡 + #photo / hover: 链接防跳转（编辑器不套 BaseLayout，需自己兜底） --><script>/* ==========================================================================
+   编辑器 UI 增强：功能按钮气泡 + 编辑器内特殊链接防跳转
+   --------------------------------------------------------------------------
+   1) tooltip：工具栏 / 顶栏 / 图片集卡片的所有按钮，悬停或键盘聚焦时立刻
+      弹出一个小气泡说明「这个按钮是干啥的」，比浏览器原生 title 更快、更清晰；
+      动态生成的按钮由事件委托自动接管，不需要重新初始化。
+   2) 防跳转：编辑器不套 BaseLayout，因此正文里的 [句子](#photo-N) 与
+      [词](hover:key) 在「可视化输入区 / 右侧预览」里都是真 <a>。单文件预览
+      用 iframe srcdoc，点 #hash 会把整个 iframe 导航到外壳文件（notfound），
+      hover: 自定义协议同理。这里在 document 捕获阶段统一拦下。
+      hover: 链接顺带显示对应图片的预览气泡，和站点前台的交互保持一致。
+   零依赖、纯文本内联，离线单文件 / zip / 线上都能跑。
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  var tip = null, current = null;
+  var SHORTCUTS = {
+    'cmd:bold': 'Ctrl/⌘ + B', 'cmd:italic': 'Ctrl/⌘ + I',
+    'cmd:undo': 'Ctrl/⌘ + Z', 'cmd:redo': 'Ctrl/⌘ + Y',
+    'top:save': 'Ctrl/⌘ + S', 'mode:source': 'Ctrl/⌘ + Shift + Z',
+  };
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function ensure() {
+    if (tip) return tip;
+    tip = document.createElement('div');
+    tip.className = 'ed-tip';
+    tip.setAttribute('role', 'tooltip');
+    tip.hidden = true;
+    document.body.appendChild(tip);
+    return tip;
+  }
+  /* 把原生 title 搬到 data-tip，避免浏览器慢半拍的原生提示和自定义气泡重叠 */
+  function normalize(el) {
+    if (!el || !el.hasAttribute || !el.hasAttribute('title')) return;
+    var t = el.getAttribute('title') || '';
+    if (t && !el.hasAttribute('data-tip')) el.setAttribute('data-tip', t);
+    el.removeAttribute('title');
+  }
+  function shortcutOf(el) {
+    if (el.getAttribute('data-shortcut')) return el.getAttribute('data-shortcut');
+    var names = ['cmd', 'top', 'mode', 'preview', 'asset-act'];
+    for (var i = 0; i < names.length; i++) {
+      var v = el.getAttribute('data-' + names[i]);
+      if (v && SHORTCUTS[names[i] + ':' + v]) return SHORTCUTS[names[i] + ':' + v];
+    }
+    return '';
+  }
+  function place(anchor, html, rich) {
+    var t = ensure();
+    t.innerHTML = html;
+    t.classList.toggle('ed-tip--rich', !!rich);
+    t.hidden = false;
+    var r = anchor.getBoundingClientRect();
+    var vw = window.innerWidth || document.documentElement.clientWidth;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var tw = t.offsetWidth, th = t.offsetHeight, gap = 9, pad = 8;
+    var left = r.left + r.width / 2 - tw / 2;
+    var top = r.bottom + gap;
+    if (top + th > vh - pad) top = r.top - th - gap;
+    left = Math.max(pad, Math.min(left, Math.max(pad, vw - tw - pad)));
+    top = Math.max(pad, Math.min(top, Math.max(pad, vh - th - pad)));
+    t.style.left = Math.round(left) + 'px';
+    t.style.top = Math.round(top) + 'px';
+    t.classList.toggle('is-above', top + th <= r.top + 1);
+  }
+  function hide() {
+    current = null;
+    if (tip) { tip.hidden = true; tip.classList.remove('ed-tip--rich'); }
+  }
+  function showButton(el) {
+    normalize(el);
+    var main = el.getAttribute('data-tip') || el.getAttribute('aria-label') || '';
+    if (!main || !main.trim()) { hide(); return; }
+    var lb = document.getElementById('wb-lightbox');
+    if (lb && !lb.hidden) { hide(); return; }
+    var sc = shortcutOf(el);
+    current = el;
+    place(el, '<b>' + esc(main) + '</b>' + (sc ? '<small>⌨ ' + esc(sc) + '</small>' : ''), false);
+  }
+
+  /* hover:key → 从构建期静态渲染的图片探测里找同名图，在气泡里显示预览 */
+  function probeSrc(key) {
+    var imgs = document.querySelectorAll('#ed-asset-probe img[data-asset-name], .ed-render-asset img[data-asset-key]');
+    for (var i = 0; i < imgs.length; i++) {
+      var el = imgs[i];
+      var name = el.getAttribute('data-asset-name') || el.getAttribute('data-asset-key') || '';
+      if (name === key || name.replace(/\.[^.]+$/, '') === key) return el.getAttribute('src') || '';
+    }
+    return '';
+  }
+  function showLink(anchor, href) {
+    var isHover = /^hover:/.test(href);
+    var key = isHover ? href.slice(6) : '';
+    var src = isHover ? probeSrc(key) : '';
+    var label = isHover ? '悬停小图 · ' + key : '相册照片 · #' + href.slice(7);
+    var html = (src ? '<img class="ed-tip-img" src="' + esc(src) + '" alt="">' : '') +
+      '<b>' + esc(label) + '</b><small>编辑器里只预览，不会跳转</small>';
+    current = anchor;
+    place(anchor, html, true);
+  }
+
+  document.addEventListener('mouseover', function (e) {
+    var el = e.target && e.target.closest ? e.target.closest('button, [data-tip]') : null;
+    if (!el || el === current) return;
+    showButton(el);
+  }, true);
+  document.addEventListener('mouseout', function (e) {
+    var el = e.target && e.target.closest ? e.target.closest('button, [data-tip]') : null;
+    if (!el || el !== current) return;
+    var to = e.relatedTarget;
+    if (to && el.contains(to)) return;
+    hide();
+  }, true);
+  document.addEventListener('focusin', function (e) {
+    var el = e.target && e.target.closest ? e.target.closest('button, [data-tip]') : null;
+    if (el) showButton(el);
+  }, true);
+  document.addEventListener('focusout', function () { hide(); }, true);
+
+  /* 关键：编辑器不套 BaseLayout，没有那层 #hash / 自定义协议的兜底拦截。
+     不拦的话，单文件 iframe srcdoc 点一下就会整页跳到外壳（notfound）。 */
+  document.addEventListener('click', function (e) {
+    hide();
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (!/^#photo-\d+$/.test(href) && !/^hover:/.test(href)) return;
+    e.preventDefault();
+    e.stopPropagation();
+    showLink(a, href);
+  }, true);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') hide();
+  }, true);
+  window.addEventListener('scroll', function () { if (current) hide(); }, { capture: true, passive: true });
+  window.addEventListener('resize', hide);
+})();
+</script></body></html>
