@@ -227,6 +227,8 @@
        放大以光标为锚点，拖动时按图片边缘做 clamp，不会出现拖丢或大片空白。
    - 交互：页面点图打开 → 蒙层里单击放大 2×（再点回 1×）→ 滚轮连续缩放 →
      已放大时按住拖动 / 触屏双指捏合 → 点背景 / ESC / ✕ 关闭。
+   - 两档图片：页面 <img> 可用 data-full 指向高分辨率原图；打开时先显示已缓存的
+     缩略图，再异步换成高清图，避免白屏，放大 / 1:1 时看的都是高清像素。
    ========================================================================== */
 (function () {
   var ID = 'wb-lightbox';
@@ -247,6 +249,7 @@
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
   function srcOf(img) { return img.currentSrc || img.getAttribute('src') || ''; }
+  function hiSrc(img) { return img.getAttribute('data-full') || srcOf(img); }
 
   /* 哪些图可以放大：排除查看器自身、显式标记 data-no-lightbox 的缩略图，
      以及小于 24px 的装饰图 / 隐藏占位图。 */
@@ -543,7 +546,19 @@
     view.onerror = function () { view.removeAttribute('data-loading'); dimEl.textContent = 'IMAGE UNAVAILABLE'; };
     view.alt = item.getAttribute('alt') || '';
     view.setAttribute('data-loading', '');
-    view.src = srcOf(item);
+    /* 先显示页面上已缓存的缩略图，再异步换成 data-full 的高清原图：
+       点开瞬间不白屏，放大 / 1:1 时用的是高分辨率版本。 */
+    var thumb = srcOf(item), full = hiSrc(item);
+    view.src = thumb;
+    if (full && full !== thumb) {
+      var pre = new Image();
+      pre.onload = function () {
+        if (!open || list[index] !== item) return;   /* 期间切图 / 关闭就放弃 */
+        view.src = full;
+      };
+      pre.onerror = function () {};                  /* 高清加载失败就保留缩略图 */
+      pre.src = full;
+    }
     if (view.complete && view.naturalWidth) {
       view.removeAttribute('data-loading'); updateDim();
     } else {
