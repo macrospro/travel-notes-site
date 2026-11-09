@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>标签：food · 行旅笔记</title><meta name="description" content="标签 food 下的全部文章"><meta name="generator" content="Astro v7.4.7"><meta name="theme-color" content="#FAFDFB"><link rel="canonical" href="https://macrospro.github.io/travel-notes-site/tags/food/"><script>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>标签：food · 行旅笔记</title><meta name="description" content="标签 food 下的全部文章"><meta name="generator" content="Astro v7.4.8"><meta name="theme-color" content="#FAFDFB"><link rel="canonical" href="https://macrospro.github.io/travel-notes-site/tags/food/"><script>
       try {
         var t = localStorage.getItem('wb-theme');
         if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
@@ -50,12 +50,12 @@
       var meta = document.querySelector('meta[name="theme-color"]');
       if (meta) meta.setAttribute('content', dark ? '#0E1C22' : '#FAFDFB');
     }
-    btn.addEventListener('click', function (e) {
+    btn.addEventListener('click', function () {
       root.dataset.theme = isDark() ? 'light' : 'dark';
       try { localStorage.setItem('wb-theme', root.dataset.theme); } catch (err) {}
       sync();
-      // 鼠标点完把焦点放掉：:focus-within 会把收起中的页头又钉住
-      if (e.detail > 0) btn.blur();
+      // 不在这里 blur：文章页的页头控制器会先把页头留足 1.5s 让人看完
+      // 太阳 ⇄ 月牙的变形，到点后再释放焦点，页头才会干净收起。
     });
     sync();
   })();
