@@ -3,8 +3,8 @@
         var t = localStorage.getItem('wb-theme');
         if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
       } catch (e) {}
-    </script><link rel="stylesheet" href="/travel-notes-site/_astro/lightbox.DAC6AwSw.css"><link rel="stylesheet" href="/travel-notes-site/_astro/index.Cy5zcO5m.css"></head><body class="ed-page"><div class="ed-app"><header class="ed-top"><button type="button" class="ed-icon ed-side-toggle" data-top="toggle-side" title="显示 / 隐藏文章列表">☰</button><a class="ed-back" href="/travel-notes-site/">← 返回站点</a><div class="ed-title"><b>▤ ARTICLE EDITOR</b><small>WYSIWYG WORKSPACE · NO SERVER</small></div><div class="ed-top-actions"><button type="button" data-top="new" title="新建一篇空白文章（未保存的改动会提示）">＋ 新建</button><button type="button" data-top="save" title="把当前文章存进本机浏览器草稿">保存草稿</button><button type="button" data-top="import" title="从本机选择 .md / .mdx 导入（需含 frontmatter）">导入 .md</button><button type="button" data-top="copy" title="把完整 Markdown 复制到剪贴板">复制</button><button type="button" data-top="md" title="只下载 .md 文件，不含图片">仅 .md</button><button type="button" data-top="publish" title="打开 GitHub 直提面板（需 PAT，仅在线可用）">发布</button><button type="button" class="ed-primary" data-top="bundle" title="导出完整文件夹：1 篇 .md + photos/ 专用照片文件夹 + 使用说明">↓ 导出文件夹</button><button type="button" class="ed-icon" data-top="help" title="使用提示：展开文章属性并查看操作要领">?</button></div></header><div class="ed-status" id="ed-status">READY.</div><div class="ed-workspace"><aside class="ed-side" id="ed-side"><section><span>PUBLISHED · 站点已有文章</span><b id="ed-count-published">0</b></section><ul id="ed-list-published"></ul><section><span>DRAFTS · 本机草稿</span><b id="ed-count-drafts">0</b></section><ul id="ed-list-drafts"></ul><div class="ed-side-foot">草稿在本机 <code>localStorage</code>，不上传。<br><code>Ctrl/⌘ + S</code> 保存 · <code>Esc</code> 关面板。<br>导出的是一个文件夹：<code>.md</code> + 同目录 <code>photos/</code>。</div></aside><main class="ed-main"><div class="ed-doc-head"><input id="ed-title" class="ed-title-input" type="text" placeholder="文章标题…" aria-label="文章标题"><div class="ed-doc-head-right"><button type="button" data-cmd="props" title="展开文章属性">▾ 文章属性</button><span class="ed-mode-switch"><button type="button" data-mode="visual" class="is-active" title="可视化编辑：选中文字即可用工具栏排版">可视化</button><button type="button" data-mode="source" title="源码模式：直接编辑完整 .md（含 frontmatter）">源码</button></span></div></div><div class="ed-props" id="ed-props" hidden></div><!-- 文章的四个部分：00 封面 / 01 交通 / 02 住宿 / 03 正文。
-               前三个是结构化 frontmatter（原来没有编辑入口），03 才是富文本正文。 --><div class="ed-sections" id="ed-sections" role="tablist" aria-label="文章分段"><button type="button" data-section="cover" title="00 封面：指定裁切比例与焦点，默认 4K 全分辨率；多目的地文章在图片集里给每个城市各标一张封面"><b>00</b> 封面</button><button type="button" data-section="trips" title="01 交通：按去程 / 内部行程 / 回程分组，所有路线按出发顺序画进地图，颜色区分交通方式；选中票券才显示起终点城市"><b>01</b> 交通 <i id="ed-sec-count-trips">0</i></button><button type="button" data-section="stays" title="02 住宿：增删住宿、填写酒店集团，任意一晚都能插入照片"><b>02</b> 住宿 <i id="ed-sec-count-stays">0</i></button><button type="button" data-section="body" title="03 流水账：富文本正文，选中文字用工具栏排版"><b>03</b> 正文</button><span class="ed-sections-hint" id="ed-sections-hint">SHEET 03 · WYSIWYG</span></div><div class="ed-section-panel" id="ed-section-forms" hidden></div><div class="ed-toolbar" id="ed-toolbar" role="toolbar" aria-label="格式工具栏"><span class="ed-tb-label">格式</span><button type="button" data-cmd="bold" title="粗体 Ctrl+B"><b>B</b></button><button type="button" data-cmd="italic" title="斜体 Ctrl+I"><i>I</i></button><button type="button" data-cmd="underline" title="下划线"><u>U</u></button><button type="button" data-cmd="mark" title="高亮选中文字">▮ 高亮</button><button type="button" data-cmd="code" title="行内代码">&lt;/&gt;</button><span class="ed-tb-sep"></span><button type="button" data-cmd="h2" title="二级标题">H2</button><button type="button" data-cmd="h3" title="三级标题">H3</button><button type="button" data-cmd="p" title="正文段落">¶</button><button type="button" data-cmd="quote" title="引用">❝</button><button type="button" data-cmd="ul" title="无序列表">• 列表</button><button type="button" data-cmd="ol" title="有序列表">1. 列表</button><button type="button" data-cmd="link" title="选中文字加链接">🔗 链接</button><button type="button" data-cmd="hr" title="分隔线">—</button><span class="ed-tb-sep"></span><button type="button" data-cmd="undo" title="撤销">↶</button><button type="button" data-cmd="redo" title="重做">↷</button><button type="button" data-cmd="clear" title="清除格式">⌫</button><span class="ed-tb-sep"></span><span class="ed-tb-label">图片</span><button type="button" class="ed-tb-photo" data-cmd="photo" title="把选中文字绑定到相册照片">▣ 绑定照片</button><button type="button" class="ed-tb-photo" data-cmd="hover" title="把选中文字挂上悬停小图">◌ 悬停小图</button><button type="button" data-cmd="assets" title="打开图片集">▤ 图片集 <b id="ed-asset-count">0</b></button><button type="button" data-cmd="upload" title="上传本地图片">＋ 上传</button></div><div class="ed-editor-wrap" id="ed-editor-wrap"><div id="ed-editor" class="ed-editor" contenteditable="true" spellcheck="false" role="textbox" aria-multiline="true" aria-label="文章正文" data-no-lightbox></div><textarea id="ed-source" class="ed-source-edit" hidden spellcheck="false" aria-label="Markdown 源码"></textarea></div><div class="ed-editor-foot" id="ed-editor-foot"><span>选中文字 → 工具栏排版 · 拖入图片即上传 · <code>Ctrl/⌘+S</code> 保存草稿</span><span id="ed-statusbar-text">DOC —</span></div></main><aside class="ed-preview" id="ed-preview"><div class="ed-preview-head"><span>OUTPUT · 实时预览</span><button type="button" data-preview="render" class="is-active" title="预览排版效果与本文全部图片">渲染</button><button type="button" data-preview="source" title="预览最终导出的 Markdown 全文">源码 .md</button><button type="button" data-top="toggle-preview" title="显示 / 隐藏右侧预览栏">◂</button></div><div id="ed-preview-body"></div></aside></div><footer class="ed-statusbar"><span>ASTRO CONTENT COLLECTIONS · GITHUB PAGES · 100% STATIC</span><span>导出文件夹 = 1 篇 .md + photos/ 照片集 + HOW-TO-USE.md</span></footer></div><!-- 图片集抽屉：所有照片集中管理，上传 / 绑定 / 设封面 / 删除 --><div class="ed-drawer" id="ed-drawer" hidden><div class="ed-drawer-head"><b>▤ 图片集</b><span>这篇文章的全部照片</span><button type="button" data-cmd="upload" title="从本机选择图片加入这篇文章的图片集">＋ 上传图片</button><button type="button" class="ed-icon" data-cmd="close-drawer" title="关闭">×</button></div><div class="ed-cover-status" id="ed-cover-status" hidden></div><div class="ed-drawer-body" id="ed-asset-grid" data-lightbox-group="asset-grid"></div><div class="ed-drawer-foot">上传到这里的图片会随「导出文件夹」一起打包到 md 同目录的 <code>photos/</code>。 相册照片可在卡片里改相机型号；点「绑定选中文字」会生成 <code>#photo-N</code> 整句索引。<b>封面图就是正文图片多标两个 flag</b>：勾「用作封面」并填「对应城市」，写到 <code>gallery[].cover</code> / <code>gallery[].city</code>；文章有几个目的地就配几张，首页会按省份各出一个入口。 住宿照片请到 <b>02 住宿</b> 卡片里点「＋ 插入 / 更换图片」，会写进 <code>stays[].image</code>。</div></div><!-- 发布面板：md + 新增图片一起提交，token 只用于本次请求 --><div class="ed-modal" id="ed-pub-modal" hidden><div class="ed-modal-card"><div class="ed-modal-head"><b>↑ 发布到 GitHub</b><button type="button" class="ed-icon" data-top="close-publish" title="关闭发布面板">×</button></div><p class="ed-modal-note">会把 <code>.md</code> 与同目录 <code>photos/</code> 专用照片文件夹（含三档：缩略图 / 4K 缩放图 / 原图）一起提交到 content 分支；token 不会写入草稿。离线预览请用「导出文件夹」。</p><label>仓库 owner/repo<input type="text" data-pub="repo" placeholder="macrospro/travel-notes"></label><label>分支<input type="text" data-pub="branch" placeholder="content"></label><label>文章路径<input type="text" data-pub="path" placeholder="my-posts/文章名/文章名.md"></label><label>照片目录（md 同目录）<input type="text" data-pub="imageDir" placeholder="my-posts/文章名/photos"></label><label>PAT（仅本次使用）<input type="password" data-pub="token" placeholder="github_pat_… 或 ghp_…" autocomplete="off"></label><pre class="ed-publish-log" id="ed-publish-log">填好后点「提交」。</pre><div class="ed-modal-actions"><button type="button" data-top="close-publish" title="取消并关闭发布面板">取消</button><button type="button" class="ed-primary" data-top="do-publish" title="把 .md 与新增图片提交到 GitHub，Actions 会自动部署">提交并触发部署</button></div></div></div><!-- 图片探测：pack 脚本会把这些 src 改成 data URI / 相对路径，编辑器据此取可显示地址 --><div id="ed-asset-probe" hidden aria-hidden="true" data-no-lightbox><img src="/travel-notes-site/images/gansu-01.jpg" data-asset-name="gansu-01.jpg" alt=""><img src="/travel-notes-site/images/gansu-02.jpg" data-asset-name="gansu-02.jpg" alt=""><img src="/travel-notes-site/images/gansu-03.jpg" data-asset-name="gansu-03.jpg" alt=""><img src="/travel-notes-site/images/gansu-04.jpg" data-asset-name="gansu-04.jpg" alt=""><img src="/travel-notes-site/images/gansu-05.jpg" data-asset-name="gansu-05.jpg" alt=""><img src="/travel-notes-site/images/gansu-06.jpg" data-asset-name="gansu-06.jpg" alt=""><img src="/travel-notes-site/images/gansu-hover-01.jpg" data-asset-name="gansu-hover-01.jpg" alt=""><img src="/travel-notes-site/images/gansu-hover-02.jpg" data-asset-name="gansu-hover-02.jpg" alt=""><img src="/travel-notes-site/images/great-wall-autumn-4k.jpg" data-asset-name="great-wall-autumn-4k.jpg" alt=""><img src="/travel-notes-site/images/great-wall-autumn-original.jpg" data-asset-name="great-wall-autumn-original.jpg" alt=""><img src="/travel-notes-site/images/great-wall-autumn.jpg" data-asset-name="great-wall-autumn.jpg" alt=""><img src="/travel-notes-site/images/hero-dali.jpg" data-asset-name="hero-dali.jpg" alt=""><img src="/travel-notes-site/images/hero-default.jpg" data-asset-name="hero-default.jpg" alt=""><img src="/travel-notes-site/images/hover-cangshan.jpg" data-asset-name="hover-cangshan.jpg" alt=""><img src="/travel-notes-site/images/hover-erhai.jpg" data-asset-name="hover-erhai.jpg" alt=""><img src="/travel-notes-site/images/hover-train.jpg" data-asset-name="hover-train.jpg" alt=""><img src="/travel-notes-site/images/hover-xizhou.jpg" data-asset-name="hover-xizhou.jpg" alt=""><img src="/travel-notes-site/images/jiangnan-01.jpg" data-asset-name="jiangnan-01.jpg" alt=""><img src="/travel-notes-site/images/jiangnan-02.jpg" data-asset-name="jiangnan-02.jpg" alt=""><img src="/travel-notes-site/images/jiangnan-03.jpg" data-asset-name="jiangnan-03.jpg" alt=""><img src="/travel-notes-site/images/jiangnan-04.jpg" data-asset-name="jiangnan-04.jpg" alt=""><img src="/travel-notes-site/images/jiangnan-05.jpg" data-asset-name="jiangnan-05.jpg" alt=""><img src="/travel-notes-site/images/jiangnan-06.jpg" data-asset-name="jiangnan-06.jpg" alt=""><img src="/travel-notes-site/images/jiangnan-hover-01.jpg" data-asset-name="jiangnan-hover-01.jpg" alt=""><img src="/travel-notes-site/images/jiangnan-hover-02.jpg" data-asset-name="jiangnan-hover-02.jpg" alt=""><img src="/travel-notes-site/images/journal-01.jpg" data-asset-name="journal-01.jpg" alt=""><img src="/travel-notes-site/images/journal-02.jpg" data-asset-name="journal-02.jpg" alt=""><img src="/travel-notes-site/images/journal-03.jpg" data-asset-name="journal-03.jpg" alt=""><img src="/travel-notes-site/images/journal-04.jpg" data-asset-name="journal-04.jpg" alt=""><img src="/travel-notes-site/images/journal-05.jpg" data-asset-name="journal-05.jpg" alt=""><img src="/travel-notes-site/images/journal-06.jpg" data-asset-name="journal-06.jpg" alt=""><img src="/travel-notes-site/images/minnan-01.jpg" data-asset-name="minnan-01.jpg" alt=""><img src="/travel-notes-site/images/minnan-02.jpg" data-asset-name="minnan-02.jpg" alt=""><img src="/travel-notes-site/images/minnan-03.jpg" data-asset-name="minnan-03.jpg" alt=""><img src="/travel-notes-site/images/minnan-04.jpg" data-asset-name="minnan-04.jpg" alt=""><img src="/travel-notes-site/images/minnan-05.jpg" data-asset-name="minnan-05.jpg" alt=""><img src="/travel-notes-site/images/minnan-06.jpg" data-asset-name="minnan-06.jpg" alt=""><img src="/travel-notes-site/images/minnan-hover-01.jpg" data-asset-name="minnan-hover-01.jpg" alt=""><img src="/travel-notes-site/images/minnan-hover-02.jpg" data-asset-name="minnan-hover-02.jpg" alt=""></div><input type="file" id="ed-file" accept=".md,.mdx,.txt" hidden><input type="file" id="ed-image-file" accept="image/*" multiple hidden><script type="application/json" id="ed-seed">{"posts":[{"id":"beijing-autumn","title":"北京的秋天，从一条胡同开始","filename":"beijing-autumn.md","data":{"title":"北京的秋天，从一条胡同开始","description":"避开热门景区，在老城里走一条有银杏的路线，再去山脊上看一层层红透的秋色。","pubDate":"2026-09-28T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"北京","hero":{"src":"/images/great-wall-autumn.jpg","view":"/images/great-wall-autumn-4k.jpg","original":"/images/great-wall-autumn-original.jpg","aspect":"16:9","focus":"50% 42%","fit":"cover","caption":"秋色里的长城 · 16:9 裁切，默认 4K 全分辨率"},"trips":[],"stays":[],"gallery":[],"hoverImages":[{"key":"greatwall","src":"/images/great-wall-autumn.jpg","view":"/images/great-wall-autumn-4k.jpg","original":"/images/great-wall-autumn-original.jpg","alt":"秋色里的长城与石阶","caption":"山脊上的秋色 · DSCF2028"}]},"body":"\n## 从鼓楼往东\n\n早上八点的胡同最舒服，自行车铃、早点摊的热气，还有墙根下晒太阳的猫。\n\n## 银杏与灰瓦\n\n十月底的银杏配灰砖灰瓦，颜色特别沉。不需要滤镜，随手拍都好看。\n\n## 再往北，山脊上的秋色\n\n老城里的银杏黄得慢，[出了城往北，长城两侧的树林已经红透了一层](hover:greatwall)。石阶顺着山脊往上，人多但不挤，走一段回头看，颜色一层压一层。\n\n\u003e 照片是竖幅的，封面按 `hero.aspect: 16:9` 裁切、`hero.focus: 50% 42%` 把取景偏到石阶与红黄树林那一段，页面默认就用 `4096 × 5461` 的 4K 档**全分辨率**显示。点开之后先按原比例完整显示这张 4K 视图；**一旦放大**（点一下到 2×、滚轮推近或按 1:1），查看器才去读取原盘导出的 8019 × 10692 全分辨率原图。放大后按住就能拖动看细节。\n\n## 一点实用信息\n\n- 胡同里多为居民区，注意别打扰住户。\n- 步行路线灵活，累了随时拐进一家咖啡馆。\n- 山里比城里低两三度，风大，带件外套。\n"},{"id":"chengdu-sichuan","title":"成都的茶馆与一条没有计划的路","filename":"chengdu-sichuan.md","data":{"title":"成都的茶馆与一条没有计划的路","description":"从人民公园到玉林路，把两天交给盖碗茶和小巷子。","pubDate":"2026-10-12T00:00:00.000Z","tags":["travel","food"],"draft":false,"province":"四川","city":"成都","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 人民公园的上午\n\n鹤鸣茶社的竹椅一坐就是一上午。掏耳朵的师傅敲着音叉走过，茶续到第三泡，时间就慢了下来。\n\n## 玉林路到芳草街\n\n没有特意找小酒馆，反而是菜市场门口的锅盔和巷子里的苍蝇馆子更让人记住。成都的好，多半藏在没有招牌的地方。\n\n## 一点实用信息\n\n- 茶馆一般按杯计费，可以自带书坐很久。\n- 想避开人流，工作日去更自在。\n"},{"id":"dali-chengdu","title":"从大理到成都，把两座城慢慢走完","filename":"dali-chengdu.md","data":{"title":"从大理到成都，把两座城慢慢走完","description":"广州出发，飞机转慢车到大理，再坐动车去成都；回程从成都经贵阳飞回广州。两座城、五段路，一张按顺序画出来的路线图。","pubDate":"2026-10-26T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"云南","city":["大理","成都"],"hero":{"src":"/images/hero-dali.jpg","caption":"换成自己的高分辨率原图只改 hero.src"},"journey":{"origin":"广东","destination":["云南","四川"],"label":"广州 → 大理 → 成都 → 广州，示意路线非实际航路","note":"仅作位置示意，不作测绘用途"},"trips":[{"mode":"flight","leg":"out","code":"CZ3481","carrier":"中国南方航空","vehicle":"波音 787-9","from":{"place":"广州白云国际机场 T2","city":"广州","province":"广东","time":"2026-10-17 08:20"},"to":{"place":"昆明长水国际机场","city":"昆明","province":"云南","time":"2026-10-17 10:55"},"stops":[{"place":"桂林两江国际机场","city":"桂林","province":"广西","arrive":"09:25","depart":"10:05","duration":"40 分钟"}],"duration":"2h35m","fare":780,"seat":"经济舱 32A","note":"早班机，落地后坐地铁去昆明站附近住一晚，第二天接慢车。"},{"mode":"slow","leg":"local","code":"K9612","carrier":"中国铁路昆明局","vehicle":"25G 型客车 / HXD3C 牵引","from":{"place":"昆明站","city":"昆明","province":"云南","time":"2026-10-18 07:10"},"to":{"place":"大理站","city":"大理","province":"云南","time":"2026-10-18 13:42"},"stops":[],"duration":"6h32m","fare":64,"seat":"硬座 08 车 043","note":"特意挑了慢车。白天沿着山走，比动车慢大半天，但站台能下来透气，值。"},{"mode":"hsr","leg":"out","code":"G2886","carrier":"中国铁路成都局","vehicle":"CRH380A 型动车组","from":{"place":"大理站","city":"大理","province":"云南","time":"2026-10-21 09:05"},"to":{"place":"成都东站","city":"成都","province":"四川","time":"2026-10-21 15:28"},"stops":[],"duration":"6h23m","fare":431,"seat":"二等座 06 车 09A","note":"第二座城。中午在车上睡了一觉，醒来窗外已经是盆地的灰绿色。"},{"mode":"hsr","leg":"back","code":"D1826","carrier":"中国铁路成都局","vehicle":"CRH2A 型动车组","from":{"place":"成都东站","city":"成都","province":"四川","time":"2026-10-23 08:12"},"to":{"place":"贵阳北站","city":"贵阳","province":"贵州","time":"2026-10-23 12:40"},"stops":[],"duration":"4h28m","fare":275,"seat":"二等座 03 车 11C","note":"回程不想一次坐到底，在贵阳停一晚，把最后一段留给早班机之后的白天。"},{"mode":"flight","leg":"back","code":"CZ3662","carrier":"中国南方航空","vehicle":"空客 A320neo","from":{"place":"贵阳龙洞堡国际机场 T2","city":"贵阳","province":"贵州","time":"2026-10-24 14:20"},"to":{"place":"广州白云国际机场 T2","city":"广州","province":"广东","time":"2026-10-24 16:05"},"stops":[],"duration":"1h45m","fare":520,"seat":"经济舱 18F","note":"落地时天还亮着，地铁上已经开始有晚高峰的人了。"}],"stays":[{"checkIn":"2026-10-17","checkOut":"2026-10-18","nights":1,"area":"昆明 · 站前街","name":"站前小旅馆","group":"独立民宿","price":260,"note":"只为接第二天七点十分的慢车，房间很小但热水足"},{"checkIn":"2026-10-18","checkOut":"2026-10-21","nights":3,"area":"大理古城 · 人民路","name":"古城南门白族小院","group":"独立民宿","price":420,"note":"含早，步行到人民路 5 分钟，院子里有棵石榴树","image":"/images/journal-05.jpg","imageCaption":"清晨从院子望出去，光刚落进来"},{"checkIn":"2026-10-21","checkOut":"2026-10-23","nights":2,"area":"成都 · 玉林路","name":"玉林小院客栈","group":"亚朵","price":460,"note":"二楼窗外是老梧桐，走路十分钟到菜市场","image":"/images/hover-xizhou.jpg","imageCaption":"巷子里的老树与午后的光"},{"checkIn":"2026-10-23","checkOut":"2026-10-24","nights":1,"area":"贵阳 · 甲秀楼","name":"南明河畔酒店","group":"华住","price":320,"note":"中转一晚，只带了随身包","image":"/images/journal-06.jpg","imageCaption":"夜里从河边看过去的灯"}],"gallery":[{"src":"/images/journal-01.jpg","alt":"出机场那天的开阔草地","camera":"Fujifilm X-T5"},{"src":"/images/journal-02.jpg","alt":"苍山脚下层叠的山与薄雾","camera":"Sony A7 IV"},{"src":"/images/journal-03.jpg","alt":"洱海平静的水面","camera":"Canon EOS R5"},{"src":"/images/journal-05.jpg","alt":"清晨从院子望出去，安静的水面","camera":"Nikon Z7 II"},{"src":"/images/journal-04.jpg","alt":"成都巷子里的午后树影","camera":"Leica Q3","cover":true,"city":"成都"},{"src":"/images/journal-06.jpg","alt":"夜里南明河边的灯","camera":"iPhone 15 Pro"},{"src":"/images/hero-dali.jpg","alt":"大理 · 洱海边","camera":"Fujifilm X-T5","cover":true,"city":"大理"}],"hoverImages":[{"key":"cangshan","src":"/images/hover-cangshan.jpg","alt":"层叠的山脊与薄雾","caption":"苍山 · 层叠的山脊"},{"key":"erhai","src":"/images/hover-erhai.jpg","alt":"湖面与远处的山","caption":"洱海 · 西岸水面"},{"key":"xizhou","src":"/images/hover-xizhou.jpg","alt":"午后的树林与光","caption":"喜洲 · 老院子门外"},{"key":"train","src":"/images/hover-train.jpg","alt":"站台与铁轨","caption":"K9612 · 昆明开往大理"}]},"body":"\n这趟去了两座城：先在大理把节奏放慢，再去成都把它重新热闹起来。左边那张路线图把**五段路按出发顺序**编了号，飞机、慢车、动车各自一种线型；翻到对应的票券，起点终点正好接得上。\n\n\u003e 唯一的原则还是：不赶。两座城之间留了整整一个白天在火车上，什么都没安排。\n\n## 第一站：大理\n\n到大理的第一件事不是去景点，而是把行李放下、在古城里随便走走，抬头就能看见[苍山](hover:cangshan)。[出机场那天云很高，草地上只有风声，第一张照片就这么拍下来了。](#photo-1)\n\n[绿皮车](hover:train)坐了六个半小时，下车时腿有点软，反而自动把节奏降了下来。小院老板娘给了一杯温水，说这几天早晚凉，让我把外套放在门口的藤椅上，出门随手拿。\n\n傍晚走到南门，城楼下面有人卖烤乳扇，焦香混着玫瑰酱的味道。没查什么必吃榜，站着吃完就回去了。[回过头才看见苍山在雾里一层层退开，那几分钟留在了第二张照片里。](#photo-2)\n\n第二天环洱海，从才村往北骑。生态廊道这一段车少、视野开阔，左手边一直是[洱海](hover:erhai)，中途在[喜洲](hover:xizhou)停下吃个破酥粑粑就够。[那片压过来的云影，比洱海本身更像样。](#photo-3)\n\n住到才村那一晚，早上被鸟叫醒。[推开窗，水面平得几乎没有波纹，几只小船停着不动。](#photo-4) 住宿那一屏里，这一晚就配了这张照片——任意一晚都能单独放图，没放的就留空。\n\n## 第二站：成都\n\n大理站上车，六个多小时到成都东。盆地和高原是两种完全不同的绿：一边是竖着的山，一边是摊开的田。[车过隧道以后光线忽然软下来，窗外的树影一层层往后退。](#photo-5)\n\n在玉林住了两晚。早上不设闹钟，下楼买碗豆花，沿着梧桐树走一圈再回来。午后找家茶馆坐着，看隔壁桌摆龙门阵，能听懂一半，另一半靠猜。这里和大理最像的地方是：**都不急着让你去哪儿**。\n\n第三天退房去车站，回程没有一口气坐回广州，先在贵阳停一晚。夜里沿着南明河走了一段，[河边的灯和对岸的楼都安安静静，最后一张照片留给了这里。](#photo-6)\n\n回头翻相册，[出发那天在洱海边按下的那张也留了下来——它既是正文里的一张照片，也是从云南点进这篇文章时的封面。](#photo-7) 封面图不是单独一套素材，只是在正文图片上多标了「用作封面」和「对应哪座城」。\n\n## 一点实用信息\n\n1. 两座城之间那趟动车车次少，想坐靠窗位记得提前买；大理站站台小，别卡着点进站。\n2. 十月大理早晚温差大，成都反而闷，外套要能塞进随身包。\n3. 回程拆成「动车 + 飞机」比直达便宜，还多出半天在贵阳；不喜欢中转就直接换成都飞广州。\n4. 文中的车次、航班、酒店与价格是占位示例，替换成真实行程即可。\n\n正文里把**一整句话**写成 `` `[句子](#photo-N)` `` 就建立了一次图文索引：句子本身带颜色，翻到对应照片时整句加深变色，点句子则反向翻照片。`` `[文字](hover:key)` `` 挂的是另一组独立的悬停小图，不进入左侧相册。城市写成 `city: [大理, 成都]` 这样的数组，封面、首页和路线图都会按两座城展示。\n"},{"id":"dali-yunnan","title":"大理的三天，风花雪月都很慢","filename":"dali-yunnan.md","data":{"title":"大理的三天，风花雪月都很慢","description":"从广东出发，飞机转绿皮再到古城，一份不用赶景点的云南行程。","pubDate":"2026-10-18T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"云南","city":"大理","hero":{"src":"/images/hero-dali.jpg","caption":"换成自己的高分辨率原图只改 hero.src"},"journey":{"origin":"广东","destination":"云南","label":"广州 → 昆明 → 大理，示意路线非实际航路","note":"仅作位置示意，不作测绘用途"},"trips":[{"mode":"flight","leg":"out","code":"CZ3481","carrier":"中国南方航空","vehicle":"波音 787-9","from":{"place":"广州白云国际机场 T2","city":"广州","time":"2026-10-17 08:20"},"to":{"place":"昆明长水国际机场","city":"昆明","time":"2026-10-17 10:55"},"stops":[],"duration":"2h35m","fare":780,"seat":"经济舱 32A","note":"早班机，落地后坐地铁去昆明站附近住一晚，第二天接慢车。"},{"mode":"slow","leg":"local","code":"K9612","carrier":"中国铁路昆明局","vehicle":"25G 型客车 / HXD3C 牵引","from":{"place":"昆明站","city":"昆明","time":"2026-10-18 07:10"},"to":{"place":"大理站","city":"大理","time":"2026-10-18 13:42"},"stops":[],"duration":"6h32m","fare":64,"seat":"硬座 08 车 043","note":"特意挑了慢车。白天沿着山走，比动车慢大半天，但窗子能开一条缝、站台能下来透气，值。"},{"mode":"hsr","leg":"back","code":"D3856","carrier":"中国铁路","vehicle":"CRH2A 型动车组","from":{"place":"大理站","city":"大理","time":"2026-10-21 08:05"},"to":{"place":"广州南站","city":"广州","time":"2026-10-21 18:40"},"stops":[],"duration":"10h35m","fare":590,"seat":"二等座 05 车 12F","note":"返程动车，中途换乘。带一本书刚好，看完的时候已经进广东了。"}],"stays":[{"checkIn":"2026-10-18","checkOut":"2026-10-20","nights":3,"area":"大理古城 · 人民路","name":"古城南门白族小院","group":"独立民宿","price":420,"note":"含早，步行到人民路 5 分钟，院子里有棵石榴树"},{"checkIn":"2026-10-20","checkOut":"2026-10-21","nights":1,"area":"才村 · 洱海西岸","name":"海西洱畔民宿","group":"华住","price":360,"note":"二楼湖景房，骑车 3 分钟到生态廊道"}],"gallery":[{"src":"/images/journal-01.jpg","alt":"山谷与开阔的草地，第一天到大理","camera":"Fujifilm X-T5"},{"src":"/images/journal-02.jpg","alt":"层叠的山脉与薄雾","camera":"Sony A7 IV"},{"src":"/images/journal-03.jpg","alt":"平静的湖面与远处的山","camera":"Canon EOS R5"},{"src":"/images/journal-04.jpg","alt":"树林与午后的光","camera":"Nikon Z7 II"},{"src":"/images/journal-05.jpg","alt":"湖边的清晨与安静的水面","camera":"Leica Q3"},{"src":"/images/journal-06.jpg","alt":"夜色里的山与天空","camera":"iPhone 15 Pro"}],"hoverImages":[{"key":"cangshan","src":"/images/hover-cangshan.jpg","alt":"层叠的山脊与薄雾","caption":"苍山 · 层叠的山脊"},{"key":"erhai","src":"/images/hover-erhai.jpg","alt":"湖面与远处的山","caption":"洱海 · 西岸水面"},{"key":"xizhou","src":"/images/hover-xizhou.jpg","alt":"午后的树林与光","caption":"喜洲 · 老院子门外"},{"key":"train","src":"/images/hover-train.jpg","alt":"站台与铁轨","caption":"K9612 · 昆明开往大理"}]},"body":"\n到大理的第一件事不是去景点，而是把行李放下、在古城里随便走走，抬头就能看见[苍山](hover:cangshan)。翻动左侧照片，右边对应的那句话会跟着变色；反过来点带颜色的整句话，照片也会翻过去。\n\n\u003e 这趟行程唯一的原则：**不赶**。三天里没有一处必须打卡的地方，走累了就坐下来。\n\n## 第一天：先学会慢下来\n\n人民路的坡不陡，下午的光落在白族民居的墙上，\u003cmark\u003e很适合什么都不做\u003c/mark\u003e。[城外那片草地上只有风声，这是那天的第一张照片。](#photo-1)\n\n[绿皮车](hover:train)坐了六个半小时，下车时腿有点软，反而自动把节奏降了下来。小院的老板娘给了一杯温水，说这几天早晚凉，让我把外套放在门口的藤椅上，出门随手拿。\n\n傍晚走到南门，城楼下面有人卖烤乳扇，焦香混着玫瑰酱的味道。没拍照，也没查什么必吃榜，站着吃完就回去了。[回过头才看见苍山在雾里一层层退开，那几分钟就留在了照片里。](#photo-2)\n\n## 第二天：环洱海\n\n租一辆自行车，从才村出发往北。生态廊道这一段车少、视野开阔，左手边一直是[洱海](hover:erhai)，中途在[喜洲](hover:xizhou)停下吃个破酥粑粑就够。\n\n上午的风从西边来，逆风骑得慢，倒是正好。水面一直是那种不太真实的蓝，云影一大块一大块地压过去，远处的苍山反而显得很近。有几段路两旁是农田，田埂上晒着稻子，偶尔有白鹭被车轮声惊起来。[那片压过来的云影，比洱海本身更像样。](#photo-3)\n\n[骑到喜洲刚过中午，把车靠在墙边，坐在老院子门槛上吃了两个粑粑，一个甜的一个咸的。](#photo-4) 老板问我要不要去严家大院，我摇头，说就坐一会儿。他笑了笑，没再推销。\n\n回程没有骑完全程，在半路搭了辆车把人和自行车一起带回去。后来证明这是这三天**最正确的决定**。\n\n## 第三天：什么都没安排\n\n住到才村这一晚，早上被鸟叫醒。[推开窗，洱海就在下面，水面平得几乎没有波纹，几只小船停着不动。](#photo-5)\n\n上午沿着生态廊道走了一段，没骑车，也没定终点。走累了就坐在石头上发呆，看对岸的山一点点从雾里显出来。中午退了房，把行李寄在民宿，下午在院子里写完明信片，才慢慢去车站。\n\n回程的动车开了十个半小时，中间换乘时站台上有很亮的太阳。车过广西以后天色暗下来，窗玻璃开始反光，[我在座位上把那本书看完了最后三十页。](#photo-6)\n\n## 一点实用信息\n\n1. 十月早晚温差大，带件外套；白天太阳很晒，\u003cmark\u003e别低估高原的紫外线\u003c/mark\u003e。\n2. 环海不必骑完全程，选一段慢慢走比打卡更值。\n3. 昆明到大理的慢车班次少，硬座票好买但时间长，介意的话直接换动车。\n4. 文中的车次、航班、酒店与价格是占位示例，替换成真实行程即可。\n\n照片的相机型号是编辑时填在 `gallery` 里的输入项，不读取 EXIF；想换图只改 frontmatter。正文里带虚线下划线的词会用小气泡弹出另一组图，它们来自独立的 ``hoverImages`` 图库，不进入左侧相册：正文里把**一整句话**写成 `` `[句子](#photo-N)` `` 就建立了一次图文索引：句子本身带颜色，翻到对应照片时整句加深变色，点句子则反向翻照片；序号与相册顺序一一对应。\n\n把一段文字写成 `` `[文字](hover:key)` `` 就能挂上一张悬停预览图，鼠标悬停、键盘聚焦或手机上点一下都可以打开。\n"},{"id":"extending-the-base","title":"把新能力加进基座","filename":"extending-the-base.mdx","data":{"title":"把新能力加进基座","description":"用 MDX 组件、内容集合和集成演示二次开发的三个入口。","pubDate":"2026-11-03T00:00:00.000Z","tags":["astro","engineering"],"draft":false,"trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\nimport Callout from '../../components/Callout.astro';\n\n\u003cCallout type=\"tip\" title=\"这是一段 MDX\"\u003e\n\n这个提示框是一个普通的 `.astro` 组件。因为启用了 `@astrojs/mdx`，文章里可以直接 `import` 组件并使用，也就是说：**加交互不必改主题、不必改路由**，写一个组件即可。\n\n\u003c/Callout\u003e\n\n## 三个扩展入口\n\n1. **内容层**：在 `src/content.config.ts` 里加一个 `defineCollection`，就能管理作品集、书单、项目等新内容类型，自动获得类型提示和校验。\n2. **集成层**：在 `astro.config.mjs` 的 `integrations` 数组里加官方集成，例如 `@astrojs/react`（交互岛）、`@astrojs/mdx`（已在）、Pagefind（本地搜索）。\n3. **页面层**：`src/pages/` 里新建 `.astro` 或 `.ts` 文件即新增路由；`getStaticPaths()` 可以把任意数据展开成一批静态页。\n\n## 构建时抓数据\n\nGitHub Pages 是纯静态托管，没有服务端。但构建阶段可以 `fetch` 任意 API，把结果烤进 HTML：\n\n```ts\nconst repos = await fetch('https://api.github.com/users/octocat/repos').then((r) =\u003e r.json());\n```\n\n适合 GitHub 项目列表、豆瓣记录、动态简历这类「一天更新一次就够」的内容。\n"},{"id":"guangzhou-food","title":"广州早茶笔记：一上午吃了六笼","filename":"guangzhou-food.md","data":{"title":"广州早茶笔记：一上午吃了六笼","description":"从虾饺到凤爪，记录一次不赶时间的早茶。","pubDate":"2026-09-20T00:00:00.000Z","tags":["travel","food"],"draft":false,"province":"广东","city":"广州","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 先占位，再点单\n\n老茶楼要自己找位、自己拿壶。普洱或菊花，一壶茶配几笼点心，节奏全由自己定。\n\n## 值得留到最后的\n\n虾饺、烧卖、凤爪是基本盘，最后来一份艇仔粥收尾最舒服。别一次点太多，蒸笼可以慢慢加。\n\n## 一点实用信息\n\n- 周末九点后基本要等位，八点半前到最稳。\n- 很多老店只收现金或本地支付，出门前备好。\n"},{"id":"hello-world","title":"从零开始的第一篇文章","filename":"hello-world.md","data":{"title":"从零开始的第一篇文章","description":"说明这套基座的基本写法，以及文章是如何变成页面的。","pubDate":"2026-11-01T00:00:00.000Z","tags":["astro","notes"],"draft":false,"trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 一篇 Markdown 就够了\n\n在 `src/content/blog/` 下新建一个 `.md` 文件，填好 frontmatter，构建时 `src/pages/blog/[...id].astro` 会自动为它生成一个静态页面。不需要注册路由，也不需要改配置。\n\n## 字段由内容层校验\n\n`src/content.config.ts` 用 Zod 定义了 `title`、`description`、`pubDate`、`tags`、`draft` 等字段。少写或写错类型，`astro build` 会直接报错，而不是等上线后页面崩掉。\n\n- `draft: true` 的文章在本地 `npm run dev` 可见，生产构建会被过滤掉。\n- `tags` 会自动生成 `/tags/\u003ctag\u003e/` 聚合页。\n\n## 图片与静态资源\n\n放 `public/` 下的文件按原路径输出；文章内引用时用 `${import.meta.env.BASE_URL}` 前缀，避免部署到 `/\u003crepo\u003e/` 子路径后 404。\n\n## 正文里的小图片\n\n把一段文字写成 `[词语](hover:cangshan)`，鼠标悬停、键盘聚焦，或手机上点一下，就会弹出一张小气泡图片。它是一组**独立素材**，不进入 03 屏左侧的沉浸式相册。\n\n试着把指针放到「[苍山](hover:cangshan)」或「[洱海](hover:erhai)」上。这篇文章没有写 `hoverImages`，所以用的是 `src/data/hover.ts` 里的默认图库；在 frontmatter 里声明 `hoverImages` 就能换成自己的图。\n"},{"id":"hexizoulang","title":"河西走廊，从兰州往西一直到沙丘为止","filename":"hexizoulang.md","data":{"title":"河西走廊，从兰州往西一直到沙丘为止","description":"广州起飞，经停西安落地兰州，再换三段火车慢慢往西：祁连山、丹霞、关城、鸣沙山。五段路画在同一张点阵图上。","pubDate":"2026-11-06T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"甘肃","city":["兰州","张掖","敦煌"],"hero":{"src":"/images/gansu-05.jpg","focus":"50% 55%","caption":"鸣沙山日出 · 2560 × 1707"},"journey":{"origin":"广东","destination":["甘肃"],"label":"广州 → 兰州 → 张掖 → 嘉峪关 → 敦煌 → 广州，纯点阵方位示意","note":"仅作位置示意，不作测绘用途"},"trips":[{"mode":"flight","leg":"out","code":"CZ3205","carrier":"中国南方航空","vehicle":"空客 A321neo","from":{"place":"广州白云国际机场 T2","city":"广州","province":"广东","time":"2026-10-09 07:40"},"to":{"place":"兰州中川国际机场 T2","city":"兰州","province":"甘肃","time":"2026-10-09 12:10"},"stops":[{"place":"西安咸阳国际机场 T3","city":"西安","province":"陕西","arrive":"09:45","depart":"10:30","duration":"45 分钟"}],"duration":"4h30m","fare":1120,"seat":"经济舱 14A","note":"经停那 45 分钟没下机，窗外一直是灰黄色的塬。落地兰州先吃一碗牛肉面。"},{"mode":"hsr","leg":"local","code":"D2671","carrier":"中国铁路兰州局","vehicle":"CRH5G 型动车组","from":{"place":"兰州西站","city":"兰州","province":"甘肃","time":"2026-10-10 08:06"},"to":{"place":"张掖西站","city":"张掖","province":"甘肃","time":"2026-10-10 11:32"},"stops":[],"duration":"3h26m","fare":149,"seat":"二等座 04 车 07C","note":"右手边一整个上午都是[祁连山](hover:qilian)，雪线时隐时现，越往西越干。"},{"mode":"hsr","leg":"local","code":"D2743","carrier":"中国铁路兰州局","vehicle":"CRH5G 型动车组","from":{"place":"张掖西站","city":"张掖","province":"甘肃","time":"2026-10-12 09:20"},"to":{"place":"嘉峪关南站","city":"嘉峪关","province":"甘肃","time":"2026-10-12 11:03"},"stops":[],"duration":"1h43m","fare":65,"seat":"二等座 02 车 12F","note":"很短的一段。到站刚好赶上关城开门，风比想象中大得多。"},{"mode":"slow","leg":"local","code":"K9667","carrier":"中国铁路兰州局","vehicle":"25G 型客车 / HXD1D 牵引","from":{"place":"嘉峪关站","city":"嘉峪关","province":"甘肃","time":"2026-10-12 21:40"},"to":{"place":"敦煌站","city":"敦煌","province":"甘肃","time":"2026-10-13 05:16"},"stops":[],"duration":"7h36m","fare":148,"seat":"硬卧 11 车 018 中","note":"特意挑了夜车。醒来时窗外已经没有树了，只有低矮的骆驼刺。"},{"mode":"flight","leg":"back","code":"CZ3278","carrier":"中国南方航空","vehicle":"波音 737-800","from":{"place":"敦煌莫高国际机场","city":"敦煌","province":"甘肃","time":"2026-10-15 15:35"},"to":{"place":"广州白云国际机场 T2","city":"广州","province":"广东","time":"2026-10-15 20:05"},"stops":[],"duration":"4h30m","fare":980,"seat":"经济舱 22F","note":"起飞后回头还能看见那一整片沙，二十分钟后就什么都不剩了。"}],"stays":[{"checkIn":"2026-10-09","checkOut":"2026-10-10","nights":1,"area":"兰州 · 中山桥","name":"黄河边老楼房","group":"独立民宿","price":268,"note":"只为接第二天八点的动车，窗外能听见河水声","image":"/images/gansu-01.jpg","imageCaption":"出城之前，公路已经开始往西抬"},{"checkIn":"2026-10-10","checkOut":"2026-10-12","nights":2,"area":"张掖 · 丹霞镇","name":"丹霞口小院","group":"独立民宿","price":320,"note":"走去景区西门十五分钟，傍晚回来正好赶上最后一班区间车","image":"/images/gansu-03.jpg","imageCaption":"日落前二十分钟，颜色最重"},{"checkIn":"2026-10-12","checkOut":"2026-10-13","nights":1,"area":"嘉峪关 · 关城外","name":"关城客栈","group":"华住","price":296,"note":"中转一晚，只背了随身包去赶夜车","image":"/images/gansu-04.jpg","imageCaption":"关城外的秋色，比城里深一档"},{"checkIn":"2026-10-13","checkOut":"2026-10-15","nights":2,"area":"敦煌 · 鸣沙山","name":"沙洲夜市旁小院","group":"独立民宿","price":388,"note":"早上五点半出门走到沙丘只要二十分钟，回来鞋里全是沙","image":"/images/gansu-05.jpg","imageCaption":"六点十分，第一道光刚爬上沙脊"}],"gallery":[{"src":"/images/gansu-01.jpg","alt":"红色戈壁上的一条公路","camera":"Fujifilm X-T5"},{"src":"/images/gansu-02.jpg","alt":"雾气里一层层退开的祁连山","camera":"Sony A7 IV","cover":true,"city":"兰州"},{"src":"/images/gansu-03.jpg","alt":"傍晚被晒成赭红色的丹霞与雅丹","camera":"Canon EOS R5","cover":true,"city":"张掖"},{"src":"/images/gansu-04.jpg","alt":"秋色里的关城与山脊","camera":"Nikon Z7 II"},{"src":"/images/gansu-05.jpg","alt":"沙丘上一道被晨光拉长的脊线","camera":"Leica Q3","cover":true,"city":"敦煌"},{"src":"/images/gansu-06.jpg","alt":"日落之后只剩剪影的戈壁","camera":"iPhone 15 Pro"}],"hoverImages":[{"key":"qilian","src":"/images/gansu-hover-01.jpg","alt":"山脚下通往远处的公路","caption":"祁连山北麓 · 一路向西"},{"key":"star","src":"/images/gansu-hover-02.jpg","alt":"星空下的山脊","caption":"敦煌郊外 · 夜里十一点"}]},"body":"\n一直想走一趟河西走廊，但不想把它做成打卡清单。这回只定了一个原则：**每一段路都要在白天或者醒着的时候经过**，所以飞机换成动车、动车又换成夜车，五段票按顺序摊在左边那张图里，颜色只区分飞机、动车和普速。\n\n\u003e 从兰州到敦煌，海拔没怎么变，颜色却一路从青灰退成赭红，最后只剩黄。\n\n## 兰州：先让节奏慢下来\n\n落地那碗牛肉面吃完，沿着黄河走了一段。中山桥上风很大，[出城那天公路两边还是灰绿色的山，往西开了不到一小时就全变了。](#photo-1)\n\n第二天一早的动车贴着[祁连山](hover:qilian)走。雪线一直在右边，时隐时现，车厢里没人说话。[雾气把山一层层推开，最近的那道反而最淡，第二张照片是在车速最慢的时候按下的。](#photo-2)\n\n## 张掖到嘉峪关：颜色最重的两天\n\n丹霞景区里最不该做的事是跟着人流走。傍晚往西门方向多走二十分钟，[整片赭红色的山脊被斜光切出棱角，那种红不是照片能预先想好的。](#photo-3)\n\n再到嘉峪关，风比张掖更硬。[关城背后的山脊上已经黄透了一层，城墙和秋色叠在一起，反而看不出哪里是边界。](#photo-4) 站了很久才想起来要去赶夜车。\n\n## 敦煌：把最后一晚留给沙\n\n夜里从嘉峪关上车，醒来时窗外只剩骆驼刺。住的地方离鸣沙山很近，五点半出门，[爬到半坡回头，晨光刚好把一道沙脊拉成很长的亮线。](#photo-5)\n\n最后一个晚上没安排莫高窟，去了城郊看[星空](hover:star)。[天完全黑下来以后戈壁只剩剪影，风停了，第六张照片也没怎么调就留下来了。](#photo-6)\n\n## 一点实用信息\n\n1. 兰州到张掖的动车尽量选右侧靠窗，上午的光打在祁连山那一面。\n2. 丹霞看日落比日出稳，西门出来打车要提前约，天黑后车少。\n3. 嘉峪关到敦煌的夜车只有一趟，硬卧比硬座值；下铺票提前几天放。\n4. 文中的航班、车次、酒店与价格都是占位示例，换成自己的真实行程即可。\n\n正文里把**一整句话**写成 `` `[句子](#photo-N)` `` 就是一次图文索引：左侧相册翻到这张时整句加深变色，点句子则反向翻照片。`` `[文字](hover:key)` `` 挂的是另一组独立的悬停小图，不进相册。城市写成数组，首页点同一个省也能按 `?city=` 换封面。\n"},{"id":"jiangnan-buganlu","title":"江南不赶路，杭州、乌镇与苏州","filename":"jiangnan-buganlu.md","data":{"title":"江南不赶路，杭州、乌镇与苏州","description":"从广州飞杭州，再三段地面交通把西湖、水乡与老城串起来；四段路、三个省，回程干脆坐一趟长途高铁。","pubDate":"2026-10-12T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"浙江","city":["杭州","苏州"],"hero":{"src":"/images/jiangnan-01.jpg","focus":"50% 48%","caption":"湖上晚霞 · 2560 × 1707"},"journey":{"origin":"广东","destination":["浙江","江苏"],"label":"广州 → 杭州 → 乌镇 → 苏州 → 广州，纯点阵方位示意","note":"仅作位置示意，不作测绘用途"},"trips":[{"mode":"flight","leg":"out","code":"CZ3819","carrier":"中国南方航空","vehicle":"空客 A320neo","from":{"place":"广州白云国际机场 T2","city":"广州","province":"广东","time":"2026-09-24 09:15"},"to":{"place":"杭州萧山国际机场 T4","city":"杭州","province":"浙江","time":"2026-09-24 11:35"},"stops":[],"duration":"2h20m","fare":690,"seat":"经济舱 11C","note":"落地没去酒店，先坐地铁到湖边，刚好赶上傍晚那一阵光。"},{"mode":"hsr","leg":"local","code":"G7321","carrier":"中国铁路上海局","vehicle":"CRH380BL 型动车组","from":{"place":"杭州东站","city":"杭州","province":"浙江","time":"2026-09-27 08:42"},"to":{"place":"桐乡站","city":"乌镇","province":"浙江","time":"2026-09-27 09:19"},"stops":[],"duration":"37m","fare":34,"seat":"二等座 03 车 04A","note":"短到一杯茶都没喝完，出站再换二十分钟公交就到西栅门口。"},{"mode":"hsr","leg":"local","code":"G7586","carrier":"中国铁路上海局","vehicle":"CR400BF 型动车组","from":{"place":"桐乡站","city":"乌镇","province":"浙江","time":"2026-09-29 10:06"},"to":{"place":"苏州北站","city":"苏州","province":"江苏","time":"2026-09-29 11:24"},"stops":[],"duration":"1h18m","fare":96,"seat":"二等座 07 车 12F","note":"跨了一道省界，窗外其实什么都没变，还是平的水田和低矮的房子。"},{"mode":"hsr","leg":"back","code":"G1013","carrier":"中国铁路广州局","vehicle":"CR400AF 型动车组","from":{"place":"苏州北站","city":"苏州","province":"江苏","time":"2026-10-01 08:03"},"to":{"place":"广州南站","city":"广州","province":"广东","time":"2026-10-01 16:28"},"stops":[],"duration":"8h25m","fare":712,"seat":"二等座 09 车 03A","note":"没换飞机。一整天坐着看窗外从水田慢慢变成丘陵，挺好。"}],"stays":[{"checkIn":"2026-09-24","checkOut":"2026-09-26","nights":2,"area":"杭州 · 湖滨","name":"湖边老公寓","group":"独立民宿","price":460,"note":"走到湖边七分钟，早上不用设闹钟","image":"/images/jiangnan-01.jpg","imageCaption":"傍晚六点二十，云刚好烧起来"},{"checkIn":"2026-09-26","checkOut":"2026-09-27","nights":1,"area":"杭州 · 龙井村","name":"茶山上的小院","group":"独立民宿","price":520,"note":"为了早上那一片茶园，第二天再回城里坐车","image":"/images/jiangnan-03.jpg","imageCaption":"田垄一圈圈绕到山腰"},{"checkIn":"2026-09-27","checkOut":"2026-09-29","nights":2,"area":"乌镇 · 西栅","name":"临水老屋","group":"独立民宿","price":580,"note":"住景区里，早晨游客还没进来的时候最值","image":"/images/jiangnan-04.jpg","imageCaption":"早上七点，栈道上只有保洁的阿姨"},{"checkIn":"2026-09-29","checkOut":"2026-10-01","nights":2,"area":"苏州 · 平江路","name":"巷子里的小客栈","group":"亚朵","price":420,"note":"出门就是河，晚上能听见隔壁评弹的尾音","image":"/images/jiangnan-06.jpg","imageCaption":"清早的木栈桥，一个人也没有"}],"gallery":[{"src":"/images/jiangnan-01.jpg","alt":"粉色晚霞落在湖面与远山上","camera":"Fujifilm X-T5","cover":true,"city":"杭州"},{"src":"/images/jiangnan-02.jpg","alt":"林子里斜下来的一道晨光","camera":"Sony A7 IV"},{"src":"/images/jiangnan-03.jpg","alt":"茶园里一圈圈规整的田垄","camera":"Canon EOS R5"},{"src":"/images/jiangnan-04.jpg","alt":"水边通向树影深处的木栈道","camera":"Nikon Z7 II"},{"src":"/images/jiangnan-05.jpg","alt":"山涧里落下来的一线水","camera":"Leica Q3"},{"src":"/images/jiangnan-06.jpg","alt":"湖面上伸出去的空木栈桥","camera":"iPhone 15 Pro","cover":true,"city":"苏州"}],"hoverImages":[{"key":"water","src":"/images/jiangnan-hover-01.jpg","alt":"碧绿水面上的一条小船","caption":"水乡 · 早班摇橹船"},{"key":"hut","src":"/images/jiangnan-hover-02.jpg","alt":"湖边的小木屋与远山","caption":"湖边 · 还没开门的茶室"}]},"body":"\n这趟没排任何必去清单。四段票按出发顺序摊在左边：一段飞机、三段高铁，跨了广东、浙江、江苏三个省；回程特意选了八小时的长途高铁，把「回去」也当成一段路来走。\n\n\u003e 江南适合不赶路。最好看的光都不在景点里，而在你刚好走到那儿的那几分钟。\n\n## 杭州：先坐一下午\n\n落地直接去湖边，什么都没安排。[傍晚的云烧得很慢，远山一层层压在粉色后面，第一张照片是在长椅上坐着按的。](#photo-1)\n\n第二天往山里走。九溪那一段树密，[晨光从叶缝里斜下来，落到石阶上只是一小片，第二张拍的是那片光而不是树。](#photo-2)\n\n后来在龙井村住了一晚。清早茶园还没人，[田垄一圈圈绕到山腰，规整得像谁在坡上画的等高线。](#photo-3) 老板泡了杯新茶，说今年雨水多，芽头比往年壮。\n\n## 乌镇：把早晨留给空巷\n\n住进西栅的好处是能赶在游客之前起来。[七点的木栈道往树影深处伸，水面平得没有一丝风，只有保洁阿姨推着车从对面过来。](#photo-4)\n\n坐了一趟[早班摇橹船](hover:water)，船过石桥时水声忽然变闷。岸边那间[还没开门的茶室](hover:hut)后来成了这趟最想再回去的地方——什么都没发生，只是很安静。\n\n山里另有一天，[溪水从石壁上落成很细的一线，走近了才能听见声音盖过鸟叫。](#photo-5)\n\n## 苏州：以八小时高铁收尾\n\n平江路的清晨比白天好。[木栈桥空着伸进湖里，对岸的树还没醒，最后一张照片留给这里。](#photo-6)\n\n回程没换飞机，从苏州北一路坐到广州南。八小时里水田慢慢变成丘陵，天黑前刚好进市区。\n\n## 一点实用信息\n\n1. 杭州东到桐乡只有半小时多一点，别提前太久进站，站内换乘很绕。\n2. 乌镇西栅住景区内才能刷房卡多次出入，早晨和夜里是两种地方。\n3. 苏州北离老城远，留足四十分钟地铁；回程长途高铁带件外套。\n4. 文中的航班、车次、酒店与价格都是占位示例，换成真实行程即可。\n\n正文里把**一整句话**写成 `` `[句子](#photo-N)` `` 就建立一次图文索引：翻到对应照片时整句加深变色，点句子则反向翻照片。`` `[文字](hover:key)` `` 是另一组独立的悬停小图，不进相册。\n"},{"id":"jiuzhaigou-sichuan","title":"从成都往北：九寨沟的四天","filename":"jiuzhaigou-sichuan.md","data":{"title":"从成都往北：九寨沟的四天","description":"第二次来四川，出了盆地才明白「蜀道」两个字。","pubDate":"2026-07-22T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"四川","city":"九寨沟","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 路本身就是行程\n\n从成都坐车往北，沿岷江一路海拔往上爬，窗外的植被一层层换。中途在松潘住了一晚，古城墙下有人卖刚烤好的牦牛肉串。\n\n## 沟里不用赶\n\n景区是 Y 字形，先把最远的原始森林坐到底，再一段段往回走。长海安静，五花海的颜色在阴天反而更沉。\n\n## 一点实用信息\n\n- 旺季建议提前订票，观光车按顺序走，别逆着人流。\n- 高原昼夜温差大，七月也要带外套。\n"},{"id":"lijiang-yunnan","title":"又去云南：丽江的两场雨","filename":"lijiang-yunnan.md","data":{"title":"又去云南：丽江的两场雨","description":"第二次到云南，把时间留给束河的雨和一顿漫长的晚饭。","pubDate":"2026-08-14T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"云南","city":"丽江","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 雨把行程改了\n\n原本打算一早上玉龙雪山，结果雨从七点下到中午。索性退掉票，在束河找了家有屋檐的院子坐着，看雨水从瓦当连成线。\n\n## 慢一点的一顿饭\n\n下午雨停，去忠义市场买了菌子，交给客栈附近的小店加工。等菜的一个小时里，老板把炭火拨了两次，说急不得。\n\n## 一点实用信息\n\n- 雨季（六到九月）雪山经常临时停运，行程别排太满。\n- 束河比大研安静，适合把一天只安排一件事。\n"},{"id":"minnan-xiamen-quanzhou","title":"闽南的夏天，厦门的海、泉州的巷子、武夷山的雾","filename":"minnan-xiamen-quanzhou.md","data":{"title":"闽南的夏天，厦门的海、泉州的巷子、武夷山的雾","description":"一趟高铁到厦门，沿着海岸去泉州，再折进山里看雾，最后从武夷山飞回广州。四段路，两个省，六张照片。","pubDate":"2026-07-18T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"福建","city":["厦门","泉州","武夷山"],"hero":{"src":"/images/minnan-02.jpg","focus":"50% 55%","caption":"海滩落日 · 2560 × 1702"},"journey":{"origin":"广东","destination":["福建"],"label":"广州 → 厦门 → 泉州 → 武夷山 → 广州，纯点阵方位示意","note":"仅作位置示意，不作测绘用途"},"trips":[{"mode":"hsr","leg":"out","code":"D2311","carrier":"中国铁路南昌局","vehicle":"CRH2A 型动车组","from":{"place":"广州南站","city":"广州","province":"广东","time":"2026-06-28 07:26"},"to":{"place":"厦门北站","city":"厦门","province":"福建","time":"2026-06-28 11:48"},"stops":[],"duration":"4h22m","fare":254,"seat":"二等座 05 车 08F","note":"沿海那一段真好，右边时不时会闪过一小块特别蓝的海。"},{"mode":"hsr","leg":"local","code":"D6217","carrier":"中国铁路南昌局","vehicle":"CRH1A 型动车组","from":{"place":"厦门北站","city":"厦门","province":"福建","time":"2026-07-01 09:12"},"to":{"place":"泉州站","city":"泉州","province":"福建","time":"2026-07-01 09:56"},"stops":[],"duration":"44m","fare":34,"seat":"二等座 02 车 11A","note":"不到一小时。到了才发现老城根本不用坐车，走着走着一整天就过去了。"},{"mode":"hsr","leg":"local","code":"G1694","carrier":"中国铁路南昌局","vehicle":"CR400AF 型动车组","from":{"place":"泉州站","city":"泉州","province":"福建","time":"2026-07-03 08:18"},"to":{"place":"武夷山北站","city":"武夷山","province":"福建","time":"2026-07-03 11:07"},"stops":[],"duration":"2h49m","fare":176,"seat":"二等座 06 车 03C","note":"从海边折进山里，隧道一个接一个，出来的时候窗上已经起了雾。"},{"mode":"flight","leg":"back","code":"CZ3890","carrier":"中国南方航空","vehicle":"波音 737-800","from":{"place":"武夷山机场","city":"武夷山","province":"福建","time":"2026-07-06 17:10"},"to":{"place":"广州白云国际机场 T2","city":"广州","province":"广东","time":"2026-07-06 18:45"},"stops":[],"duration":"1h35m","fare":560,"seat":"经济舱 16A","note":"小机场，起飞前在廊桥上还能闻到雨后的湿土味。"}],"stays":[{"checkIn":"2026-06-28","checkOut":"2026-06-30","nights":2,"area":"厦门 · 曾厝垵","name":"海边旧楼改的小客栈","group":"独立民宿","price":348,"note":"早上五点走到海边只要六分钟，回来路上买一杯花生汤","image":"/images/minnan-01.jpg","imageCaption":"天亮前后，浪一道比一道长"},{"checkIn":"2026-06-30","checkOut":"2026-07-01","nights":1,"area":"厦门 · 鼓浪屿","name":"老别墅里的两间房","group":"独立民宿","price":520,"note":"岛上过一夜，夜里几乎没有车声","image":"/images/minnan-02.jpg","imageCaption":"退潮那半小时，沙滩全是暖的"},{"checkIn":"2026-07-01","checkOut":"2026-07-03","nights":2,"area":"泉州 · 西街","name":"巷子里的红砖小院","group":"独立民宿","price":386,"note":"出门就是老街，屋顶能看见东西塔","image":"/images/minnan-04.jpg","imageCaption":"转角那丛花，每天都开得更满一点"},{"checkIn":"2026-07-03","checkOut":"2026-07-06","nights":3,"area":"武夷山 · 三姑","name":"茶田边的山居","group":"亚朵","price":430,"note":"连着三早都是雾，第四天才放晴","image":"/images/minnan-05.jpg","imageCaption":"六点四十，雾还压在山谷里没起来"}],"gallery":[{"src":"/images/minnan-01.jpg","alt":"天亮前后一层层推上来的长浪","camera":"Fujifilm X-T5"},{"src":"/images/minnan-02.jpg","alt":"落日把退潮的沙滩染成暖色","camera":"Sony A7 IV","cover":true,"city":"厦门"},{"src":"/images/minnan-03.jpg","alt":"树影下碧蓝的一小片水湾","camera":"Canon EOS R5","cover":true,"city":"泉州"},{"src":"/images/minnan-04.jpg","alt":"巷口开得正盛的一丛黄花","camera":"Nikon Z7 II"},{"src":"/images/minnan-05.jpg","alt":"云雾压在山谷与茶田上方","camera":"Leica Q3","cover":true,"city":"武夷山"},{"src":"/images/minnan-06.jpg","alt":"河谷边上一条往山里去的公路","camera":"iPhone 15 Pro"}],"hoverImages":[{"key":"ride","src":"/images/minnan-hover-01.jpg","alt":"夕阳下骑车的人与远处的热气球","caption":"环岛路 · 傍晚六点半"},{"key":"desk","src":"/images/minnan-hover-02.jpg","alt":"摊开的地图、相机和笔记本","caption":"出发前夜 · 桌上摊了一地"}]},"body":"\n六月末从广州坐高铁去厦门，沿着海岸往北到泉州，再折回山里看雾，最后从武夷山飞回来。四段票按顺序画在左边那张点阵图上：三段高铁、一段飞机，只有广东和福建两块轮廓。\n\n\u003e 海和山其实只隔了两小时四十九分，中间是一连串隧道。\n\n## 厦门：先把时间交给海\n\n住的地方离海很近，早上五点出门，天还没全亮。[长浪一层层推上来，节拍慢得让人不想说话，第一张照片就这么等出来的。](#photo-1)\n\n傍晚换到岛上住一晚。[退潮那半小时整个沙滩都变成暖色，云压得低，第二张按下去时刚好有人从画面边上走过去。](#photo-2)\n\n还有一天沿着[环岛路](hover:ride)骑车，风从背后推，骑到看不清路牌才折回。[树影底下藏着一小片特别蓝的水湾，走进去才发现水比远看更清。](#photo-3)\n\n## 泉州：老城是走出来的\n\n泉州不用做攻略。从西街随便拐进一条巷子，[转角那丛黄花正开得满，墙头的红砖被太阳晒得发白。](#photo-4) 半天下来没进一个收费景点，倒是喝了三杯茶。\n\n出发那晚[桌上摊了一地地图和相机](hover:desk)，最后只带了一台机器和两卷胶片——这趟拍得少，反而记得清楚。\n\n## 武夷山：连着三个早上的雾\n\n从海边进山，隧道一个接一个，出来时车窗已经起雾。住的三天里，[每天早上六点四十，云雾都还压在茶田上方没有散，第五张照片是第三天等到的那道斜光。](#photo-5)\n\n最后一天放晴，[沿着河谷往山里开，公路在绿色里拐了个很缓的弯，第六张留给了这段路而不是山顶。](#photo-6)\n\n## 一点实用信息\n\n1. 广州南到厦门北选右侧靠窗，沿海那几段会反复闪过海面。\n2. 泉州老城全靠走，西街往小巷里拐比主街安静得多。\n3. 武夷山看雾要早起，六点到八点之间最好；雨后第二天概率更高。\n4. 文中的车次、航班、酒店与价格都是占位示例，换成真实行程即可。\n\n正文里把**一整句话**写成 `` `[句子](#photo-N)` `` 就是一次图文索引：左侧相册翻到这张时整句加深变色，点句子则反向翻照片。`` `[文字](hover:key)` `` 挂的是另一组独立的悬停小图，不进相册。\n"},{"id":"westlake-zhejiang","title":"西湖边走一圈，把秋天收进口袋","filename":"westlake-zhejiang.md","data":{"title":"西湖边走一圈，把秋天收进口袋","description":"从断桥到茅家埠，一条避开人潮的杭州秋日散步路线。","pubDate":"2026-10-05T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"浙江","city":"杭州","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 绕开断桥\n\n节假日断桥人最多，不如从北山街往西走，梧桐叶子落下来的时候，湖面会安静很多。\n\n## 茅家埠的下午\n\n这一带水面窄、树影密，比湖滨更像旧时候的西湖。带一杯热茶坐到太阳偏西，是本趟最舒服的两小时。\n\n## 一点实用信息\n\n- 全程步行约 6 公里，穿好走的鞋。\n- 十月底到十一月初是梧桐最好看的时候。\n"},{"id":"wuzhen-zhejiang","title":"二刷浙江：乌镇的清晨与夜","filename":"wuzhen-zhejiang.md","data":{"title":"二刷浙江：乌镇的清晨与夜","description":"同一条水巷，早上七点和晚上八点是两个地方。","pubDate":"2026-03-19T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"浙江","city":"乌镇","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 住一晚才看得到的东西\n\n上次只在杭州转了一圈，这回特意在乌镇住下。旅行团还没进来的清晨，西栅的石板上只有扫地的声音；等灯亮起，又是另一副样子。\n\n## 坐着船过一段\n\n不长的一段水路，从桥下穿过去的时候，两岸的窗都亮着。船工说这条河他划了十几年，旺季一天要来回十几趟。\n\n## 一点实用信息\n\n- 想拍空景就住在景区内，早晚凭房卡可以自由进出。\n- 三月多雨，石板路滑，鞋底要防滑。\n"},{"id":"xishuangbanna-yunnan","title":"第三次进云南，往南走到西双版纳","filename":"xishuangbanna-yunnan.md","data":{"title":"第三次进云南，往南走到西双版纳","description":"泼水节前后的景洪、植物园里的夜风，以及一顿吃到天黑的傣味。","pubDate":"2026-04-06T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"云南","city":"西双版纳","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 从干燥的高原到湿热的坝子\n\n前两次都在滇西北，这次想看看云南的另一半。落地景洪是晚上，空气里全是湿润的草木味，和丽江完全是两个季节。\n\n## 植物园值得留一整天\n\n勐仑那片园区很大，东区是雨林、西区是分类园。傍晚坐在王莲池边等天黑，比赶景点有意思得多。\n\n## 一点实用信息\n\n- 四月白天很晒，防晒和驱蚊都要带。\n- 告庄夜市热闹但价格偏高，想吃地道傣味可以往曼听公园周边的小店走。\n"}],"provinces":["北京","天津","河北","山西","内蒙古","辽宁","吉林","黑龙江","上海","江苏","浙江","安徽","福建","江西","山东","河南","湖北","湖南","广东","广西","海南","重庆","四川","贵州","云南","西藏","陕西","甘肃","青海","宁夏","新疆","台湾","香港","澳门"],"defaults":[{"key":"cangshan","src":"/images/hover-cangshan.jpg","alt":"层叠的山脊与薄雾","caption":"苍山 · 山脊线"},{"key":"erhai","src":"/images/hover-erhai.jpg","alt":"湖面与远处的山","caption":"洱海 · 水面"},{"key":"xizhou","src":"/images/hover-xizhou.jpg","alt":"午后的树林与光","caption":"喜洲 · 老院子"},{"key":"train","src":"/images/hover-train.jpg","alt":"站台与铁轨","caption":"绿皮车 · 途中"}],"images":["gansu-01.jpg","gansu-02.jpg","gansu-03.jpg","gansu-04.jpg","gansu-05.jpg","gansu-06.jpg","gansu-hover-01.jpg","gansu-hover-02.jpg","great-wall-autumn-4k.jpg","great-wall-autumn-original.jpg","great-wall-autumn.jpg","hero-dali.jpg","hero-default.jpg","hover-cangshan.jpg","hover-erhai.jpg","hover-train.jpg","hover-xizhou.jpg","jiangnan-01.jpg","jiangnan-02.jpg","jiangnan-03.jpg","jiangnan-04.jpg","jiangnan-05.jpg","jiangnan-06.jpg","jiangnan-hover-01.jpg","jiangnan-hover-02.jpg","journal-01.jpg","journal-02.jpg","journal-03.jpg","journal-04.jpg","journal-05.jpg","journal-06.jpg","minnan-01.jpg","minnan-02.jpg","minnan-03.jpg","minnan-04.jpg","minnan-05.jpg","minnan-06.jpg","minnan-hover-01.jpg","minnan-hover-02.jpg"],"repo":"macrospro/travel-notes","branch":"content","base":"/travel-notes-site/"}</script><script>/* ==========================================================================
+    </script><link rel="stylesheet" href="/travel-notes-site/_astro/lightbox.DAC6AwSw.css"><link rel="stylesheet" href="/travel-notes-site/_astro/index.B1on-80B.css"></head><body class="ed-page"><div class="ed-app"><header class="ed-top"><button type="button" class="ed-icon ed-side-toggle" data-top="toggle-side" title="显示 / 隐藏文章列表">☰</button><a class="ed-back" href="/travel-notes-site/">← 返回站点</a><div class="ed-title"><b>▤ ARTICLE EDITOR</b><small>WYSIWYG WORKSPACE · NO SERVER</small></div><div class="ed-top-actions"><button type="button" data-top="new" title="新建一篇空白文章（未保存的改动会提示）">＋ 新建</button><button type="button" data-top="save" title="把当前文章存进本机浏览器草稿">保存草稿</button><button type="button" data-top="import" title="从本机选择 .md / .mdx 导入（需含 frontmatter）">导入 .md</button><button type="button" data-top="copy" title="把完整 Markdown 复制到剪贴板">复制</button><button type="button" data-top="md" title="只下载 .md 文件，不含图片">仅 .md</button><button type="button" data-top="publish" title="打开 GitHub 直提面板（需 PAT，仅在线可用）">发布</button><button type="button" class="ed-primary" data-top="bundle" title="导出完整文件夹：1 篇 .md + photos/ 专用照片文件夹 + 使用说明">↓ 导出文件夹</button><button type="button" class="ed-icon" data-top="help" title="使用提示：展开文章属性并查看操作要领">?</button></div></header><div class="ed-status" id="ed-status">READY.</div><div class="ed-workspace"><aside class="ed-side" id="ed-side"><section><span>PUBLISHED · 站点已有文章</span><b id="ed-count-published">0</b></section><ul id="ed-list-published"></ul><section><span>DRAFTS · 本机草稿</span><b id="ed-count-drafts">0</b></section><ul id="ed-list-drafts"></ul><div class="ed-side-foot">草稿在本机 <code>localStorage</code>，不上传。<br><code>Ctrl/⌘ + S</code> 保存 · <code>Esc</code> 关面板。<br>导出的是一个文件夹：<code>.md</code> + 同目录 <code>photos/</code>。</div></aside><main class="ed-main"><div class="ed-doc-head"><input id="ed-title" class="ed-title-input" type="text" placeholder="文章标题…" aria-label="文章标题"><div class="ed-doc-head-right"><button type="button" data-cmd="props" title="展开文章属性">▾ 文章属性</button><span class="ed-mode-switch"><button type="button" data-mode="visual" class="is-active" title="可视化编辑：选中文字即可用工具栏排版">可视化</button><button type="button" data-mode="source" title="源码模式：直接编辑完整 .md（含 frontmatter）">源码</button></span></div></div><div class="ed-props" id="ed-props" hidden></div><!-- 文章的四个部分：00 封面 / 01 交通 / 02 住宿 / 03 正文。
+               前三个是结构化 frontmatter（原来没有编辑入口），03 才是富文本正文。 --><div class="ed-sections" id="ed-sections" role="tablist" aria-label="文章分段"><button type="button" data-section="cover" title="00 封面：整屏铺满、短边 4K 预览档，不用再管比例；多目的地文章给每个城市各选一张封面，同一城市只保留一张，另有一张不带城市的默认封面"><b>00</b> 封面</button><button type="button" data-section="trips" title="01 交通：按去程 / 内部行程 / 回程分组，所有路线按出发顺序画进地图，颜色区分交通方式；选中票券才显示起终点城市"><b>01</b> 交通 <i id="ed-sec-count-trips">0</i></button><button type="button" data-section="stays" title="02 住宿：增删住宿、填写酒店集团，任意一晚都能插入照片"><b>02</b> 住宿 <i id="ed-sec-count-stays">0</i></button><button type="button" data-section="body" title="03 流水账：富文本正文，选中文字用工具栏排版"><b>03</b> 正文</button><span class="ed-sections-hint" id="ed-sections-hint">SHEET 03 · WYSIWYG</span></div><div class="ed-section-panel" id="ed-section-forms" hidden></div><div class="ed-toolbar" id="ed-toolbar" role="toolbar" aria-label="格式工具栏"><span class="ed-tb-label">格式</span><button type="button" data-cmd="bold" title="粗体 Ctrl+B"><b>B</b></button><button type="button" data-cmd="italic" title="斜体 Ctrl+I"><i>I</i></button><button type="button" data-cmd="underline" title="下划线"><u>U</u></button><button type="button" data-cmd="mark" title="高亮选中文字">▮ 高亮</button><button type="button" data-cmd="code" title="行内代码">&lt;/&gt;</button><span class="ed-tb-sep"></span><button type="button" data-cmd="h2" title="二级标题">H2</button><button type="button" data-cmd="h3" title="三级标题">H3</button><button type="button" data-cmd="p" title="正文段落">¶</button><button type="button" data-cmd="quote" title="引用">❝</button><button type="button" data-cmd="ul" title="无序列表">• 列表</button><button type="button" data-cmd="ol" title="有序列表">1. 列表</button><button type="button" data-cmd="link" title="选中文字加链接">🔗 链接</button><button type="button" data-cmd="hr" title="分隔线">—</button><span class="ed-tb-sep"></span><button type="button" data-cmd="undo" title="撤销">↶</button><button type="button" data-cmd="redo" title="重做">↷</button><button type="button" data-cmd="clear" title="清除格式">⌫</button><span class="ed-tb-sep"></span><span class="ed-tb-label">图片</span><button type="button" class="ed-tb-photo" data-cmd="photo" title="把选中文字绑定到相册照片">▣ 绑定照片</button><button type="button" class="ed-tb-photo" data-cmd="hover" title="把选中文字挂上悬停小图">◌ 悬停小图</button><button type="button" data-cmd="assets" title="打开图片集">▤ 图片集 <b id="ed-asset-count">0</b></button><button type="button" data-cmd="upload" title="上传本地图片">＋ 上传</button></div><div class="ed-editor-wrap" id="ed-editor-wrap"><div id="ed-editor" class="ed-editor" contenteditable="true" spellcheck="false" role="textbox" aria-multiline="true" aria-label="文章正文" data-no-lightbox></div><textarea id="ed-source" class="ed-source-edit" hidden spellcheck="false" aria-label="Markdown 源码"></textarea></div><div class="ed-editor-foot" id="ed-editor-foot"><span>选中文字 → 工具栏排版 · 拖入图片即上传 · <code>Ctrl/⌘+S</code> 保存草稿</span><span id="ed-statusbar-text">DOC —</span></div></main><aside class="ed-preview" id="ed-preview"><div class="ed-preview-head"><span>OUTPUT · 实时预览</span><button type="button" data-preview="render" class="is-active" title="预览排版效果与本文全部图片">渲染</button><button type="button" data-preview="source" title="预览最终导出的 Markdown 全文">源码 .md</button><button type="button" data-top="toggle-preview" title="显示 / 隐藏右侧预览栏">◂</button></div><div id="ed-preview-body"></div></aside></div><footer class="ed-statusbar"><span>ASTRO CONTENT COLLECTIONS · GITHUB PAGES · 100% STATIC</span><span>导出文件夹 = 1 篇 .md + photos/ 照片集 + HOW-TO-USE.md</span></footer></div><!-- 图片集抽屉：所有照片集中管理，上传 / 绑定 / 设封面 / 删除 --><div class="ed-drawer" id="ed-drawer" hidden><div class="ed-drawer-head"><b>▤ 图片集</b><span>这篇文章的全部照片</span><button type="button" data-cmd="upload" title="从本机选择图片加入这篇文章的图片集">＋ 上传图片</button><button type="button" class="ed-icon" data-cmd="close-drawer" title="关闭">×</button></div><div class="ed-cover-status" id="ed-cover-status" hidden></div><div class="ed-drawer-body" id="ed-asset-grid" data-lightbox-group="asset-grid"></div><div class="ed-drawer-foot">上传到这里的图片会随「导出文件夹」一起打包到 md 同目录的 <code>photos/</code>。 相册照片可在卡片里改相机型号；点「绑定选中文字」会生成 <code>#photo-N</code> 整句索引。<b>封面一张图一个角色</b>：勾「用作封面」后在「对应城市」下拉里选城市＝该城市入口的封面；留空＝不带 <code>?city=</code> 时的默认封面，也可直接点「设为默认封面」。<b>同一城市只能有一张，选中新的会自动取消旧的</b>；置顶的默认封面图同样能勾选，勾上后会一并加入相册。对应 <code>gallery[].cover</code> / <code>gallery[].city</code> / <code>hero.src</code>。 住宿照片请到 <b>02 住宿</b> 卡片里点「＋ 插入 / 更换图片」，会写进 <code>stays[].image</code>。</div></div><!-- 发布面板：md + 新增图片一起提交，token 只用于本次请求 --><div class="ed-modal" id="ed-pub-modal" hidden><div class="ed-modal-card"><div class="ed-modal-head"><b>↑ 发布到 GitHub</b><button type="button" class="ed-icon" data-top="close-publish" title="关闭发布面板">×</button></div><p class="ed-modal-note">会把 <code>.md</code> 与同目录 <code>photos/</code> 专用照片文件夹（含三档：缩略图 / 短边 4096px、2–3MB 的预览图 / 原图）一起提交到 content 分支；token 不会写入草稿。离线预览请用「导出文件夹」。</p><label>仓库 owner/repo<input type="text" data-pub="repo" placeholder="macrospro/travel-notes"></label><label>分支<input type="text" data-pub="branch" placeholder="content"></label><label>文章路径<input type="text" data-pub="path" placeholder="my-posts/文章名/文章名.md"></label><label>照片目录（md 同目录）<input type="text" data-pub="imageDir" placeholder="my-posts/文章名/photos"></label><label>PAT（仅本次使用）<input type="password" data-pub="token" placeholder="github_pat_… 或 ghp_…" autocomplete="off"></label><pre class="ed-publish-log" id="ed-publish-log">填好后点「提交」。</pre><div class="ed-modal-actions"><button type="button" data-top="close-publish" title="取消并关闭发布面板">取消</button><button type="button" class="ed-primary" data-top="do-publish" title="把 .md 与新增图片提交到 GitHub，Actions 会自动部署">提交并触发部署</button></div></div></div><!-- 图片探测：pack 脚本会把这些 src 改成 data URI / 相对路径，编辑器据此取可显示地址 --><div id="ed-asset-probe" hidden aria-hidden="true" data-no-lightbox><img src="/travel-notes-site/images/gansu-01.jpg" data-asset-name="gansu-01.jpg" alt=""><img src="/travel-notes-site/images/gansu-02.jpg" data-asset-name="gansu-02.jpg" alt=""><img src="/travel-notes-site/images/gansu-03.jpg" data-asset-name="gansu-03.jpg" alt=""><img src="/travel-notes-site/images/gansu-04.jpg" data-asset-name="gansu-04.jpg" alt=""><img src="/travel-notes-site/images/gansu-05.jpg" data-asset-name="gansu-05.jpg" alt=""><img src="/travel-notes-site/images/gansu-06.jpg" data-asset-name="gansu-06.jpg" alt=""><img src="/travel-notes-site/images/gansu-hover-01.jpg" data-asset-name="gansu-hover-01.jpg" alt=""><img src="/travel-notes-site/images/gansu-hover-02.jpg" data-asset-name="gansu-hover-02.jpg" alt=""><img src="/travel-notes-site/images/great-wall-autumn-4k.jpg" data-asset-name="great-wall-autumn-4k.jpg" alt=""><img src="/travel-notes-site/images/great-wall-autumn-original.jpg" data-asset-name="great-wall-autumn-original.jpg" alt=""><img src="/travel-notes-site/images/great-wall-autumn.jpg" data-asset-name="great-wall-autumn.jpg" alt=""><img src="/travel-notes-site/images/hero-dali.jpg" data-asset-name="hero-dali.jpg" alt=""><img src="/travel-notes-site/images/hero-default.jpg" data-asset-name="hero-default.jpg" alt=""><img src="/travel-notes-site/images/hover-cangshan.jpg" data-asset-name="hover-cangshan.jpg" alt=""><img src="/travel-notes-site/images/hover-erhai.jpg" data-asset-name="hover-erhai.jpg" alt=""><img src="/travel-notes-site/images/hover-train.jpg" data-asset-name="hover-train.jpg" alt=""><img src="/travel-notes-site/images/hover-xizhou.jpg" data-asset-name="hover-xizhou.jpg" alt=""><img src="/travel-notes-site/images/jiangnan-01.jpg" data-asset-name="jiangnan-01.jpg" alt=""><img src="/travel-notes-site/images/jiangnan-02.jpg" data-asset-name="jiangnan-02.jpg" alt=""><img src="/travel-notes-site/images/jiangnan-03.jpg" data-asset-name="jiangnan-03.jpg" alt=""><img src="/travel-notes-site/images/jiangnan-04.jpg" data-asset-name="jiangnan-04.jpg" alt=""><img src="/travel-notes-site/images/jiangnan-05.jpg" data-asset-name="jiangnan-05.jpg" alt=""><img src="/travel-notes-site/images/jiangnan-06.jpg" data-asset-name="jiangnan-06.jpg" alt=""><img src="/travel-notes-site/images/jiangnan-hover-01.jpg" data-asset-name="jiangnan-hover-01.jpg" alt=""><img src="/travel-notes-site/images/jiangnan-hover-02.jpg" data-asset-name="jiangnan-hover-02.jpg" alt=""><img src="/travel-notes-site/images/journal-01.jpg" data-asset-name="journal-01.jpg" alt=""><img src="/travel-notes-site/images/journal-02.jpg" data-asset-name="journal-02.jpg" alt=""><img src="/travel-notes-site/images/journal-03.jpg" data-asset-name="journal-03.jpg" alt=""><img src="/travel-notes-site/images/journal-04.jpg" data-asset-name="journal-04.jpg" alt=""><img src="/travel-notes-site/images/journal-05.jpg" data-asset-name="journal-05.jpg" alt=""><img src="/travel-notes-site/images/journal-06.jpg" data-asset-name="journal-06.jpg" alt=""><img src="/travel-notes-site/images/minnan-01.jpg" data-asset-name="minnan-01.jpg" alt=""><img src="/travel-notes-site/images/minnan-02.jpg" data-asset-name="minnan-02.jpg" alt=""><img src="/travel-notes-site/images/minnan-03.jpg" data-asset-name="minnan-03.jpg" alt=""><img src="/travel-notes-site/images/minnan-04.jpg" data-asset-name="minnan-04.jpg" alt=""><img src="/travel-notes-site/images/minnan-05.jpg" data-asset-name="minnan-05.jpg" alt=""><img src="/travel-notes-site/images/minnan-06.jpg" data-asset-name="minnan-06.jpg" alt=""><img src="/travel-notes-site/images/minnan-hover-01.jpg" data-asset-name="minnan-hover-01.jpg" alt=""><img src="/travel-notes-site/images/minnan-hover-02.jpg" data-asset-name="minnan-hover-02.jpg" alt=""></div><input type="file" id="ed-file" accept=".md,.mdx,.txt" hidden><input type="file" id="ed-image-file" accept="image/*" multiple hidden><script type="application/json" id="ed-seed">{"posts":[{"id":"beijing-autumn","title":"北京的秋天，从一条胡同开始","filename":"beijing-autumn.md","data":{"title":"北京的秋天，从一条胡同开始","description":"避开热门景区，在老城里走一条有银杏的路线，再去山脊上看一层层红透的秋色。","pubDate":"2026-09-28T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"北京","hero":{"src":"/images/great-wall-autumn.jpg","view":"/images/great-wall-autumn-4k.jpg","original":"/images/great-wall-autumn-original.jpg","caption":"秋色里的长城 · 短边 4K 预览档"},"trips":[],"stays":[],"gallery":[],"hoverImages":[{"key":"greatwall","src":"/images/great-wall-autumn.jpg","view":"/images/great-wall-autumn-4k.jpg","original":"/images/great-wall-autumn-original.jpg","alt":"秋色里的长城与石阶","caption":"山脊上的秋色 · DSCF2028"}]},"body":"\n## 从鼓楼往东\n\n早上八点的胡同最舒服，自行车铃、早点摊的热气，还有墙根下晒太阳的猫。\n\n## 银杏与灰瓦\n\n十月底的银杏配灰砖灰瓦，颜色特别沉。不需要滤镜，随手拍都好看。\n\n## 再往北，山脊上的秋色\n\n老城里的银杏黄得慢，[出了城往北，长城两侧的树林已经红透了一层](hover:greatwall)。石阶顺着山脊往上，人多但不挤，走一段回头看，颜色一层压一层。\n\n\u003e 封面固定整屏铺满、居中取景，不再需要比例或焦点。页面默认显示短边 4096px、压到 2–3MB 的预览档（`4096 × 5461`）；点开之后先按原比例完整显示这一档，**一旦放大**（点一下到 2×、滚轮推近或按 1:1），查看器才去读取原盘导出的 8019 × 10692 全分辨率原图。放大后按住就能拖动看细节。\n\n## 一点实用信息\n\n- 胡同里多为居民区，注意别打扰住户。\n- 步行路线灵活，累了随时拐进一家咖啡馆。\n- 山里比城里低两三度，风大，带件外套。\n"},{"id":"chengdu-sichuan","title":"成都的茶馆与一条没有计划的路","filename":"chengdu-sichuan.md","data":{"title":"成都的茶馆与一条没有计划的路","description":"从人民公园到玉林路，把两天交给盖碗茶和小巷子。","pubDate":"2026-10-12T00:00:00.000Z","tags":["travel","food"],"draft":false,"province":"四川","city":"成都","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 人民公园的上午\n\n鹤鸣茶社的竹椅一坐就是一上午。掏耳朵的师傅敲着音叉走过，茶续到第三泡，时间就慢了下来。\n\n## 玉林路到芳草街\n\n没有特意找小酒馆，反而是菜市场门口的锅盔和巷子里的苍蝇馆子更让人记住。成都的好，多半藏在没有招牌的地方。\n\n## 一点实用信息\n\n- 茶馆一般按杯计费，可以自带书坐很久。\n- 想避开人流，工作日去更自在。\n"},{"id":"dali-chengdu","title":"从大理到成都，把两座城慢慢走完","filename":"dali-chengdu.md","data":{"title":"从大理到成都，把两座城慢慢走完","description":"广州出发，飞机转慢车到大理，再坐动车去成都；回程从成都经贵阳飞回广州。两座城、五段路，一张按顺序画出来的路线图。","pubDate":"2026-10-26T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"云南","city":["大理","成都"],"hero":{"src":"/images/hero-dali.jpg","caption":"换成自己的高分辨率原图只改 hero.src"},"journey":{"origin":"广东","destination":["云南","四川"],"label":"广州 → 大理 → 成都 → 广州，示意路线非实际航路","note":"仅作位置示意，不作测绘用途"},"trips":[{"mode":"flight","leg":"out","code":"CZ3481","carrier":"中国南方航空","vehicle":"波音 787-9","from":{"place":"广州白云国际机场 T2","city":"广州","province":"广东","time":"2026-10-17 08:20"},"to":{"place":"昆明长水国际机场","city":"昆明","province":"云南","time":"2026-10-17 10:55"},"stops":[{"place":"桂林两江国际机场","city":"桂林","province":"广西","arrive":"09:25","depart":"10:05","duration":"40 分钟"}],"duration":"2h35m","fare":780,"seat":"经济舱 32A","note":"早班机，落地后坐地铁去昆明站附近住一晚，第二天接慢车。"},{"mode":"slow","leg":"local","code":"K9612","carrier":"中国铁路昆明局","vehicle":"25G 型客车 / HXD3C 牵引","from":{"place":"昆明站","city":"昆明","province":"云南","time":"2026-10-18 07:10"},"to":{"place":"大理站","city":"大理","province":"云南","time":"2026-10-18 13:42"},"stops":[],"duration":"6h32m","fare":64,"seat":"硬座 08 车 043","note":"特意挑了慢车。白天沿着山走，比动车慢大半天，但站台能下来透气，值。"},{"mode":"hsr","leg":"out","code":"G2886","carrier":"中国铁路成都局","vehicle":"CRH380A 型动车组","from":{"place":"大理站","city":"大理","province":"云南","time":"2026-10-21 09:05"},"to":{"place":"成都东站","city":"成都","province":"四川","time":"2026-10-21 15:28"},"stops":[],"duration":"6h23m","fare":431,"seat":"二等座 06 车 09A","note":"第二座城。中午在车上睡了一觉，醒来窗外已经是盆地的灰绿色。"},{"mode":"hsr","leg":"back","code":"D1826","carrier":"中国铁路成都局","vehicle":"CRH2A 型动车组","from":{"place":"成都东站","city":"成都","province":"四川","time":"2026-10-23 08:12"},"to":{"place":"贵阳北站","city":"贵阳","province":"贵州","time":"2026-10-23 12:40"},"stops":[],"duration":"4h28m","fare":275,"seat":"二等座 03 车 11C","note":"回程不想一次坐到底，在贵阳停一晚，把最后一段留给早班机之后的白天。"},{"mode":"flight","leg":"back","code":"CZ3662","carrier":"中国南方航空","vehicle":"空客 A320neo","from":{"place":"贵阳龙洞堡国际机场 T2","city":"贵阳","province":"贵州","time":"2026-10-24 14:20"},"to":{"place":"广州白云国际机场 T2","city":"广州","province":"广东","time":"2026-10-24 16:05"},"stops":[],"duration":"1h45m","fare":520,"seat":"经济舱 18F","note":"落地时天还亮着，地铁上已经开始有晚高峰的人了。"}],"stays":[{"checkIn":"2026-10-17","checkOut":"2026-10-18","nights":1,"area":"昆明 · 站前街","name":"站前小旅馆","group":"独立民宿","price":260,"note":"只为接第二天七点十分的慢车，房间很小但热水足"},{"checkIn":"2026-10-18","checkOut":"2026-10-21","nights":3,"area":"大理古城 · 人民路","name":"古城南门白族小院","group":"独立民宿","price":420,"note":"含早，步行到人民路 5 分钟，院子里有棵石榴树","image":"/images/journal-05.jpg","imageCaption":"清晨从院子望出去，光刚落进来"},{"checkIn":"2026-10-21","checkOut":"2026-10-23","nights":2,"area":"成都 · 玉林路","name":"玉林小院客栈","group":"亚朵","price":460,"note":"二楼窗外是老梧桐，走路十分钟到菜市场","image":"/images/hover-xizhou.jpg","imageCaption":"巷子里的老树与午后的光"},{"checkIn":"2026-10-23","checkOut":"2026-10-24","nights":1,"area":"贵阳 · 甲秀楼","name":"南明河畔酒店","group":"华住","price":320,"note":"中转一晚，只带了随身包","image":"/images/journal-06.jpg","imageCaption":"夜里从河边看过去的灯"}],"gallery":[{"src":"/images/journal-01.jpg","alt":"出机场那天的开阔草地","camera":"Fujifilm X-T5"},{"src":"/images/journal-02.jpg","alt":"苍山脚下层叠的山与薄雾","camera":"Sony A7 IV"},{"src":"/images/journal-03.jpg","alt":"洱海平静的水面","camera":"Canon EOS R5"},{"src":"/images/journal-05.jpg","alt":"清晨从院子望出去，安静的水面","camera":"Nikon Z7 II"},{"src":"/images/journal-04.jpg","alt":"成都巷子里的午后树影","camera":"Leica Q3","cover":true,"city":"成都"},{"src":"/images/journal-06.jpg","alt":"夜里南明河边的灯","camera":"iPhone 15 Pro"},{"src":"/images/hero-dali.jpg","alt":"大理 · 洱海边","camera":"Fujifilm X-T5","cover":true,"city":"大理"}],"hoverImages":[{"key":"cangshan","src":"/images/hover-cangshan.jpg","alt":"层叠的山脊与薄雾","caption":"苍山 · 层叠的山脊"},{"key":"erhai","src":"/images/hover-erhai.jpg","alt":"湖面与远处的山","caption":"洱海 · 西岸水面"},{"key":"xizhou","src":"/images/hover-xizhou.jpg","alt":"午后的树林与光","caption":"喜洲 · 老院子门外"},{"key":"train","src":"/images/hover-train.jpg","alt":"站台与铁轨","caption":"K9612 · 昆明开往大理"}]},"body":"\n这趟去了两座城：先在大理把节奏放慢，再去成都把它重新热闹起来。左边那张路线图把**五段路按出发顺序**编了号，飞机、慢车、动车各自一种线型；翻到对应的票券，起点终点正好接得上。\n\n\u003e 唯一的原则还是：不赶。两座城之间留了整整一个白天在火车上，什么都没安排。\n\n## 第一站：大理\n\n到大理的第一件事不是去景点，而是把行李放下、在古城里随便走走，抬头就能看见[苍山](hover:cangshan)。[出机场那天云很高，草地上只有风声，第一张照片就这么拍下来了。](#photo-1)\n\n[绿皮车](hover:train)坐了六个半小时，下车时腿有点软，反而自动把节奏降了下来。小院老板娘给了一杯温水，说这几天早晚凉，让我把外套放在门口的藤椅上，出门随手拿。\n\n傍晚走到南门，城楼下面有人卖烤乳扇，焦香混着玫瑰酱的味道。没查什么必吃榜，站着吃完就回去了。[回过头才看见苍山在雾里一层层退开，那几分钟留在了第二张照片里。](#photo-2)\n\n第二天环洱海，从才村往北骑。生态廊道这一段车少、视野开阔，左手边一直是[洱海](hover:erhai)，中途在[喜洲](hover:xizhou)停下吃个破酥粑粑就够。[那片压过来的云影，比洱海本身更像样。](#photo-3)\n\n住到才村那一晚，早上被鸟叫醒。[推开窗，水面平得几乎没有波纹，几只小船停着不动。](#photo-4) 住宿那一屏里，这一晚就配了这张照片——任意一晚都能单独放图，没放的就留空。\n\n## 第二站：成都\n\n大理站上车，六个多小时到成都东。盆地和高原是两种完全不同的绿：一边是竖着的山，一边是摊开的田。[车过隧道以后光线忽然软下来，窗外的树影一层层往后退。](#photo-5)\n\n在玉林住了两晚。早上不设闹钟，下楼买碗豆花，沿着梧桐树走一圈再回来。午后找家茶馆坐着，看隔壁桌摆龙门阵，能听懂一半，另一半靠猜。这里和大理最像的地方是：**都不急着让你去哪儿**。\n\n第三天退房去车站，回程没有一口气坐回广州，先在贵阳停一晚。夜里沿着南明河走了一段，[河边的灯和对岸的楼都安安静静，最后一张照片留给了这里。](#photo-6)\n\n回头翻相册，[出发那天在洱海边按下的那张也留了下来——它既是正文里的一张照片，也是从云南点进这篇文章时的封面。](#photo-7) 封面图不是单独一套素材，只是在正文图片上多标了「用作封面」和「对应哪座城」。\n\n## 一点实用信息\n\n1. 两座城之间那趟动车车次少，想坐靠窗位记得提前买；大理站站台小，别卡着点进站。\n2. 十月大理早晚温差大，成都反而闷，外套要能塞进随身包。\n3. 回程拆成「动车 + 飞机」比直达便宜，还多出半天在贵阳；不喜欢中转就直接换成都飞广州。\n4. 文中的车次、航班、酒店与价格是占位示例，替换成真实行程即可。\n\n正文里把**一整句话**写成 `` `[句子](#photo-N)` `` 就建立了一次图文索引：句子本身带颜色，翻到对应照片时整句加深变色，点句子则反向翻照片。`` `[文字](hover:key)` `` 挂的是另一组独立的悬停小图，不进入左侧相册。城市写成 `city: [大理, 成都]` 这样的数组，封面、首页和路线图都会按两座城展示。\n"},{"id":"dali-yunnan","title":"大理的三天，风花雪月都很慢","filename":"dali-yunnan.md","data":{"title":"大理的三天，风花雪月都很慢","description":"从广东出发，飞机转绿皮再到古城，一份不用赶景点的云南行程。","pubDate":"2026-10-18T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"云南","city":"大理","hero":{"src":"/images/hero-dali.jpg","caption":"换成自己的高分辨率原图只改 hero.src"},"journey":{"origin":"广东","destination":"云南","label":"广州 → 昆明 → 大理，示意路线非实际航路","note":"仅作位置示意，不作测绘用途"},"trips":[{"mode":"flight","leg":"out","code":"CZ3481","carrier":"中国南方航空","vehicle":"波音 787-9","from":{"place":"广州白云国际机场 T2","city":"广州","time":"2026-10-17 08:20"},"to":{"place":"昆明长水国际机场","city":"昆明","time":"2026-10-17 10:55"},"stops":[],"duration":"2h35m","fare":780,"seat":"经济舱 32A","note":"早班机，落地后坐地铁去昆明站附近住一晚，第二天接慢车。"},{"mode":"slow","leg":"local","code":"K9612","carrier":"中国铁路昆明局","vehicle":"25G 型客车 / HXD3C 牵引","from":{"place":"昆明站","city":"昆明","time":"2026-10-18 07:10"},"to":{"place":"大理站","city":"大理","time":"2026-10-18 13:42"},"stops":[],"duration":"6h32m","fare":64,"seat":"硬座 08 车 043","note":"特意挑了慢车。白天沿着山走，比动车慢大半天，但窗子能开一条缝、站台能下来透气，值。"},{"mode":"hsr","leg":"back","code":"D3856","carrier":"中国铁路","vehicle":"CRH2A 型动车组","from":{"place":"大理站","city":"大理","time":"2026-10-21 08:05"},"to":{"place":"广州南站","city":"广州","time":"2026-10-21 18:40"},"stops":[],"duration":"10h35m","fare":590,"seat":"二等座 05 车 12F","note":"返程动车，中途换乘。带一本书刚好，看完的时候已经进广东了。"}],"stays":[{"checkIn":"2026-10-18","checkOut":"2026-10-20","nights":3,"area":"大理古城 · 人民路","name":"古城南门白族小院","group":"独立民宿","price":420,"note":"含早，步行到人民路 5 分钟，院子里有棵石榴树"},{"checkIn":"2026-10-20","checkOut":"2026-10-21","nights":1,"area":"才村 · 洱海西岸","name":"海西洱畔民宿","group":"华住","price":360,"note":"二楼湖景房，骑车 3 分钟到生态廊道"}],"gallery":[{"src":"/images/journal-01.jpg","alt":"山谷与开阔的草地，第一天到大理","camera":"Fujifilm X-T5"},{"src":"/images/journal-02.jpg","alt":"层叠的山脉与薄雾","camera":"Sony A7 IV"},{"src":"/images/journal-03.jpg","alt":"平静的湖面与远处的山","camera":"Canon EOS R5"},{"src":"/images/journal-04.jpg","alt":"树林与午后的光","camera":"Nikon Z7 II"},{"src":"/images/journal-05.jpg","alt":"湖边的清晨与安静的水面","camera":"Leica Q3"},{"src":"/images/journal-06.jpg","alt":"夜色里的山与天空","camera":"iPhone 15 Pro"}],"hoverImages":[{"key":"cangshan","src":"/images/hover-cangshan.jpg","alt":"层叠的山脊与薄雾","caption":"苍山 · 层叠的山脊"},{"key":"erhai","src":"/images/hover-erhai.jpg","alt":"湖面与远处的山","caption":"洱海 · 西岸水面"},{"key":"xizhou","src":"/images/hover-xizhou.jpg","alt":"午后的树林与光","caption":"喜洲 · 老院子门外"},{"key":"train","src":"/images/hover-train.jpg","alt":"站台与铁轨","caption":"K9612 · 昆明开往大理"}]},"body":"\n到大理的第一件事不是去景点，而是把行李放下、在古城里随便走走，抬头就能看见[苍山](hover:cangshan)。翻动左侧照片，右边对应的那句话会跟着变色；反过来点带颜色的整句话，照片也会翻过去。\n\n\u003e 这趟行程唯一的原则：**不赶**。三天里没有一处必须打卡的地方，走累了就坐下来。\n\n## 第一天：先学会慢下来\n\n人民路的坡不陡，下午的光落在白族民居的墙上，\u003cmark\u003e很适合什么都不做\u003c/mark\u003e。[城外那片草地上只有风声，这是那天的第一张照片。](#photo-1)\n\n[绿皮车](hover:train)坐了六个半小时，下车时腿有点软，反而自动把节奏降了下来。小院的老板娘给了一杯温水，说这几天早晚凉，让我把外套放在门口的藤椅上，出门随手拿。\n\n傍晚走到南门，城楼下面有人卖烤乳扇，焦香混着玫瑰酱的味道。没拍照，也没查什么必吃榜，站着吃完就回去了。[回过头才看见苍山在雾里一层层退开，那几分钟就留在了照片里。](#photo-2)\n\n## 第二天：环洱海\n\n租一辆自行车，从才村出发往北。生态廊道这一段车少、视野开阔，左手边一直是[洱海](hover:erhai)，中途在[喜洲](hover:xizhou)停下吃个破酥粑粑就够。\n\n上午的风从西边来，逆风骑得慢，倒是正好。水面一直是那种不太真实的蓝，云影一大块一大块地压过去，远处的苍山反而显得很近。有几段路两旁是农田，田埂上晒着稻子，偶尔有白鹭被车轮声惊起来。[那片压过来的云影，比洱海本身更像样。](#photo-3)\n\n[骑到喜洲刚过中午，把车靠在墙边，坐在老院子门槛上吃了两个粑粑，一个甜的一个咸的。](#photo-4) 老板问我要不要去严家大院，我摇头，说就坐一会儿。他笑了笑，没再推销。\n\n回程没有骑完全程，在半路搭了辆车把人和自行车一起带回去。后来证明这是这三天**最正确的决定**。\n\n## 第三天：什么都没安排\n\n住到才村这一晚，早上被鸟叫醒。[推开窗，洱海就在下面，水面平得几乎没有波纹，几只小船停着不动。](#photo-5)\n\n上午沿着生态廊道走了一段，没骑车，也没定终点。走累了就坐在石头上发呆，看对岸的山一点点从雾里显出来。中午退了房，把行李寄在民宿，下午在院子里写完明信片，才慢慢去车站。\n\n回程的动车开了十个半小时，中间换乘时站台上有很亮的太阳。车过广西以后天色暗下来，窗玻璃开始反光，[我在座位上把那本书看完了最后三十页。](#photo-6)\n\n## 一点实用信息\n\n1. 十月早晚温差大，带件外套；白天太阳很晒，\u003cmark\u003e别低估高原的紫外线\u003c/mark\u003e。\n2. 环海不必骑完全程，选一段慢慢走比打卡更值。\n3. 昆明到大理的慢车班次少，硬座票好买但时间长，介意的话直接换动车。\n4. 文中的车次、航班、酒店与价格是占位示例，替换成真实行程即可。\n\n照片的相机型号是编辑时填在 `gallery` 里的输入项，不读取 EXIF；想换图只改 frontmatter。正文里带虚线下划线的词会用小气泡弹出另一组图，它们来自独立的 ``hoverImages`` 图库，不进入左侧相册：正文里把**一整句话**写成 `` `[句子](#photo-N)` `` 就建立了一次图文索引：句子本身带颜色，翻到对应照片时整句加深变色，点句子则反向翻照片；序号与相册顺序一一对应。\n\n把一段文字写成 `` `[文字](hover:key)` `` 就能挂上一张悬停预览图，鼠标悬停、键盘聚焦或手机上点一下都可以打开。\n"},{"id":"extending-the-base","title":"把新能力加进基座","filename":"extending-the-base.mdx","data":{"title":"把新能力加进基座","description":"用 MDX 组件、内容集合和集成演示二次开发的三个入口。","pubDate":"2026-11-03T00:00:00.000Z","tags":["astro","engineering"],"draft":false,"trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\nimport Callout from '../../components/Callout.astro';\n\n\u003cCallout type=\"tip\" title=\"这是一段 MDX\"\u003e\n\n这个提示框是一个普通的 `.astro` 组件。因为启用了 `@astrojs/mdx`，文章里可以直接 `import` 组件并使用，也就是说：**加交互不必改主题、不必改路由**，写一个组件即可。\n\n\u003c/Callout\u003e\n\n## 三个扩展入口\n\n1. **内容层**：在 `src/content.config.ts` 里加一个 `defineCollection`，就能管理作品集、书单、项目等新内容类型，自动获得类型提示和校验。\n2. **集成层**：在 `astro.config.mjs` 的 `integrations` 数组里加官方集成，例如 `@astrojs/react`（交互岛）、`@astrojs/mdx`（已在）、Pagefind（本地搜索）。\n3. **页面层**：`src/pages/` 里新建 `.astro` 或 `.ts` 文件即新增路由；`getStaticPaths()` 可以把任意数据展开成一批静态页。\n\n## 构建时抓数据\n\nGitHub Pages 是纯静态托管，没有服务端。但构建阶段可以 `fetch` 任意 API，把结果烤进 HTML：\n\n```ts\nconst repos = await fetch('https://api.github.com/users/octocat/repos').then((r) =\u003e r.json());\n```\n\n适合 GitHub 项目列表、豆瓣记录、动态简历这类「一天更新一次就够」的内容。\n"},{"id":"guangzhou-food","title":"广州早茶笔记：一上午吃了六笼","filename":"guangzhou-food.md","data":{"title":"广州早茶笔记：一上午吃了六笼","description":"从虾饺到凤爪，记录一次不赶时间的早茶。","pubDate":"2026-09-20T00:00:00.000Z","tags":["travel","food"],"draft":false,"province":"广东","city":"广州","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 先占位，再点单\n\n老茶楼要自己找位、自己拿壶。普洱或菊花，一壶茶配几笼点心，节奏全由自己定。\n\n## 值得留到最后的\n\n虾饺、烧卖、凤爪是基本盘，最后来一份艇仔粥收尾最舒服。别一次点太多，蒸笼可以慢慢加。\n\n## 一点实用信息\n\n- 周末九点后基本要等位，八点半前到最稳。\n- 很多老店只收现金或本地支付，出门前备好。\n"},{"id":"hello-world","title":"从零开始的第一篇文章","filename":"hello-world.md","data":{"title":"从零开始的第一篇文章","description":"说明这套基座的基本写法，以及文章是如何变成页面的。","pubDate":"2026-11-01T00:00:00.000Z","tags":["astro","notes"],"draft":false,"trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 一篇 Markdown 就够了\n\n在 `src/content/blog/` 下新建一个 `.md` 文件，填好 frontmatter，构建时 `src/pages/blog/[...id].astro` 会自动为它生成一个静态页面。不需要注册路由，也不需要改配置。\n\n## 字段由内容层校验\n\n`src/content.config.ts` 用 Zod 定义了 `title`、`description`、`pubDate`、`tags`、`draft` 等字段。少写或写错类型，`astro build` 会直接报错，而不是等上线后页面崩掉。\n\n- `draft: true` 的文章在本地 `npm run dev` 可见，生产构建会被过滤掉。\n- `tags` 会自动生成 `/tags/\u003ctag\u003e/` 聚合页。\n\n## 图片与静态资源\n\n放 `public/` 下的文件按原路径输出；文章内引用时用 `${import.meta.env.BASE_URL}` 前缀，避免部署到 `/\u003crepo\u003e/` 子路径后 404。\n\n## 正文里的小图片\n\n把一段文字写成 `[词语](hover:cangshan)`，鼠标悬停、键盘聚焦，或手机上点一下，就会弹出一张小气泡图片。它是一组**独立素材**，不进入 03 屏左侧的沉浸式相册。\n\n试着把指针放到「[苍山](hover:cangshan)」或「[洱海](hover:erhai)」上。这篇文章没有写 `hoverImages`，所以用的是 `src/data/hover.ts` 里的默认图库；在 frontmatter 里声明 `hoverImages` 就能换成自己的图。\n"},{"id":"hexizoulang","title":"河西走廊，从兰州往西一直到沙丘为止","filename":"hexizoulang.md","data":{"title":"河西走廊，从兰州往西一直到沙丘为止","description":"广州起飞，经停西安落地兰州，再换三段火车慢慢往西：祁连山、丹霞、关城、鸣沙山。五段路画在同一张点阵图上。","pubDate":"2026-11-06T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"甘肃","city":["兰州","张掖","敦煌"],"hero":{"src":"/images/gansu-05.jpg","caption":"鸣沙山日出 · 短边 4K"},"journey":{"origin":"广东","destination":["甘肃"],"label":"广州 → 兰州 → 张掖 → 嘉峪关 → 敦煌 → 广州，纯点阵方位示意","note":"仅作位置示意，不作测绘用途"},"trips":[{"mode":"flight","leg":"out","code":"CZ3205","carrier":"中国南方航空","vehicle":"空客 A321neo","from":{"place":"广州白云国际机场 T2","city":"广州","province":"广东","time":"2026-10-09 07:40"},"to":{"place":"兰州中川国际机场 T2","city":"兰州","province":"甘肃","time":"2026-10-09 12:10"},"stops":[{"place":"西安咸阳国际机场 T3","city":"西安","province":"陕西","arrive":"09:45","depart":"10:30","duration":"45 分钟"}],"duration":"4h30m","fare":1120,"seat":"经济舱 14A","note":"经停那 45 分钟没下机，窗外一直是灰黄色的塬。落地兰州先吃一碗牛肉面。"},{"mode":"hsr","leg":"local","code":"D2671","carrier":"中国铁路兰州局","vehicle":"CRH5G 型动车组","from":{"place":"兰州西站","city":"兰州","province":"甘肃","time":"2026-10-10 08:06"},"to":{"place":"张掖西站","city":"张掖","province":"甘肃","time":"2026-10-10 11:32"},"stops":[],"duration":"3h26m","fare":149,"seat":"二等座 04 车 07C","note":"右手边一整个上午都是祁连山，雪线时隐时现，越往西越干。"},{"mode":"hsr","leg":"local","code":"D2743","carrier":"中国铁路兰州局","vehicle":"CRH5G 型动车组","from":{"place":"张掖西站","city":"张掖","province":"甘肃","time":"2026-10-12 09:20"},"to":{"place":"嘉峪关南站","city":"嘉峪关","province":"甘肃","time":"2026-10-12 11:03"},"stops":[],"duration":"1h43m","fare":65,"seat":"二等座 02 车 12F","note":"很短的一段。到站刚好赶上关城开门，风比想象中大得多。"},{"mode":"slow","leg":"local","code":"K9667","carrier":"中国铁路兰州局","vehicle":"25G 型客车 / HXD1D 牵引","from":{"place":"嘉峪关站","city":"嘉峪关","province":"甘肃","time":"2026-10-12 21:40"},"to":{"place":"敦煌站","city":"敦煌","province":"甘肃","time":"2026-10-13 05:16"},"stops":[],"duration":"7h36m","fare":148,"seat":"硬卧 11 车 018 中","note":"特意挑了夜车。醒来时窗外已经没有树了，只有低矮的骆驼刺。"},{"mode":"flight","leg":"back","code":"CZ3278","carrier":"中国南方航空","vehicle":"波音 737-800","from":{"place":"敦煌莫高国际机场","city":"敦煌","province":"甘肃","time":"2026-10-15 15:35"},"to":{"place":"广州白云国际机场 T2","city":"广州","province":"广东","time":"2026-10-15 20:05"},"stops":[],"duration":"4h30m","fare":980,"seat":"经济舱 22F","note":"起飞后回头还能看见那一整片沙，二十分钟后就什么都不剩了。"}],"stays":[{"checkIn":"2026-10-09","checkOut":"2026-10-10","nights":1,"area":"兰州 · 中山桥","name":"黄河边老楼房","group":"独立民宿","price":268,"note":"只为接第二天八点的动车，窗外能听见河水声","image":"/images/gansu-01.jpg","imageCaption":"出城之前，公路已经开始往西抬"},{"checkIn":"2026-10-10","checkOut":"2026-10-12","nights":2,"area":"张掖 · 丹霞镇","name":"丹霞口小院","group":"独立民宿","price":320,"note":"走去景区西门十五分钟，傍晚回来正好赶上最后一班区间车","image":"/images/gansu-03.jpg","imageCaption":"日落前二十分钟，颜色最重"},{"checkIn":"2026-10-12","checkOut":"2026-10-13","nights":1,"area":"嘉峪关 · 关城外","name":"关城客栈","group":"华住","price":296,"note":"中转一晚，只背了随身包去赶夜车","image":"/images/gansu-04.jpg","imageCaption":"关城外的秋色，比城里深一档"},{"checkIn":"2026-10-13","checkOut":"2026-10-15","nights":2,"area":"敦煌 · 鸣沙山","name":"沙洲夜市旁小院","group":"独立民宿","price":388,"note":"早上五点半出门走到沙丘只要二十分钟，回来鞋里全是沙","image":"/images/gansu-05.jpg","imageCaption":"六点十分，第一道光刚爬上沙脊"}],"gallery":[{"src":"/images/gansu-01.jpg","alt":"红色戈壁上的一条公路","camera":"Fujifilm X-T5"},{"src":"/images/gansu-02.jpg","alt":"雾气里一层层退开的祁连山","camera":"Sony A7 IV","cover":true,"city":"兰州"},{"src":"/images/gansu-03.jpg","alt":"傍晚被晒成赭红色的丹霞与雅丹","camera":"Canon EOS R5","cover":true,"city":"张掖"},{"src":"/images/gansu-04.jpg","alt":"秋色里的关城与山脊","camera":"Nikon Z7 II"},{"src":"/images/gansu-05.jpg","alt":"沙丘上一道被晨光拉长的脊线","camera":"Leica Q3","cover":true,"city":"敦煌"},{"src":"/images/gansu-06.jpg","alt":"日落之后只剩剪影的戈壁","camera":"iPhone 15 Pro"}],"hoverImages":[{"key":"qilian","src":"/images/gansu-hover-01.jpg","alt":"山脚下通往远处的公路","caption":"祁连山北麓 · 一路向西"},{"key":"star","src":"/images/gansu-hover-02.jpg","alt":"星空下的山脊","caption":"敦煌郊外 · 夜里十一点"}]},"body":"\n一直想走一趟河西走廊，但不想把它做成打卡清单。这回只定了一个原则：**每一段路都要在白天或者醒着的时候经过**，所以飞机换成动车、动车又换成夜车，五段票按顺序摊在左边那张图里，颜色只区分飞机、动车和普速。\n\n\u003e 从兰州到敦煌，海拔没怎么变，颜色却一路从青灰退成赭红，最后只剩黄。\n\n## 兰州：先让节奏慢下来\n\n落地那碗牛肉面吃完，沿着黄河走了一段。中山桥上风很大，[出城那天公路两边还是灰绿色的山，往西开了不到一小时就全变了。](#photo-1)\n\n第二天一早的动车贴着[祁连山](hover:qilian)走。雪线一直在右边，时隐时现，车厢里没人说话。[雾气把山一层层推开，最近的那道反而最淡，第二张照片是在车速最慢的时候按下的。](#photo-2)\n\n## 张掖到嘉峪关：颜色最重的两天\n\n丹霞景区里最不该做的事是跟着人流走。傍晚往西门方向多走二十分钟，[整片赭红色的山脊被斜光切出棱角，那种红不是照片能预先想好的。](#photo-3)\n\n再到嘉峪关，风比张掖更硬。[关城背后的山脊上已经黄透了一层，城墙和秋色叠在一起，反而看不出哪里是边界。](#photo-4) 站了很久才想起来要去赶夜车。\n\n## 敦煌：把最后一晚留给沙\n\n夜里从嘉峪关上车，醒来时窗外只剩骆驼刺。住的地方离鸣沙山很近，五点半出门，[爬到半坡回头，晨光刚好把一道沙脊拉成很长的亮线。](#photo-5)\n\n最后一个晚上没安排莫高窟，去了城郊看[星空](hover:star)。[天完全黑下来以后戈壁只剩剪影，风停了，第六张照片也没怎么调就留下来了。](#photo-6)\n\n## 一点实用信息\n\n1. 兰州到张掖的动车尽量选右侧靠窗，上午的光打在祁连山那一面。\n2. 丹霞看日落比日出稳，西门出来打车要提前约，天黑后车少。\n3. 嘉峪关到敦煌的夜车只有一趟，硬卧比硬座值；下铺票提前几天放。\n4. 文中的航班、车次、酒店与价格都是占位示例，换成自己的真实行程即可。\n\n正文里把**一整句话**写成 `` `[句子](#photo-N)` `` 就是一次图文索引：左侧相册翻到这张时整句加深变色，点句子则反向翻照片。`` `[文字](hover:key)` `` 挂的是另一组独立的悬停小图，不进相册。城市写成数组，首页点同一个省也能按 `?city=` 换封面。\n"},{"id":"jiangnan-buganlu","title":"江南不赶路，杭州、乌镇与苏州","filename":"jiangnan-buganlu.md","data":{"title":"江南不赶路，杭州、乌镇与苏州","description":"从广州飞杭州，再三段地面交通把西湖、水乡与老城串起来；四段路、三个省，回程干脆坐一趟长途高铁。","pubDate":"2026-10-12T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"浙江","city":["杭州","苏州"],"hero":{"src":"/images/jiangnan-01.jpg","caption":"湖上晚霞 · 短边 4K"},"journey":{"origin":"广东","destination":["浙江","江苏"],"label":"广州 → 杭州 → 乌镇 → 苏州 → 广州，纯点阵方位示意","note":"仅作位置示意，不作测绘用途"},"trips":[{"mode":"flight","leg":"out","code":"CZ3819","carrier":"中国南方航空","vehicle":"空客 A320neo","from":{"place":"广州白云国际机场 T2","city":"广州","province":"广东","time":"2026-09-24 09:15"},"to":{"place":"杭州萧山国际机场 T4","city":"杭州","province":"浙江","time":"2026-09-24 11:35"},"stops":[],"duration":"2h20m","fare":690,"seat":"经济舱 11C","note":"落地没去酒店，先坐地铁到湖边，刚好赶上傍晚那一阵光。"},{"mode":"hsr","leg":"local","code":"G7321","carrier":"中国铁路上海局","vehicle":"CRH380BL 型动车组","from":{"place":"杭州东站","city":"杭州","province":"浙江","time":"2026-09-27 08:42"},"to":{"place":"桐乡站","city":"乌镇","province":"浙江","time":"2026-09-27 09:19"},"stops":[],"duration":"37m","fare":34,"seat":"二等座 03 车 04A","note":"短到一杯茶都没喝完，出站再换二十分钟公交就到西栅门口。"},{"mode":"hsr","leg":"local","code":"G7586","carrier":"中国铁路上海局","vehicle":"CR400BF 型动车组","from":{"place":"桐乡站","city":"乌镇","province":"浙江","time":"2026-09-29 10:06"},"to":{"place":"苏州北站","city":"苏州","province":"江苏","time":"2026-09-29 11:24"},"stops":[],"duration":"1h18m","fare":96,"seat":"二等座 07 车 12F","note":"跨了一道省界，窗外其实什么都没变，还是平的水田和低矮的房子。"},{"mode":"hsr","leg":"back","code":"G1013","carrier":"中国铁路广州局","vehicle":"CR400AF 型动车组","from":{"place":"苏州北站","city":"苏州","province":"江苏","time":"2026-10-01 08:03"},"to":{"place":"广州南站","city":"广州","province":"广东","time":"2026-10-01 16:28"},"stops":[],"duration":"8h25m","fare":712,"seat":"二等座 09 车 03A","note":"没换飞机。一整天坐着看窗外从水田慢慢变成丘陵，挺好。"}],"stays":[{"checkIn":"2026-09-24","checkOut":"2026-09-26","nights":2,"area":"杭州 · 湖滨","name":"湖边老公寓","group":"独立民宿","price":460,"note":"走到湖边七分钟，早上不用设闹钟","image":"/images/jiangnan-01.jpg","imageCaption":"傍晚六点二十，云刚好烧起来"},{"checkIn":"2026-09-26","checkOut":"2026-09-27","nights":1,"area":"杭州 · 龙井村","name":"茶山上的小院","group":"独立民宿","price":520,"note":"为了早上那一片茶园，第二天再回城里坐车","image":"/images/jiangnan-03.jpg","imageCaption":"田垄一圈圈绕到山腰"},{"checkIn":"2026-09-27","checkOut":"2026-09-29","nights":2,"area":"乌镇 · 西栅","name":"临水老屋","group":"独立民宿","price":580,"note":"住景区里，早晨游客还没进来的时候最值","image":"/images/jiangnan-04.jpg","imageCaption":"早上七点，栈道上只有保洁的阿姨"},{"checkIn":"2026-09-29","checkOut":"2026-10-01","nights":2,"area":"苏州 · 平江路","name":"巷子里的小客栈","group":"亚朵","price":420,"note":"出门就是河，晚上能听见隔壁评弹的尾音","image":"/images/jiangnan-06.jpg","imageCaption":"清早的木栈桥，一个人也没有"}],"gallery":[{"src":"/images/jiangnan-01.jpg","alt":"粉色晚霞落在湖面与远山上","camera":"Fujifilm X-T5","cover":true,"city":"杭州"},{"src":"/images/jiangnan-02.jpg","alt":"林子里斜下来的一道晨光","camera":"Sony A7 IV"},{"src":"/images/jiangnan-03.jpg","alt":"茶园里一圈圈规整的田垄","camera":"Canon EOS R5"},{"src":"/images/jiangnan-04.jpg","alt":"水边通向树影深处的木栈道","camera":"Nikon Z7 II"},{"src":"/images/jiangnan-05.jpg","alt":"山涧里落下来的一线水","camera":"Leica Q3"},{"src":"/images/jiangnan-06.jpg","alt":"湖面上伸出去的空木栈桥","camera":"iPhone 15 Pro","cover":true,"city":"苏州"}],"hoverImages":[{"key":"water","src":"/images/jiangnan-hover-01.jpg","alt":"碧绿水面上的一条小船","caption":"水乡 · 早班摇橹船"},{"key":"hut","src":"/images/jiangnan-hover-02.jpg","alt":"湖边的小木屋与远山","caption":"湖边 · 还没开门的茶室"}]},"body":"\n这趟没排任何必去清单。四段票按出发顺序摊在左边：一段飞机、三段高铁，跨了广东、浙江、江苏三个省；回程特意选了八小时的长途高铁，把「回去」也当成一段路来走。\n\n\u003e 江南适合不赶路。最好看的光都不在景点里，而在你刚好走到那儿的那几分钟。\n\n## 杭州：先坐一下午\n\n落地直接去湖边，什么都没安排。[傍晚的云烧得很慢，远山一层层压在粉色后面，第一张照片是在长椅上坐着按的。](#photo-1)\n\n第二天往山里走。九溪那一段树密，[晨光从叶缝里斜下来，落到石阶上只是一小片，第二张拍的是那片光而不是树。](#photo-2)\n\n后来在龙井村住了一晚。清早茶园还没人，[田垄一圈圈绕到山腰，规整得像谁在坡上画的等高线。](#photo-3) 老板泡了杯新茶，说今年雨水多，芽头比往年壮。\n\n## 乌镇：把早晨留给空巷\n\n住进西栅的好处是能赶在游客之前起来。[七点的木栈道往树影深处伸，水面平得没有一丝风，只有保洁阿姨推着车从对面过来。](#photo-4)\n\n坐了一趟[早班摇橹船](hover:water)，船过石桥时水声忽然变闷。岸边那间[还没开门的茶室](hover:hut)后来成了这趟最想再回去的地方——什么都没发生，只是很安静。\n\n山里另有一天，[溪水从石壁上落成很细的一线，走近了才能听见声音盖过鸟叫。](#photo-5)\n\n## 苏州：以八小时高铁收尾\n\n平江路的清晨比白天好。[木栈桥空着伸进湖里，对岸的树还没醒，最后一张照片留给这里。](#photo-6)\n\n回程没换飞机，从苏州北一路坐到广州南。八小时里水田慢慢变成丘陵，天黑前刚好进市区。\n\n## 一点实用信息\n\n1. 杭州东到桐乡只有半小时多一点，别提前太久进站，站内换乘很绕。\n2. 乌镇西栅住景区内才能刷房卡多次出入，早晨和夜里是两种地方。\n3. 苏州北离老城远，留足四十分钟地铁；回程长途高铁带件外套。\n4. 文中的航班、车次、酒店与价格都是占位示例，换成真实行程即可。\n\n正文里把**一整句话**写成 `` `[句子](#photo-N)` `` 就建立一次图文索引：翻到对应照片时整句加深变色，点句子则反向翻照片。`` `[文字](hover:key)` `` 是另一组独立的悬停小图，不进相册。\n"},{"id":"jiuzhaigou-sichuan","title":"从成都往北：九寨沟的四天","filename":"jiuzhaigou-sichuan.md","data":{"title":"从成都往北：九寨沟的四天","description":"第二次来四川，出了盆地才明白「蜀道」两个字。","pubDate":"2026-07-22T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"四川","city":"九寨沟","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 路本身就是行程\n\n从成都坐车往北，沿岷江一路海拔往上爬，窗外的植被一层层换。中途在松潘住了一晚，古城墙下有人卖刚烤好的牦牛肉串。\n\n## 沟里不用赶\n\n景区是 Y 字形，先把最远的原始森林坐到底，再一段段往回走。长海安静，五花海的颜色在阴天反而更沉。\n\n## 一点实用信息\n\n- 旺季建议提前订票，观光车按顺序走，别逆着人流。\n- 高原昼夜温差大，七月也要带外套。\n"},{"id":"lijiang-yunnan","title":"又去云南：丽江的两场雨","filename":"lijiang-yunnan.md","data":{"title":"又去云南：丽江的两场雨","description":"第二次到云南，把时间留给束河的雨和一顿漫长的晚饭。","pubDate":"2026-08-14T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"云南","city":"丽江","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 雨把行程改了\n\n原本打算一早上玉龙雪山，结果雨从七点下到中午。索性退掉票，在束河找了家有屋檐的院子坐着，看雨水从瓦当连成线。\n\n## 慢一点的一顿饭\n\n下午雨停，去忠义市场买了菌子，交给客栈附近的小店加工。等菜的一个小时里，老板把炭火拨了两次，说急不得。\n\n## 一点实用信息\n\n- 雨季（六到九月）雪山经常临时停运，行程别排太满。\n- 束河比大研安静，适合把一天只安排一件事。\n"},{"id":"minnan-xiamen-quanzhou","title":"闽南的夏天，厦门的海、泉州的巷子、武夷山的雾","filename":"minnan-xiamen-quanzhou.md","data":{"title":"闽南的夏天，厦门的海、泉州的巷子、武夷山的雾","description":"一趟高铁到厦门，沿着海岸去泉州，再折进山里看雾，最后从武夷山飞回广州。四段路，两个省，六张照片。","pubDate":"2026-07-18T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"福建","city":["厦门","泉州","武夷山"],"hero":{"src":"/images/minnan-02.jpg","caption":"海滩落日 · 短边 4K"},"journey":{"origin":"广东","destination":["福建"],"label":"广州 → 厦门 → 泉州 → 武夷山 → 广州，纯点阵方位示意","note":"仅作位置示意，不作测绘用途"},"trips":[{"mode":"hsr","leg":"out","code":"D2311","carrier":"中国铁路南昌局","vehicle":"CRH2A 型动车组","from":{"place":"广州南站","city":"广州","province":"广东","time":"2026-06-28 07:26"},"to":{"place":"厦门北站","city":"厦门","province":"福建","time":"2026-06-28 11:48"},"stops":[],"duration":"4h22m","fare":254,"seat":"二等座 05 车 08F","note":"沿海那一段真好，右边时不时会闪过一小块特别蓝的海。"},{"mode":"hsr","leg":"local","code":"D6217","carrier":"中国铁路南昌局","vehicle":"CRH1A 型动车组","from":{"place":"厦门北站","city":"厦门","province":"福建","time":"2026-07-01 09:12"},"to":{"place":"泉州站","city":"泉州","province":"福建","time":"2026-07-01 09:56"},"stops":[],"duration":"44m","fare":34,"seat":"二等座 02 车 11A","note":"不到一小时。到了才发现老城根本不用坐车，走着走着一整天就过去了。"},{"mode":"hsr","leg":"local","code":"G1694","carrier":"中国铁路南昌局","vehicle":"CR400AF 型动车组","from":{"place":"泉州站","city":"泉州","province":"福建","time":"2026-07-03 08:18"},"to":{"place":"武夷山北站","city":"武夷山","province":"福建","time":"2026-07-03 11:07"},"stops":[],"duration":"2h49m","fare":176,"seat":"二等座 06 车 03C","note":"从海边折进山里，隧道一个接一个，出来的时候窗上已经起了雾。"},{"mode":"flight","leg":"back","code":"CZ3890","carrier":"中国南方航空","vehicle":"波音 737-800","from":{"place":"武夷山机场","city":"武夷山","province":"福建","time":"2026-07-06 17:10"},"to":{"place":"广州白云国际机场 T2","city":"广州","province":"广东","time":"2026-07-06 18:45"},"stops":[],"duration":"1h35m","fare":560,"seat":"经济舱 16A","note":"小机场，起飞前在廊桥上还能闻到雨后的湿土味。"}],"stays":[{"checkIn":"2026-06-28","checkOut":"2026-06-30","nights":2,"area":"厦门 · 曾厝垵","name":"海边旧楼改的小客栈","group":"独立民宿","price":348,"note":"早上五点走到海边只要六分钟，回来路上买一杯花生汤","image":"/images/minnan-01.jpg","imageCaption":"天亮前后，浪一道比一道长"},{"checkIn":"2026-06-30","checkOut":"2026-07-01","nights":1,"area":"厦门 · 鼓浪屿","name":"老别墅里的两间房","group":"独立民宿","price":520,"note":"岛上过一夜，夜里几乎没有车声","image":"/images/minnan-02.jpg","imageCaption":"退潮那半小时，沙滩全是暖的"},{"checkIn":"2026-07-01","checkOut":"2026-07-03","nights":2,"area":"泉州 · 西街","name":"巷子里的红砖小院","group":"独立民宿","price":386,"note":"出门就是老街，屋顶能看见东西塔","image":"/images/minnan-04.jpg","imageCaption":"转角那丛花，每天都开得更满一点"},{"checkIn":"2026-07-03","checkOut":"2026-07-06","nights":3,"area":"武夷山 · 三姑","name":"茶田边的山居","group":"亚朵","price":430,"note":"连着三早都是雾，第四天才放晴","image":"/images/minnan-05.jpg","imageCaption":"六点四十，雾还压在山谷里没起来"}],"gallery":[{"src":"/images/minnan-01.jpg","alt":"天亮前后一层层推上来的长浪","camera":"Fujifilm X-T5"},{"src":"/images/minnan-02.jpg","alt":"落日把退潮的沙滩染成暖色","camera":"Sony A7 IV","cover":true,"city":"厦门"},{"src":"/images/minnan-03.jpg","alt":"树影下碧蓝的一小片水湾","camera":"Canon EOS R5","cover":true,"city":"泉州"},{"src":"/images/minnan-04.jpg","alt":"巷口开得正盛的一丛黄花","camera":"Nikon Z7 II"},{"src":"/images/minnan-05.jpg","alt":"云雾压在山谷与茶田上方","camera":"Leica Q3","cover":true,"city":"武夷山"},{"src":"/images/minnan-06.jpg","alt":"河谷边上一条往山里去的公路","camera":"iPhone 15 Pro"}],"hoverImages":[{"key":"ride","src":"/images/minnan-hover-01.jpg","alt":"夕阳下骑车的人与远处的热气球","caption":"环岛路 · 傍晚六点半"},{"key":"desk","src":"/images/minnan-hover-02.jpg","alt":"摊开的地图、相机和笔记本","caption":"出发前夜 · 桌上摊了一地"}]},"body":"\n六月末从广州坐高铁去厦门，沿着海岸往北到泉州，再折回山里看雾，最后从武夷山飞回来。四段票按顺序画在左边那张点阵图上：三段高铁、一段飞机，只有广东和福建两块轮廓。\n\n\u003e 海和山其实只隔了两小时四十九分，中间是一连串隧道。\n\n## 厦门：先把时间交给海\n\n住的地方离海很近，早上五点出门，天还没全亮。[长浪一层层推上来，节拍慢得让人不想说话，第一张照片就这么等出来的。](#photo-1)\n\n傍晚换到岛上住一晚。[退潮那半小时整个沙滩都变成暖色，云压得低，第二张按下去时刚好有人从画面边上走过去。](#photo-2)\n\n还有一天沿着[环岛路](hover:ride)骑车，风从背后推，骑到看不清路牌才折回。[树影底下藏着一小片特别蓝的水湾，走进去才发现水比远看更清。](#photo-3)\n\n## 泉州：老城是走出来的\n\n泉州不用做攻略。从西街随便拐进一条巷子，[转角那丛黄花正开得满，墙头的红砖被太阳晒得发白。](#photo-4) 半天下来没进一个收费景点，倒是喝了三杯茶。\n\n出发那晚[桌上摊了一地地图和相机](hover:desk)，最后只带了一台机器和两卷胶片——这趟拍得少，反而记得清楚。\n\n## 武夷山：连着三个早上的雾\n\n从海边进山，隧道一个接一个，出来时车窗已经起雾。住的三天里，[每天早上六点四十，云雾都还压在茶田上方没有散，第五张照片是第三天等到的那道斜光。](#photo-5)\n\n最后一天放晴，[沿着河谷往山里开，公路在绿色里拐了个很缓的弯，第六张留给了这段路而不是山顶。](#photo-6)\n\n## 一点实用信息\n\n1. 广州南到厦门北选右侧靠窗，沿海那几段会反复闪过海面。\n2. 泉州老城全靠走，西街往小巷里拐比主街安静得多。\n3. 武夷山看雾要早起，六点到八点之间最好；雨后第二天概率更高。\n4. 文中的车次、航班、酒店与价格都是占位示例，换成真实行程即可。\n\n正文里把**一整句话**写成 `` `[句子](#photo-N)` `` 就是一次图文索引：左侧相册翻到这张时整句加深变色，点句子则反向翻照片。`` `[文字](hover:key)` `` 挂的是另一组独立的悬停小图，不进相册。\n"},{"id":"westlake-zhejiang","title":"西湖边走一圈，把秋天收进口袋","filename":"westlake-zhejiang.md","data":{"title":"西湖边走一圈，把秋天收进口袋","description":"从断桥到茅家埠，一条避开人潮的杭州秋日散步路线。","pubDate":"2026-10-05T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"浙江","city":"杭州","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 绕开断桥\n\n节假日断桥人最多，不如从北山街往西走，梧桐叶子落下来的时候，湖面会安静很多。\n\n## 茅家埠的下午\n\n这一带水面窄、树影密，比湖滨更像旧时候的西湖。带一杯热茶坐到太阳偏西，是本趟最舒服的两小时。\n\n## 一点实用信息\n\n- 全程步行约 6 公里，穿好走的鞋。\n- 十月底到十一月初是梧桐最好看的时候。\n"},{"id":"wuzhen-zhejiang","title":"二刷浙江：乌镇的清晨与夜","filename":"wuzhen-zhejiang.md","data":{"title":"二刷浙江：乌镇的清晨与夜","description":"同一条水巷，早上七点和晚上八点是两个地方。","pubDate":"2026-03-19T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"浙江","city":"乌镇","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 住一晚才看得到的东西\n\n上次只在杭州转了一圈，这回特意在乌镇住下。旅行团还没进来的清晨，西栅的石板上只有扫地的声音；等灯亮起，又是另一副样子。\n\n## 坐着船过一段\n\n不长的一段水路，从桥下穿过去的时候，两岸的窗都亮着。船工说这条河他划了十几年，旺季一天要来回十几趟。\n\n## 一点实用信息\n\n- 想拍空景就住在景区内，早晚凭房卡可以自由进出。\n- 三月多雨，石板路滑，鞋底要防滑。\n"},{"id":"xishuangbanna-yunnan","title":"第三次进云南，往南走到西双版纳","filename":"xishuangbanna-yunnan.md","data":{"title":"第三次进云南，往南走到西双版纳","description":"泼水节前后的景洪、植物园里的夜风，以及一顿吃到天黑的傣味。","pubDate":"2026-04-06T00:00:00.000Z","tags":["travel","notes"],"draft":false,"province":"云南","city":"西双版纳","trips":[],"stays":[],"gallery":[],"hoverImages":[]},"body":"\n## 从干燥的高原到湿热的坝子\n\n前两次都在滇西北，这次想看看云南的另一半。落地景洪是晚上，空气里全是湿润的草木味，和丽江完全是两个季节。\n\n## 植物园值得留一整天\n\n勐仑那片园区很大，东区是雨林、西区是分类园。傍晚坐在王莲池边等天黑，比赶景点有意思得多。\n\n## 一点实用信息\n\n- 四月白天很晒，防晒和驱蚊都要带。\n- 告庄夜市热闹但价格偏高，想吃地道傣味可以往曼听公园周边的小店走。\n"}],"provinces":["北京","天津","河北","山西","内蒙古","辽宁","吉林","黑龙江","上海","江苏","浙江","安徽","福建","江西","山东","河南","湖北","湖南","广东","广西","海南","重庆","四川","贵州","云南","西藏","陕西","甘肃","青海","宁夏","新疆","台湾","香港","澳门"],"cityKeys":["西双版纳","香格里拉","乌鲁木齐","呼和浩特","呼伦贝尔","九寨沟","峨眉山","千岛湖","武夷山","张家界","嘉峪关","日喀则","哈尔滨","长白山","石家庄","秦皇岛","广州","深圳","珠海","佛山","汕头","湛江","韶关","惠州","昆明","大理","丽江","腾冲","建水","成都","乐山","稻城","宜宾","绵阳","贵阳","遵义","荔波","凯里","安顺","重庆","北京","上海","天津","杭州","乌镇","宁波","绍兴","湖州","嘉兴","南京","苏州","无锡","扬州","西安","华山","咸阳","桂林","南宁","北海","阳朔","厦门","福州","泉州","长沙","凤凰","武汉","宜昌","青岛","济南","泰安","郑州","洛阳","开封","太原","大同","平遥","兰州","敦煌","张掖","西宁","茶卡","拉萨","林芝","喀什","伊犁","漠河","长春","沈阳","大连","海口","三亚","香港","澳门","台北","高雄","花莲","南昌","庐山","婺源","合肥","黄山","宏村","承德","银川","中卫"],"defaults":[{"key":"cangshan","src":"/images/hover-cangshan.jpg","alt":"层叠的山脊与薄雾","caption":"苍山 · 山脊线"},{"key":"erhai","src":"/images/hover-erhai.jpg","alt":"湖面与远处的山","caption":"洱海 · 水面"},{"key":"xizhou","src":"/images/hover-xizhou.jpg","alt":"午后的树林与光","caption":"喜洲 · 老院子"},{"key":"train","src":"/images/hover-train.jpg","alt":"站台与铁轨","caption":"绿皮车 · 途中"}],"images":["gansu-01.jpg","gansu-02.jpg","gansu-03.jpg","gansu-04.jpg","gansu-05.jpg","gansu-06.jpg","gansu-hover-01.jpg","gansu-hover-02.jpg","great-wall-autumn-4k.jpg","great-wall-autumn-original.jpg","great-wall-autumn.jpg","hero-dali.jpg","hero-default.jpg","hover-cangshan.jpg","hover-erhai.jpg","hover-train.jpg","hover-xizhou.jpg","jiangnan-01.jpg","jiangnan-02.jpg","jiangnan-03.jpg","jiangnan-04.jpg","jiangnan-05.jpg","jiangnan-06.jpg","jiangnan-hover-01.jpg","jiangnan-hover-02.jpg","journal-01.jpg","journal-02.jpg","journal-03.jpg","journal-04.jpg","journal-05.jpg","journal-06.jpg","minnan-01.jpg","minnan-02.jpg","minnan-03.jpg","minnan-04.jpg","minnan-05.jpg","minnan-06.jpg","minnan-hover-01.jpg","minnan-hover-02.jpg"],"repo":"macrospro/travel-notes","branch":"content","base":"/travel-notes-site/"}</script><script>/* ==========================================================================
    WBZip · 零依赖 ZIP 打包器（store 模式，UTF-8 文件名）
    --------------------------------------------------------------------------
    静态站里没有 npm / 服务端，导出「一个文件夹（.md + 图片集）」只能在浏览器里
@@ -305,8 +305,9 @@
    与 v1（九张表单 Tab）的区别：只有一个输入区 + 顶部工具栏，选中文字即可改格式、
    绑定照片 / 悬停小图；所有图片集中在「图片集」抽屉；导出的是一个完整文件夹
    （.zip：1 篇 .md + 同目录 photos/ 专用照片文件夹 + 使用说明）。
-   插入原图后会在 photos/ 里生成三档：缩略图 / ≥4K 低码率缩放图 / 全分辨率原图，
-   发布时 .md 与整个 photos/ 一起提交到 content 分支。
+   插入原图后会在 photos/ 里生成三档：缩略图 / 短边 4096px 且压到 2–3MB 的预览图 /
+   全分辨率原图，发布时 .md 与整个 photos/ 一起提交到 content 分支。
+   封面一律整屏 cover + 居中，不再有比例 / 焦点 / 填充方式。
 
    零后端、零依赖：构建时把全部文章注入 #ed-seed，脚本以纯文本内联，
    所以离线单文件预览 / zip / 线上都能跑（只有「直提 GitHub」需要网络）。
@@ -339,18 +340,24 @@
   function safeName(s) {
     return String(s || 'image').replace(/[^A-Za-z0-9._-]+/g, '-').replace(/^-+|-+$/g, '') || 'image';
   }
-  /* 城市 / 目的地省份：既可以是数组，也可以是「大理、成都」这样的分隔串 */
-  function asListJs(v, sep) {
+  /* 从 /images/x.jpg、file:///…/images/x.jpg、完整 URL 里统一取文件名 */
+  function fileOf(s) {
+    var mm = /([^/?#]+)$/.exec(String(s || ''));
+    return mm ? mm[1] : '';
+  }
+  /* 城市 / 目的地省份的分隔规则必须与站点 src/data/post.ts 的 asList() 完全一致：
+     、 , ， / | 以及连续 2 个以上空格都算分隔符。之前编辑器里散着三套正则，
+     写「大理  成都」时站点拆成两个入口、编辑器却只认一个城市，封面下拉配不出图。 */
+  function splitListJs(v) {
     var out = Array.isArray(v)
       ? v.map(function (x) { return String(x == null ? '' : x).trim(); })
       : String(v == null ? '' : v).split(/[、,，/|]+|\s{2,}/).map(function (x) { return x.trim(); });
-    return out.filter(Boolean).join(sep || '、');
+    return out.filter(Boolean);
   }
+  function asListJs(v, sep) { return splitListJs(v).join(sep || '、'); }
   /* 文章的目的地城市（city 字段）：数组或「大理、成都」分隔串 */
   function destinationsJs() {
-    var c = state.doc && state.doc.meta ? state.doc.meta.city : '';
-    var arr = Array.isArray(c) ? c : String(c == null ? '' : c).split(/[、,，\/|]+/);
-    return arr.map(function (x) { return String(x == null ? '' : x).trim(); }).filter(Boolean);
+    return splitListJs(state.doc && state.doc.meta ? state.doc.meta.city : '');
   }
   /* 多目的地 → 每个目的地一张封面：算出还缺图的城市，编辑器与预览都用它 */
   function coverSummary() {
@@ -360,6 +367,29 @@
       return !covers.some(function (a) { return a.city === c; });
     });
     return { cities: cities, covers: covers, missing: missing };
+  }
+  /* 封面不变量：一个「键」只允许一张图。
+     键 = city（该城市入口的封面）；空 city = 不带 ?city= 时的默认封面。
+     用户把另一张图选到同一个键上，就把旧图的勾选与城市一起清掉 ——
+     否则会出现「两张图都自称大理封面」，页面只认第一张、编辑器却显示两张都勾着。 */
+  function dedupeCovers(keepId) {
+    var list = ((state.doc && state.doc.assets) || []).filter(function (a) { return a.cover; });
+    var seen = {};
+    var keep = keepId ? list.filter(function (a) { return a.id === keepId; })[0] : null;
+    if (keep) seen[keep.city || ''] = true;   // 刚操作的那张先占住自己的键
+    list.forEach(function (a) {
+      var key = a.city || '';
+      if (a.id === keepId) { seen[key] = true; return; }
+      if (seen[key]) { a.cover = false; a.city = ''; }
+      else seen[key] = true;
+    });
+  }
+  /* 只有「不带城市的封面」才是默认封面，它同时决定 frontmatter 的 hero.src。
+     没有这种图时保留原 hero.src —— 老文章的封面可能是一张不在相册里的独立图。 */
+  function syncDefaultHero() {
+    var h = isPlain(state.doc.meta.hero) ? state.doc.meta.hero : (state.doc.meta.hero = { src: '' });
+    var def = state.doc.assets.filter(function (a) { return a.role === 'gallery' && a.cover && !a.city; })[0];
+    if (def) h.src = assetPath(def);
   }
   /* frontmatter 里的图片地址 → 可显示地址：优先用构建期静态探测（离线包里是 data URI） */
   function metaImgUrl(src) {
@@ -381,6 +411,15 @@
     }).map(function (x) { return x.t; });
   }
   function modeGlyph(m) { return m === 'flight' ? '✈' : m === 'hsr' ? '➤' : '🚂'; }
+  /* 与文章页 JourneyRoute.astro 的 cityLabel 同规则：优先 city，其次从 place 里认城市名 */
+  function cityLabelJs(leg) {
+    var c = String((leg && leg.city) || '').trim();
+    if (c) return c;
+    var place = String((leg && leg.place) || '').trim();
+    var keys = SEED.cityKeys || [];
+    for (var i = 0; i < keys.length; i++) if (place.indexOf(keys[i]) >= 0) return keys[i];
+    return place;
+  }
   function pad2(n) { return String(n).padStart(2, '0'); }
   function status(msg, kind) {
     var el = $('#ed-status');
@@ -526,6 +565,12 @@
       assets: [],
     };
   }
+  /* 封面已彻底去参数化：aspect / focus / fit / display 都是旧文章残留，站点一律忽略。
+     载入 / 源码模式往返时直接剥掉，避免编辑器把这些字段又写回新导出的 .md。 */
+  function stripHeroOpts(meta) {
+    if (!isPlain(meta) || !isPlain(meta.hero)) return;
+    ['aspect', 'focus', 'fit', 'display'].forEach(function (k) { delete meta.hero[k]; });
+  }
   function normalize(src, body, extra) {
     var d = blankDoc(), s = isPlain(src) ? src : {};
     d.id = String(s.id || (extra && extra.id) || d.id);
@@ -536,6 +581,7 @@
     d.meta.draft = d.meta.draft === true || d.meta.draft === 'true';
     if (!Array.isArray(d.meta.tags)) d.meta.tags = d.meta.tags ? String(d.meta.tags).split(/[,，]/).map(function (x) { return x.trim(); }).filter(Boolean) : [];
     if (!isPlain(d.meta.hero)) d.meta.hero = { src: '' };
+    stripHeroOpts(d.meta);
     d.body = String(body == null ? '' : body).replace(/^\s*\n/, '');
     d.assets = [];
     return d;
@@ -592,7 +638,10 @@
     function add(src, role, extra) {
       if (!src) return;
       var m = /images\/([^/?#]+)/.exec(String(src));
-      var name = m ? safeName(m[1]) : '';
+      /* 已有文章里的文件名必须原样保留：safeName 会把「照片 1.jpg」改成「1.jpg」，
+         而 public/images/ 与离线包里的文件仍是原名，导出后整站破图。
+         safeName 只用于新建 / 上传时生成文件名。 */
+      var name = m ? m[1] : '';
       if (!name) return;                       // 外链图片不纳入本地文件夹
       // 同一张图可以同时是相册照片与悬停小图，按 name + role 区分两条资源项
       var hit = list.filter(function (x) { return x.name === name && x.role === role; })[0];
@@ -627,36 +676,71 @@
       if (m) add(m[1], 'inline', {});
     });
     doc.assets = list;
+    /* 三档派生图（view / original / full）写在 frontmatter 里、却不在资源池中：
+       载入老文章后导出 zip 会漏掉 -4k.jpg / -original.jpg，放大时 404。
+       单独记一份「待随包复制」的文件名清单（不改变 assets / 图片集 UI）。 */
+    doc.tierPaths = [];
+    function noteTier(src) {
+      var mm = /images\/([^/?#]+)/.exec(String(src || ''));
+      if (!mm) return;
+      var n = mm[1];
+      if (doc.tierPaths.indexOf(n) >= 0) return;
+      if (list.filter(function (x) { return x.name === n; }).length) return;
+      doc.tierPaths.push(n);
+    }
+    function noteTiersOf(o) {
+      if (!isPlain(o)) return;
+      noteTier(o.view); noteTier(o.original); noteTier(o.full);
+    }
+    noteTiersOf(meta.hero);
+    (meta.gallery || []).forEach(noteTiersOf);
+    (meta.hoverImages || []).forEach(noteTiersOf);
   }
 
-  /** 资源项 → frontmatter 字段（保留原条目里的额外字段，如 lens / place） */
+  /** 资源项 → frontmatter 字段（保留原条目里的额外字段，如 lens / place / view / original）。
+      外链素材（https / data URI）没有本地文件、不进 assets，必须按原顺序保留，
+      否则载入一篇用了外链图的文章再导出，整条 gallery / hoverImages 会被删光。 */
   function syncMetaFromAssets() {
     var meta = state.doc.meta, list = state.doc.assets;
-    function oldMap(key) {
-      var m = {};
-      (meta[key] || []).forEach(function (x) { if (x && x.src) m[x.src] = x; });
-      return m;
+    function mergeBySrc(oldArr, rebuilt) {
+      /* 离线包里 #ed-seed 的路径可能被改写成 file:// 绝对路径，按「文件名」比对才稳，
+         否则载入后 gallery 会被重排，正文 #photo-N 全部错位。 */
+      function keyOf(s) { return fileOf(s); }
+      var bySrc = {}, out = [];
+      rebuilt.forEach(function (o) { bySrc[keyOf(o.src)] = o; });
+      (Array.isArray(oldArr) ? oldArr : []).forEach(function (old) {
+        if (!isPlain(old) || !old.src) return;
+        var k = keyOf(old.src);
+        if (bySrc[k]) { out.push(bySrc[k]); delete bySrc[k]; return; }
+        if (/^(?:https?:|data:)/i.test(String(old.src))) out.push(clone(old)); // 外链原样保留
+      });
+      Object.keys(bySrc).forEach(function (k) { out.push(bySrc[k]); });       // 新上传的追加到末尾
+      return out;
     }
-    var oldG = oldMap('gallery'), oldH = oldMap('hoverImages');
     var gallery = list.filter(function (a) { return a.role === 'gallery'; }).map(function (a) {
-      var o = Object.assign({}, oldG[assetPath(a)] || {});
-      o.src = assetPath(a); o.alt = a.alt || a.name; o.camera = a.camera || '（未填写）';
+      var old = (meta.gallery || []).filter(function (g) { return isPlain(g) && fileOf(g.src) === a.name; })[0] || {};
+      var o = Object.assign({}, old);
+      o.src = assetPath(a); o.alt = a.alt || o.alt || a.name; o.camera = a.camera || '（未填写）';
       /* 两个 flag 写回 frontmatter：cover = 也用作封面，city = 对应哪个目的地 */
       if (a.cover) { o.cover = true; if (a.city) o.city = a.city; else delete o.city; }
       else { delete o.cover; delete o.city; }
       return o;
     });
     var hover = list.filter(function (a) { return a.role === 'hover'; }).map(function (a) {
-      var o = Object.assign({}, oldH[assetPath(a)] || {});
-      o.src = assetPath(a); o.alt = a.alt || a.name; o.key = a.key || safeName(a.name.replace(/\.[^.]+$/, ''));
+      var old = (meta.hoverImages || []).filter(function (h) { return isPlain(h) && fileOf(h.src) === a.name; })[0] || {};
+      var o = Object.assign({}, old);
+      o.src = assetPath(a); o.alt = a.alt || o.alt || a.name; o.key = a.key || o.key || safeName(a.name.replace(/\.[^.]+$/, ''));
       if (a.caption) o.caption = a.caption;
+      /* view / original / full 由 Object.assign 从原条目继承，不能被覆盖或丢弃 */
       return o;
     });
     /* meta.hero.src 由「设为默认封面 / 上传封面」显式维护：
        新模型里封面图是 gallery 里带 cover / city 两个 flag 的项，
        不能再让 hero 角色的资源项把刚选好的封面覆盖回旧图。 */
-    if (gallery.length) meta.gallery = gallery; else delete meta.gallery;
-    if (hover.length) meta.hoverImages = hover; else delete meta.hoverImages;
+    var mergedGallery = mergeBySrc(meta.gallery, gallery);
+    var mergedHover = mergeBySrc(meta.hoverImages, hover);
+    if (mergedGallery.length) meta.gallery = mergedGallery; else delete meta.gallery;
+    if (mergedHover.length) meta.hoverImages = mergedHover; else delete meta.hoverImages;
   }
   function galleryIndex(asset) {
     var list = state.doc.assets.filter(function (a) { return a.role === 'gallery'; });
@@ -667,12 +751,10 @@
      3.5 分段编辑：00 封面 / 01 交通 / 02 住宿 / 03 正文
      前三段是 frontmatter 里的结构化数据（之前没有入口），03 才是富文本正文。
      ---------------------------------------------------------------------- */
-  var CROP_RATIOS = [
-    { v: '', l: '整屏原样' },
-    { v: '16:9', l: '16:9' }, { v: '3:2', l: '3:2' }, { v: '4:3', l: '4:3' },
-    { v: '1:1', l: '1:1' }, { v: '21:9', l: '21:9' },
-    { v: '3:4', l: '3:4' }, { v: '9:16', l: '9:16' },
-  ];
+  /* 封面不再提供比例 / 焦点 / 填充方式：一律整屏 cover、居中取景，
+     图片规格统一按「短边 4096」计算（见 getTiers 的预览档）。 */
+  var HERO_FIT = 'cover';
+  var HERO_FOCUS = '50% 50%';
   var TRIP_FIELDS = [
     { k: 'code', l: '车次 / 航班号' }, { k: 'carrier', l: '承运方' },
     { k: 'vehicle', l: '车型 / 机型' }, { k: 'from.place', l: '出发地点' },
@@ -703,21 +785,13 @@
     }
     cur[parts[parts.length - 1]] = v;
   }
-  function ratioCss(a) {
-    var m = /^(\d+(?:\.\d+)?)\s*[:/]\s*(\d+(?:\.\d+)?)$/.exec(String(a || ''));
-    return m ? m[1] + ' / ' + m[2] : '';
-  }
-  function focusParts(f) {
-    var m = /^(\d+(?:\.\d+)?)%\s+(\d+(?:\.\d+)?)%$/.exec(String(f || '').trim());
-    return m ? [Number(m[1]), Number(m[2])] : [50, 50];
-  }
-  function heroOpts() {
-    var h = isPlain(state.doc.meta.hero) ? state.doc.meta.hero : {};
-    return {
-      aspect: String(h.aspect || ''),
-      focus: String(h.focus || '50% 50%'),
-      fit: h.fit === 'contain' ? 'contain' : 'cover',
-    };
+  function delDocPath(o, p) {
+    var parts = p.split('.'), cur = o;
+    for (var i = 0; i < parts.length - 1; i++) {
+      cur = cur && cur[parts[i]];
+      if (!cur || typeof cur !== 'object') return;
+    }
+    if (cur) delete cur[parts[parts.length - 1]];
   }
   /* 封面默认 4K：预览固定取 -4k 探测图（离线包里是 data URI）；
      刚上传的图没有派生档，直接用它自己的原图 data URI。 */
@@ -725,15 +799,18 @@
     var h = isPlain(state.doc.meta.hero) ? state.doc.meta.hero : {};
     var src = String(h.src || '');
     if (!src) return '';
-    if (/^data:/i.test(src)) {
-      var up = state.doc.assets.filter(function (x) { return x.role === 'hero'; })[0];
-      return up ? assetDisplay(up) : src;
-    }
+    if (/^data:/i.test(src)) return src;
+    /* 按 hero.src 的文件名精确找资源，不能取「第一张 hero 角色」——
+       换了默认封面后那条旧资源还在，预览会一直显示旧图，看起来像按钮没生效。 */
+    var nm = /([^/?#]+)$/.exec(src);
+    var a = nm ? state.doc.assets.filter(function (x) { return x.name === nm[1]; })[0] : null;
+    if (a && a.data) return a.data;          // 刚上传 / 刚换的图优先，别再显示旧的 4K 探测图
     var m = /^(?:.*\/)?([^/]+?)(\.[A-Za-z0-9]+)?$/.exec(src);
     var stem = m ? m[1] : src, ext = (m && m[2]) || '.jpg';
-    var probe = probeMap()[stem + '-4k' + ext];
+    /* 派生档一律是 JPEG（getTiers 统一写 -4k.jpg），即使上传的是 .png/.webp，
+       也要先按 .jpg 找探测图，否则换了默认封面后预览仍显示旧图。 */
+    var probe = probeMap()[stem + '-4k.jpg'] || probeMap()[stem + '-4k' + ext];
     if (probe) return probe;
-    var a = state.doc.assets.filter(function (x) { return x.role === 'hero'; })[0];
     return a ? assetDisplay(a) : displayize(src);
   }
   function textField(path, label, val, num, ph) {
@@ -750,38 +827,21 @@
   }
   function coverForm() {
     var h = isPlain(state.doc.meta.hero) ? state.doc.meta.hero : (state.doc.meta.hero = { src: '' });
-    var o = heroOpts(), r = ratioCss(o.aspect), fp = focusParts(o.focus);
     var url = heroDisplayUrl();
-    var stageStyle = 'object-fit:' + o.fit + ';object-position:' + o.focus + ';' +
-      (r ? 'aspect-ratio:' + r + ';' : 'height:236px;');
+    /* 不再让用户管比例：一律整屏 cover + 居中取景，尺寸只按短边 4K 的预览档算。 */
+    var stageStyle = 'object-fit:' + HERO_FIT + ';object-position:' + HERO_FOCUS + ';height:236px;';
     var view = url
       ? '<img class="ed-crop-img" src="' + esc(url) + '" alt="" width="900" height="600">'
       : '<div class="ed-crop-empty">还没有封面图<br><small>点下方「从图片集选封面」或「上传并设为封面」</small></div>';
-    return '<div class="ed-sec-head"><b>00 · COVER</b><span>指定比例裁切 · 默认 4K 全分辨率</span></div>' +
+    return '<div class="ed-sec-head"><b>00 · COVER</b><span>整屏铺满 · 短边 4K 预览档</span></div>' +
       '<div class="ed-crop-stage" style="' + esc(stageStyle) + '">' + view +
-        '<span class="ed-crop-tag">' + esc(o.aspect || '整屏原样') + ' · 4K</span></div>' +
-      '<div class="ed-sec-block"><div class="ed-sec-sub">裁切比例（不裁掉原图像素，CSS 按 4K 档取景）</div>' +
-        '<div class="ed-ratio-row">' + CROP_RATIOS.map(function (x) {
-          return '<button type="button" data-hero-aspect="' + esc(x.v) + '"' +
-            (o.aspect === x.v ? ' class="is-active"' : '') +
-            ' title="' + esc(x.v ? '把封面裁成 ' + x.l + '，页面用 4K 档显示' : '沿用站点默认的整屏 / 62vh 高度') + '">' +
-            esc(x.l) + '</button>';
-        }).join('') + '</div></div>' +
-      '<div class="ed-sec-grid">' +
-        '<label class="ed-sec-field"><span>焦点 X <b id="ed-focus-x">' + fp[0] + '%</b></span>' +
-          '<input type="range" min="0" max="100" value="' + fp[0] + '" data-hero-focus-axis="x" title="左右移动裁切焦点"></label>' +
-        '<label class="ed-sec-field"><span>焦点 Y <b id="ed-focus-y">' + fp[1] + '%</b></span>' +
-          '<input type="range" min="0" max="100" value="' + fp[1] + '" data-hero-focus-axis="y" title="上下移动裁切焦点，竖幅照片往上取景"></label>' +
-        selectField('hero.fit', '填充方式', o.fit,
-          [['cover', 'cover · 填满裁切框'], ['contain', 'contain · 整幅黑底']]) +
-        textField('hero.caption', '封面说明', h.caption) +
-      '</div>' +
+        '<span class="ed-crop-tag">短边 4K · 整屏 cover</span></div>' +
+      '<div class="ed-sec-grid">' + textField('hero.caption', '封面说明', h.caption) + '</div>' +
       '<div class="ed-sec-actions">' +
-        '<button type="button" data-sec-act="pick-hero" title="打开图片集，把某张图设为封面">▤ 从图片集选封面</button>' +
+        '<button type="button" data-sec-act="pick-hero" title="打开图片集，点某张图的「设为默认封面」，或在下拉里选城市">▤ 从图片集选封面</button>' +
         '<button type="button" data-sec-act="upload-hero" title="上传一张本地图片并直接设为封面">＋ 上传并设为封面</button>' +
-        '<button type="button" data-sec-act="reset-hero" title="清除封面裁切选项，恢复整屏 cover">↺ 重置裁切</button>' +
       '</div>' +
-      '<p class="ed-sec-note">页面可见图固定取 <code>view</code>（≥4K）档，没有派生档才用 <code>src</code>；CSS 只按 <code>aspect</code> 取景，不生成被裁掉像素的副本，放大时 Lightbox 仍读全分辨率原图。比例 / 焦点会写进 frontmatter 的 <code>hero</code> 块。</p>';
+      '<p class="ed-sec-note">封面固定整屏铺满、居中取景，<b>不再设置比例 / 焦点 / 填充方式</b>。上传的照片在导出时统一按<b>短边 4096px</b> 缩放、把码率压到 <b>2–3MB</b>；页面可见图直接用这一档，放大时 Lightbox 才去读全分辨率原图。</p>';
   }
   var TRIP_GROUPS = [
     { key: 'out', label: '去程', en: 'OUTBOUND' },
@@ -802,6 +862,7 @@
         '<span class="ed-sec-stop-no">STOP ' + String(j + 1).padStart(2, '0') + '</span>' +
         textField('trips.' + i + '.stops.' + j + '.place', '经停地点', st.place, 0, '桂林两江国际机场') +
         textField('trips.' + i + '.stops.' + j + '.city', '经停城市', st.city, 0, '桂林') +
+        textField('trips.' + i + '.stops.' + j + '.province', '经停省份', st.province, 0, '留空按城市自动识别') +
         textField('trips.' + i + '.stops.' + j + '.arrive', '到达', st.arrive, 0, '09:25') +
         textField('trips.' + i + '.stops.' + j + '.depart', '再出发', st.depart, 0, '10:05') +
         textField('trips.' + i + '.stops.' + j + '.duration', '停留', st.duration, 0, '40 分钟') +
@@ -919,7 +980,7 @@
         code: 'G0000', carrier: '', vehicle: '',
         from: { place: '出发站', city: '', time: '2026-01-01 08:00' },
         to: { place: '到达站', city: '', time: '2026-01-01 12:00' },
-        duration: '', fare: 0, seat: '', note: '',
+        duration: '', seat: '', note: '',
       } : {
         checkIn: '2026-01-01', checkOut: '', nights: 1,
         area: '待填写区域', name: '待填写住宿', group: '', price: 0, note: '',
@@ -934,14 +995,15 @@
         var tmp = arr[idx]; arr[idx] = arr[j]; arr[j] = tmp;
       }
     } else if (act === 'pick-hero') {
-      openDrawer(true); status('图片集已打开：点任意一张的「设为封面」', 'ok'); return;
+      openDrawer(true); status('图片集已打开：点任意一张的「设为默认封面」，或勾「用作封面」后在下拉里选城市', 'ok'); return;
     } else if (act === 'upload-hero') {
       state.pendingHero = true; $('#ed-image-file').click();
-      status('选择一张图片，会自动设为封面', 'ok'); return;
+      status('选择一张图片，会自动设为默认封面（不指定城市）', 'ok'); return;
     } else if (act === 'reset-hero') {
+      /* 兼容老草稿：清掉历史上写进 hero 的裁切参数，封面现在一律整屏 cover */
       var h = isPlain(meta.hero) ? meta.hero : (meta.hero = { src: '' });
       ['aspect', 'focus', 'fit', 'display', 'alt', 'credit', 'exif'].forEach(function (k) { delete h[k]; });
-      status('封面裁切已重置为整屏 cover', 'ok');
+      status('已清除旧版裁切参数，封面固定整屏 cover', 'ok');
     } else if (act === 'upload-stay') {
       state.pendingStay = idx;
       $('#ed-image-file').click();
@@ -956,7 +1018,7 @@
       if (!tr) return;
       if (!Array.isArray(tr.stops)) tr.stops = [];
       tr.stops.push({
-        place: '经停机场 / 车站', city: '经停城市',
+        place: '经停机场 / 车站', city: '', province: '',
         arrive: '', depart: '', duration: '45 分钟',
       });
       status('已给第 ' + (idx + 1) + ' 段加一个经停，填上城市就会画进地图', 'ok');
@@ -1037,10 +1099,8 @@
     }
     var meta = state.doc.meta;
     /* 00 / 01 / 02 的结构化数据也在右侧预览里，改表单立刻看得见 */
-    var co = heroOpts(), cr = ratioCss(co.aspect);
     var heroUrl = heroDisplayUrl();
-    var heroStyle = 'object-fit:' + co.fit + ';object-position:' + co.focus + ';' +
-      (cr ? 'aspect-ratio:' + cr + ';' : 'height:200px;');
+    var heroStyle = 'object-fit:' + HERO_FIT + ';object-position:' + HERO_FOCUS + ';height:200px;';
     var tripList = Array.isArray(meta.trips) ? meta.trips : [];
     var stayList = Array.isArray(meta.stays) ? meta.stays : [];
     function tripItem(t) {
@@ -1060,8 +1120,8 @@
     /* 与文章页路线图一致：按出发顺序列出每一段，编号 + 交通方式 */
     var routeStrip = tripList.length ? '<div class="ed-render-route">' +
       orderedTripList(tripList).map(function (t, k) {
-        var f = getPath(t || {}, 'from.city') || getPath(t || {}, 'from.place') || '—';
-        var to = getPath(t || {}, 'to.city') || getPath(t || {}, 'to.place') || '—';
+        var f = cityLabelJs(getPath(t || {}, 'from')) || '—';
+        var to = cityLabelJs(getPath(t || {}, 'to')) || '—';
         return '<span><b>' + pad2(k + 1) + '</b> <i>' + modeGlyph(t && t.mode) + '</i> ' +
           esc(f) + ' → ' + esc(to) + '</span>';
       }).join('') + '</div>' : '';
@@ -1075,8 +1135,7 @@
           '<b>' + esc(c) + '</b>' + (a ? '' : '<small>待配图</small>') + '</span>';
       }).join('') + '</div>' : '';
     var secHtml =
-      '<section class="ed-render-sec"><div class="ed-render-sec-head">00 COVER · ' +
-        esc(co.aspect || '整屏原样') + ' · 4K</div>' +
+      '<section class="ed-render-sec"><div class="ed-render-sec-head">00 COVER · 短边 4K · 整屏铺满</div>' +
         (heroUrl ? '<img class="ed-render-hero" style="' + esc(heroStyle) + '" src="' + esc(heroUrl) + '" alt="">'
                  : '<div class="ed-render-sec-empty">未设置封面</div>') + coverStrip + '</section>' +
       '<section class="ed-render-sec"><div class="ed-render-sec-head">01 TRANSPORT · ' + tripList.length + ' LEG · 按出发顺序</div>' +
@@ -1150,50 +1209,77 @@
     if (a) a.textContent = String((SEED.posts || []).length);
     if (b) b.textContent = String(Object.keys(state.drafts).length);
   }
-  /* 多目的地：逐个城市提示封面配好了没有。改城市名时只重画这一条，不重建整个图片集 */
+  /* 封面状态条：城市封面 + 默认封面各显示一枚 chip，让「谁占了哪个键」一眼可见 */
   function renderCoverStatus() {
     var box = $('#ed-cover-status');
     if (!box) return;
     var sum = coverSummary();
-    if (sum.cities.length > 1) {
-      box.innerHTML = '<b>多目的地封面</b>' + sum.cities.map(function (c) {
-        var ok = sum.missing.indexOf(c) < 0;
-        return '<span class="ed-cover-chip' + (ok ? ' is-ok' : ' is-miss') + '">' + esc(c) + (ok ? ' ✓' : ' 待配图') + '</span>';
-      }).join('') + '<small>每个目的地各标一张「用作封面 + 对应城市」，首页按省份点进来才会显示各自的图</small>';
-      box.hidden = false;
-    } else { box.hidden = true; box.innerHTML = ''; }
+    var h = isPlain(state.doc.meta.hero) ? state.doc.meta.hero : {};
+    var def = state.doc.assets.filter(function (a) { return a.cover && !a.city; })[0];
+    var defOk = !!def || !!String(h.src || '');
+    var chips = sum.cities.map(function (c) {
+      var ok = sum.missing.indexOf(c) < 0;
+      return '<span class="ed-cover-chip' + (ok ? ' is-ok' : ' is-miss') + '">' + esc(c) + (ok ? ' ✓' : ' 待配图') + '</span>';
+    }).join('');
+    chips += '<span class="ed-cover-chip' + (defOk ? ' is-ok' : ' is-miss') + '">默认封面' + (defOk ? ' ✓' : ' 未设置') + '</span>';
+    box.innerHTML = '<b>封面配置</b>' + chips +
+      '<small>同一城市只能有一张封面，选中新的会自动取消旧的；「对应城市」留空＝不带 ?city= 时的默认封面</small>';
+    box.hidden = false;
   }
   function renderAssets() {
     var grid = $('#ed-asset-grid');
     if (!grid) return;
     var roleName = { hero: '封面', gallery: '相册', hover: '悬停', stay: '住宿', inline: '正文' };
     var sum = coverSummary();
-    var cityOpts = sum.cities.map(function (c) { return '<option value="' + esc(c) + '"></option>'; }).join('');
+    var heroSrc = String((isPlain(state.doc.meta.hero) ? state.doc.meta.hero.src : '') || '');
+    /* 城市改成下拉：只能从文章的目的地里选，或留空当默认封面，
+       不再让用户手打城市名打出两个「大理」；选了城市就等于勾上「用作封面」。 */
+    function coverFields(a) {
+      var opts = [{ v: '', l: '不指定（默认封面）' }].concat(
+        sum.cities.map(function (c) { return { v: c, l: c + ' 的封面' }; }));
+      if (a.city && sum.cities.indexOf(a.city) < 0) opts.push({ v: a.city, l: a.city + '（不在目的地列表）' });
+      return '<label class="ed-asset-flag"><input type="checkbox" data-asset-cover="' + a.id + '"' +
+        (a.cover ? ' checked' : '') + ' title="勾上＝把这张图用作封面；同一城市只允许一张"> 用作封面</label>' +
+        '<label class="ed-asset-input"><span>对应城市</span><select data-asset-city="' + a.id + '"' +
+        ' title="选城市＝该城市入口的封面；留空＝默认封面">' +
+        opts.map(function (o) {
+          return '<option value="' + esc(o.v) + '"' + (o.v === (a.city || '') ? ' selected' : '') + '>' + esc(o.l) + '</option>';
+        }).join('') + '</select></label>';
+    }
     var cards = state.doc.assets.map(function (a) {
       var idx = a.role === 'gallery' ? galleryIndex(a) : 0;
+      var isBase = heroSrc && assetPath(a) === heroSrc;
+      var tag = a.cover && a.city
+        ? '<span class="ed-cover-tag is-city">' + esc(a.city) + ' 的封面</span>'
+        : (a.cover || isBase) ? '<span class="ed-cover-tag is-default">默认封面</span>' : '';
       var extra = '';
       if (a.role === 'gallery') {
         extra = '<label class="ed-asset-input"><span>相机</span><input type="text" data-asset-camera="' + a.id + '" value="' + esc(a.camera || '') + '" placeholder="例如 Fujifilm X-T5"></label>' +
-          /* 两个 flag：封面图 = 正文图片 + 是否封面 + 对应城市 */
-          '<label class="ed-asset-flag"><input type="checkbox" data-asset-cover="' + a.id + '"' + (a.cover ? ' checked' : '') + '> 用作封面</label>' +
-          '<label class="ed-asset-input"><span>对应城市</span><input type="text" data-asset-city="' + a.id + '" list="ed-city-list" value="' + esc(a.city || '') + '" placeholder="如 大理 / 成都"></label>';
+          coverFields(a);
+      } else if (a.role === 'hero') {
+        /* 置顶的独立封面图也要能「选中」：给它同样的勾选 / 城市控件，
+           勾上后会自动转成相册图（排在末尾，不打乱已有 #photo-N）。 */
+        extra = coverFields(a) +
+          '<p class="ed-asset-hint">这张是默认封面图、不在相册里；勾「用作封面」或选城市后会一并加入相册。</p>';
       } else if (a.role === 'hover') {
         extra = '<label class="ed-asset-input"><span>引用 key</span><input type="text" data-asset-key="' + a.id + '" value="' + esc(a.key || '') + '"></label>';
       }
-      return '<div class="ed-asset-card' + (a.cover ? ' is-cover' : '') + '" data-asset-id="' + a.id + '">' +
+      return '<div class="ed-asset-card' + (a.cover || isBase ? ' is-cover' : '') + '" data-asset-id="' + a.id + '">' +
         '<div class="ed-asset-thumb"><img src="' + esc(assetDisplay(a)) + '" alt="' + esc(a.alt || a.name) + '"' +
         ' width="108" height="82" data-tip="点击放大预览 · ' + esc(a.name) + '"></div>' +
         '<div class="ed-asset-info"><b title="' + esc(a.name) + '">' + esc(a.name) + '</b>' +
-        '<span class="ed-role ed-role--' + a.role + '">' + roleName[a.role] + (idx ? ' #' + idx : '') + '</span>' + extra +
+        '<span class="ed-role ed-role--' + a.role + '">' + roleName[a.role] + (idx ? ' #' + idx : '') + '</span>' + tag + extra +
         '<div class="ed-asset-btns">' +
-        '<button type="button" data-asset-act="bind" data-id="' + a.id + '" title="把选中的一整句话绑定到相册第 ' + (idx || 1) + ' 张（生成 #photo-N 索引）">绑定选中文字</button>' +
+        '<button type="button" data-asset-act="bind" data-id="' + a.id + '" title="' +
+          (a.role === 'gallery' ? '把选中文字绑定到相册第 ' + idx + ' 张（生成 #photo-N 索引）'
+                                : '先把这张图追加到相册末尾，再把选中文字绑定到它的新编号') + '">绑定选中文字</button>' +
         '<button type="button" data-asset-act="hover" data-id="' + a.id + '" title="把选中文字挂上悬停小图（生成 hover:key 引用）">悬停小图</button>' +
-        '<button type="button" data-asset-act="hero" data-id="' + a.id + '" title="设为不带城市参数时的默认封面；这张图仍留在正文图片里">设为默认封面</button>' +
+        '<button type="button" data-asset-act="hero" data-id="' + a.id + '" title="设为不带 ?city= 时的默认封面；其它默认封面会自动取消">设为默认封面</button>' +
         '<button type="button" data-asset-act="del" data-id="' + a.id + '" title="从图片集移除，并重排正文里的 #photo-N 编号">删除</button>' +
         '</div></div></div>';
     }).join('');
-    grid.innerHTML = '<datalist id="ed-city-list">' + cityOpts + '</datalist>' +
-      (cards || '<p class="ed-empty">还没有图片。点上方「＋ 上传图片」添加，或在站点已有文章里载入它的相册。</p>');
+    grid.innerHTML = cards ||
+      '<p class="ed-empty">还没有图片。点上方「＋ 上传图片」添加，或在站点已有文章里载入它的相册。</p>';
     renderCoverStatus();
     var d = $('#ed-drawer');
     if (d) d.hidden = !state.drawer;
@@ -1221,8 +1307,12 @@
     if (!parsed) { status('源码缺少开头的 --- frontmatter ---，暂不解析', 'warn'); return; }
     state.doc.meta = parsed.fm;
     state.doc.meta.draft = state.doc.meta.draft === true || state.doc.meta.draft === 'true';
+    stripHeroOpts(state.doc.meta);
     state.doc.body = canonicalize(parsed.body);
     registerAssets(state.doc, true);
+    /* 源码里手写了两张同城市封面时，按站点 coverEntries().find 的规则只留第一张 */
+    dedupeCovers();
+    syncMetaFromAssets();
     markDirty(); renderPreview(); renderProps(); renderSections(); refreshTitle();
   }
 
@@ -1271,14 +1361,27 @@
       b.classList.toggle('is-active', !!on);
     });
   }
+  /* 把任意角色的图片变成「可作封面的正文图片」：
+     同名 gallery 已存在就复用那一条（同一文件只留一份）；否则原地转角色并
+     **移到相册末尾** —— 置顶的封面资产若原地变 #1，会把正文里已有的
+     #photo-N 索引全部挤歪。 */
+  function ensureCoverCandidate(a) {
+    if (a.role === 'gallery') return a;
+    var arr = state.doc.assets;
+    var dup = arr.filter(function (x) { return x !== a && x.role === 'gallery' && x.name === a.name; })[0];
+    if (dup) { arr.splice(arr.indexOf(a), 1); return dup; }
+    arr.splice(arr.indexOf(a), 1);
+    var last = -1;
+    arr.forEach(function (x, i) { if (x.role === 'gallery') last = i; });
+    arr.splice(last + 1, 0, a);
+    a.role = 'gallery';
+    if (!a.camera) a.camera = '（未填写）';
+    return a;
+  }
   function ensureGallery(a) {
-    if (a.role !== 'gallery') {
-      state.doc.assets.forEach(function (x) { if (x.role === 'hero' && a.role === 'hero') x.role = 'gallery'; });
-      a.role = 'gallery';
-      if (!a.camera) a.camera = '（未填写）';
-    }
+    var g = ensureCoverCandidate(a);
     syncMetaFromAssets();
-    return galleryIndex(a);
+    return galleryIndex(g);
   }
   function ensureHover(a) {
     // 已经是相册照片且正文里存在 #photo 引用时，克隆一条 hover 资源项，
@@ -1385,9 +1488,9 @@
         alt: file.name.replace(/\.[^.]+$/, ''), camera: '（未填写）', key: '', caption: '',
         cover: !!asHero, city: '' };
       if (asHero) {
+        /* 上传并设为封面 = 默认封面（不带城市），不再悄悄占住第一个目的地 */
         state.pendingHero = false;
-        var ds = destinationsJs();
-        a.city = ds[0] || '';
+        a.cover = true; a.city = '';
         var hh = isPlain(state.doc.meta.hero) ? state.doc.meta.hero : (state.doc.meta.hero = { src: '' });
         hh.src = assetPath(a);
       }
@@ -1408,8 +1511,9 @@
         if (st) { st.image = assetPath(a); if (!st.imageCaption) st.imageCaption = ''; }
       }
       state.doc.assets.push(a);
+      if (asHero) { dedupeCovers(a.id); syncDefaultHero(); }
       syncMetaFromAssets(); markDirty(); renderAssets(); renderSections(); renderPreview(); renderFooter();
-      status(asHero ? '已设为封面：' + name + ' · 可在 00 封面里指定裁切比例'
+      status(asHero ? '已设为默认封面：' + name + ' · 导出时按短边 4K 预览档处理'
                     : targetStay != null ? '已插入第 ' + (targetStay + 1) + ' 晚住宿：' + name
                     : '已加入图片集：' + name + '（可改相机型号、绑定到正文）', 'ok');
     };
@@ -1428,7 +1532,12 @@
     if (a.role === 'hover' && a.key) {
       state.doc.body = state.doc.body.replace(new RegExp('\\[([^\\]]+)\\]\\(hover:' + a.key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\)', 'g'), '$1');
     }
-    if (a.role === 'hero') delete state.doc.meta.hero.src;
+    /* 删掉的正好是默认封面：把 hero.src 让给另一张默认封面，否则清空 */
+    if (assetPath(a) === String((state.doc.meta.hero || {}).src || '')) {
+      var nextDef = state.doc.assets.filter(function (x) { return x.cover && !x.city; })[0];
+      if (nextDef) state.doc.meta.hero.src = assetPath(nextDef);
+      else delete state.doc.meta.hero.src;
+    }
     if (a.role === 'stay') {
       var p = assetPath(a);
       (state.doc.meta.stays || []).forEach(function (s) {
@@ -1463,6 +1572,8 @@
   function activate(origin, key, doc) {
     state.doc = doc; state.origin = origin; state.key = key; state.dirty = false;
     state.props = false; state.drawer = false;
+    stripHeroOpts(state.doc.meta);
+    dedupeCovers();              // 载入草稿 / 示例文章时同样保证封面键唯一
     syncMetaFromAssets();
     state.doc.body = canonicalize(state.doc.body);
     renderAll();
@@ -1473,7 +1584,9 @@
      ---------------------------------------------------------------------- */
   /* 原盘照片 → 三档（浏览器内 canvas 生成，不落草稿）。
      返回 { thumb, view, original, files, size } 或 null（小图 / 读取失败时退回单档）。
-     TIERS 只按 id 存在本次会话内存，导出 / 发布时按需计算一次。 */
+     TIERS 只按 id 存在本次会话内存，导出 / 发布时按需计算一次。
+     view 档按「短边 4096px」缩放（原图短边不足 4096 时不放大，避免纯插值），
+     码率从高往低试，让 JPEG 体积落在 2–3MB。 */
   function getTiers(a) {
     if (TIERS[a.id]) return Promise.resolve(TIERS[a.id]);
     var src = a.data || '';
@@ -1483,17 +1596,40 @@
       img.onload = function () {
         try {
           var w = img.naturalWidth, h = img.naturalHeight;
-          if (!w || !h || w <= 1600) { resolve(null); return; }
-          function draw(maxW, q) {
-            var k = Math.min(1, maxW / w), c = document.createElement('canvas');
+          if (!w || !h || Math.max(w, h) <= 1600) { resolve(null); return; }
+          function makeCanvas(limit, byShort) {
+            var base = byShort ? Math.min(w, h) : Math.max(w, h);
+            var k = Math.min(1, limit / base), c = document.createElement('canvas');
             c.width = Math.max(1, Math.round(w * k));
             c.height = Math.max(1, Math.round(h * k));
             c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
-            return c.toDataURL('image/jpeg', q);
+            return c;
+          }
+          function draw(limit, q) { return makeCanvas(limit, false).toDataURL('image/jpeg', q); }
+          /* 从高画质往低试，第一个 ≤3MB 的就是画质最好的达标档；
+             内容简单的照片可能天生小于 2MB，也直接收下，不强行注水。 */
+          function encodeView(c) {
+            /* 站点与文档统一宣称「从 q0.92 往下试到 ≤3MB」，起点必须是 0.92；
+               末档仍超限时再降一档分辨率重试，不把 >3MB 的图冒充达标预览档。 */
+            var qs = [0.92, 0.88, 0.80, 0.72, 0.64, 0.56, 0.48, 0.40, 0.32, 0.24, 0.18];
+            var best = null, bytesOf = function (u) {
+              return Math.round((u.length - u.indexOf(',') - 1) * 3 / 4);
+            };
+            for (var i = 0; i < qs.length; i++) {
+              var u = c.toDataURL('image/jpeg', qs[i]);
+              best = u;
+              if (bytesOf(u) <= 3 * 1024 * 1024) return u;
+            }
+            var smaller = makeCanvas(3200, true);
+            for (var j = 0; j < qs.length; j++) {
+              var v = smaller.toDataURL('image/jpeg', qs[j]);
+              if (bytesOf(v) <= 3 * 1024 * 1024) return v;
+            }
+            return best;
           }
           var stem = a.name.replace(/\.[^.]+$/, '');
           var t = {
-            thumb: draw(1600, 0.72), view: draw(4096, 0.45), original: src,
+            thumb: draw(1600, 0.72), view: encodeView(makeCanvas(4096, true)), original: src,
             files: { thumb: a.name, view: stem + '-4k.jpg', original: stem + '-original.jpg' },
             size: [w, h]
           };
@@ -1505,25 +1641,53 @@
     });
   }
   function escRe(s) { return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
-  /** 导出 / 发布的 md 里补上 view / original 两行；state.doc.meta 保持原样，预览不受影响。 */
+  /** 只有 schema 里带 view / original 的对象需要三档（hero / gallery / hover）。
+      stays[].image 与历史正文插图只有单档，别多产出两个没有引用的文件。 */
+  function tierEligible(a) {
+    var roles = ['hero', 'gallery', 'hover'];
+    if (roles.indexOf(a.role) >= 0) return true;
+    return state.doc.assets.some(function (x) { return x.name === a.name && roles.indexOf(x.role) >= 0; });
+  }
+  /** 老文章 frontmatter 里已有的 -4k / -original 派生图也要随包复制，
+      否则载入一篇已发布文章后导出 / 发布，放大时这几张图 404。 */
+  function tierFileEntries(folder) {
+    var names = Array.isArray(state.doc.tierPaths) ? state.doc.tierPaths : [];
+    return Promise.all(names.map(function (n) {
+      var a = { id: 'tier-' + n, name: n, role: 'tier', data: '' };
+      return assetBytes(a).then(function (bytes) {
+        return bytes && bytes.length ? { name: folder + '/photos/' + n, data: bytes } : null;
+      });
+    })).then(function (list) { return list.filter(Boolean); });
+  }
+  /** 导出 / 发布的 md 里补上 view / original 两行。
+      改成「结构化写入 + 统一序列化」，不再拿正则往 YAML 文本里插行：
+      旧写法把 `- src:` 的缩进（含列表标记）复用给新增行，会把一个 gallery
+      条目拆成三个 list item（缺必填 camera / key），导出的 .md 直接被 Zod 拒绝；
+      同一路径出现在 hero + gallery + hover 时还会重复插键。 */
   function bundleMarkdown() {
-    var md = toMarkdown(state.doc);
+    var doc = { id: state.doc.id, filename: state.doc.filename,
+                meta: clone(state.doc.meta), body: state.doc.body, assets: [] };
+    var tiers = {};
     uniqueAssets().forEach(function (a) {
       var t = TIERS[a.id];
-      if (!t) return;
-      var p = assetPath(a);
-      var re = new RegExp('^(\\s*(?:-\\s*)?)src:\\s*' + escRe(p) + '\\s*$', 'gm');
-      md = md.replace(re, function (all, ind) {
-        return ind + 'src: ' + p + '\n' +
-               ind + 'view: /images/' + t.files.view + '\n' +
-               ind + 'original: /images/' + t.files.original;
-      });
+      if (t) tiers[assetPath(a)] = t.files;
     });
-    return md;
+    function walk(v) {
+      if (Array.isArray(v)) { v.forEach(walk); return; }
+      if (!isPlain(v)) return;
+      var f = tiers[v.src];
+      if (f) {
+        if (!v.view && !v.full) v.view = '/images/' + f.view;
+        if (!v.original) v.original = '/images/' + f.original;
+      }
+      Object.keys(v).forEach(function (k) { walk(v[k]); });
+    }
+    walk(doc.meta);
+    return toMarkdown(doc);
   }
   /** 一张图要写进 photos/ 的全部文件（三档或单档） */
   function photoFiles(a, folder) {
-    return getTiers(a).then(function (t) {
+    if (tierEligible(a)) return getTiers(a).then(function (t) {
       if (t) {
         var out = [
           { name: folder + '/photos/' + t.files.thumb, data: ZIP.decodeDataUri(t.thumb) },
@@ -1537,6 +1701,11 @@
           ? { files: [{ name: folder + '/photos/' + a.name, data: bytes }], skipped: [] }
           : { files: [], skipped: [a.name] };
       });
+    });
+    return assetBytes(a).then(function (bytes) {
+      return bytes && bytes.length
+        ? { files: [{ name: folder + '/photos/' + a.name, data: bytes }], skipped: [] }
+        : { files: [], skipped: [a.name] };
     });
   }
   function fileName() { return (state.doc.filename || slug(state.doc.meta.title || state.doc.id) + '.md').replace(/\.md$/, '') + '.md'; }
@@ -1553,11 +1722,33 @@
   }
   function warnings() {
     var w = [];
-    if (!state.doc.meta.title) w.push('标题未填');
-    if (!state.doc.meta.province) w.push('省份未填（首页地图不会归档）');
-    if (state.doc.meta.draft) w.push('draft=true，生产构建不会发布');
+    var meta = state.doc.meta;
+    if (!meta.title) w.push('标题未填');
+    if (!meta.province) w.push('省份未填（首页地图不会归档）');
+    if (meta.draft) w.push('draft=true，生产构建不会发布');
     state.doc.assets.filter(function (a) { return a.role === 'gallery'; }).forEach(function (a, i) {
       if (!a.camera || a.camera === '（未填写）') w.push('相册第 ' + (i + 1) + ' 张未填相机型号');
+    });
+    /* 显示侧 Zod 的三条硬约束：fare/price/nights 必须是 number，leg/mode 必须是枚举。
+       源码模式手写或导入 md 最容易踩，导出前先在这里拦一道，别等 astro build 报错。 */
+    (Array.isArray(meta.trips) ? meta.trips : []).forEach(function (t, i) {
+      if (!isPlain(t)) return;
+      ['fare'].forEach(function (k) {
+        if (t[k] != null && typeof t[k] !== 'number') w.push('第 ' + (i + 1) + ' 段 ' + k + ' 必须是数字（不能加引号）');
+      });
+      if (t.leg && ['out', 'local', 'back'].indexOf(t.leg) < 0) w.push('第 ' + (i + 1) + ' 段 leg 只能是 out / local / back');
+      if (t.mode && ['slow', 'hsr', 'flight'].indexOf(t.mode) < 0) w.push('第 ' + (i + 1) + ' 段 mode 只能是 slow / hsr / flight');
+      (Array.isArray(t.stops) ? t.stops : []).forEach(function (s, j) {
+        if (isPlain(s) && /经停(机场|城市)/.test(String(s.place || ''))) {
+          w.push('第 ' + (i + 1) + ' 段第 ' + (j + 1) + ' 个经停还是占位文字，请填真实地点');
+        }
+      });
+    });
+    (Array.isArray(meta.stays) ? meta.stays : []).forEach(function (s, i) {
+      if (!isPlain(s)) return;
+      ['price', 'nights'].forEach(function (k) {
+        if (s[k] != null && typeof s[k] !== 'number') w.push('第 ' + (i + 1) + ' 处住宿 ' + k + ' 必须是数字');
+      });
     });
     return w;
   }
@@ -1590,35 +1781,48 @@
     if (state.mode === 'source') syncFromSource(); else syncFromDom();
     var doc = state.doc, folder = bundleSlug(doc);
     /* 先算三档，再生成 md（bundleMarkdown 依赖 TIERS 里已经准备好的文件名） */
-    return Promise.all(uniqueAssets().map(function (a) { return photoFiles(a, folder); }))
-      .then(function (rs) {
+    var photosDone = Promise.all(uniqueAssets().map(function (a) { return photoFiles(a, folder); }));
+    return Promise.all([photosDone, tierFileEntries(folder)])
+      .then(function (both) {
+        var rs = both[0], extraFiles = both[1];
         var files = [{ name: folder + '/' + folder + '.md', data: bundleMarkdown() }];
-        var skipped = [], photos = 0;
+        var skipped = [], photos = 0, seen = {};
         rs.forEach(function (r) {
-          r.files.forEach(function (f) { files.push(f); photos++; });
+          r.files.forEach(function (f) { files.push(f); });
           skipped = skipped.concat(r.skipped);
         });
+        extraFiles.forEach(function (f) { files.push(f); });
+        /* 同名文件只留一份：一张图可能既被重新上传生成三档，又在前置 frontmatter 里
+           引用了同名的 -4k / -original 派生图。 */
+        files = files.filter(function (f) {
+          if (seen[f.name]) return false;
+          seen[f.name] = 1; return true;
+        });
+        photos = files.length - 1;
         var note = '# 怎么把这个文件夹放进项目\n\n' +
           '压缩包里是一个完整的文章文件夹，.md 与照片文件夹在同一层：\n\n```\n' + folder + '/\n' +
           '  ' + folder + '.md          文章正文 + frontmatter（含 src / view / original）\n' +
           '  photos/                 这篇文章专用的照片文件夹\n' +
-          '    <name>.jpg            页面缩略图（1600px，首屏只加载它）\n' +
-          '    <name>-4k.jpg         ≥4K 低码率缩放图（适应窗口 / 缩放时用）\n' +
+          '    <name>.jpg            页面缩略图（长边 1600px；相册 / 列表卡 / 悬停气泡首屏用它）\n' +
+          '    <name>-4k.jpg         短边 4096px、压到 2–3MB 的预览图（封面首屏 + 蒙层适应窗口）\n' +
           '    <name>-original.jpg   原盘全分辨率原图（放大之后才读取）\n' +
           '  HOW-TO-USE.md           本说明\n```\n\n' +
           '1. 把整个 `' + folder + '/` 放进 `my-posts/`（content 分支），与其它文章并列。\n' +
           '2. `python3 scripts/sync-my-posts.py` 会把 `photos/` 同步进 `blog-base/public/images/`，' +
-          '并把 .md 里的路径统一改成 `/images/...`；随后 GitHub Actions 构建发布。\n' +
+          '并把老式相对路径统一改成 `/images/...`（本编辑器导出的 md 本来就是 `/images/`）；' +
+          '构建发布由 Actions 的 `Deploy content branch` 工作流手动触发或推 main 自动触发。\n' +
           '3. 只想本地看效果，也可以把 `' + folder + '.md` 放到 `blog-base/src/content/blog/`，' +
           '再把 `photos/` 里的图片复制到 `blog-base/public/images/`。\n\n' +
           '> 三档的 `src / view / original` 各自对应 `photos/` 里的一个文件；' +
-          '查看器在「适应窗口」时只用 4K 档，放大后才去读 `-original`，回到 1× 又换回 4K。\n' +
+          '`-4k.jpg` 统一按**短边 4096px** 缩放（原图本来不足 4K 时不放大），码率自动挑到 2–3MB。' +
+          '查看器在「适应窗口」时只用这一档，放大后才去读 `-original`，回到 1× 又换回 4K。\n' +
+          '> 封面一律整屏 cover + 居中，不需要（也不应该）再写 `aspect` / `focus` / `fit`。\n' +
           (skipped.length ? '\n## 未打包的站点已有素材\n\n以下图片没有可用的二进制数据（离线 zip / file:// 环境不能读取），' +
             '它们已经存在于项目的 `blog-base/public/images/`，直接从原项目复制即可：\n\n' +
             skipped.map(function (n) { return '- `' + n + '`'; }).join('\n') + '\n' : '') +
           '\n## 行程与住宿字段\n\n' +
           '- `city` / `journey.destination` 支持多个：`city: [\'大理\', \'成都\']`，编辑器里用 `、` 或逗号分隔即可。\n' +
-          '- **封面图 = 正文图片 + 两个 flag**：在 `gallery[]` 的某一项上写 `cover: true` 与 `city: \'大理\'`；它仍占一个 `#photo-N` 序号，正文照常能引用。文章有几个目的地就配几张封面，首页会按省份生成同一篇文章的多个入口（大字是各自的城市、图是各自的封面），点进去仍是同一篇。\n' +
+          '- **封面图 = 正文图片 + 两个 flag**：在 `gallery[]` 的某一项上写 `cover: true` 与 `city: \'大理\'`；它仍占一个 `#photo-N` 序号，正文照常能引用。文章有几个目的地就配几张封面，首页会按省份生成同一篇文章的多个入口（大字是各自的城市、图是各自的封面），点进去仍是同一篇。**同一城市只能有一张封面，默认封面（不写 city）也只能有一张**；`hero.src` 指向默认封面图，不带 `?city=` 时显示它。\n' +
           '- `trips[]` 按 `leg`（out / local / back）分组展示票券；路线图把每一段都画出来，按 `from.time` 排出发顺序，颜色按 `mode` 区分（普速 / 动车 / 航班）；`from.province` / `to.province` 可显式指定端点省份（留空按城市自动识别）。默认不标任何地点，悬停 / 点选票券才显示那一段的起点与终点城市。\n' +
           '- `stays[]` 任意一晚都可写 `image: /images/xxx.jpg` 与 `imageCaption`，照片会一起打包进 `photos/`。\n\n' +
           '## 正文里的图片索引\n\n- 相册照片：`[一整句话](#photo-N)`，N 与 frontmatter `gallery` 顺序一致。\n' +
@@ -1723,23 +1927,33 @@
     var dir = (cfg.imageDir || 'my-posts/' + folder + '/photos').replace(/\/$/, '');
     pubLog('提交中…\n' + cfg.path + '\n' + dir + '/');
     try {
-      /* .md 与 photos/ 是同一个文章文件夹，一次发布一起提交 */
+      /* 图片先落库、.md 最后提交：Contents API 每个 PUT 都是一次独立 commit，
+         反过来会先出现「文章已引用但图片还没上传」的破图中间态。
+         注意这不是「一次提交」，而是 1 篇 .md + N 个图片文件 = N+1 次提交。 */
       var rs = await Promise.all(uniqueAssets().map(function (a) { return photoFiles(a, folder); }));
-      await putFile(base, headers, cfg, cfg.path, b64utf8(bundleMarkdown()), 'editor: ' + (state.doc.meta.title || state.doc.id));
+      var extra = await tierFileEntries(folder);
+      var all = [], seen = {};
+      rs.forEach(function (r) { r.files.forEach(function (f) { all.push(f); }); });
+      extra.forEach(function (f) { all.push(f); });
+      all = all.filter(function (f) {
+        if (seen[f.name]) return false;
+        seen[f.name] = 1; return true;
+      });
       var n = 0;
-      for (var i = 0; i < rs.length; i++) {
-        for (var j = 0; j < rs[i].files.length; j++) {
-          var f = rs[i].files[j], name = f.name.split('/').pop();
-          var p = dir + '/' + name;
-          pubLog('提交中…\n' + p);
-          await putFile(base, headers, cfg, p, b64(f.data), 'editor: photo ' + name);
-          n++;
-        }
+      for (var i = 0; i < all.length; i++) {
+        var f = all[i], name = f.name.split('/').pop();
+        var p = dir + '/' + name;
+        pubLog('提交中…\n' + p);
+        await putFile(base, headers, cfg, p, b64(f.data), 'editor: photo ' + name);
+        n++;
       }
-      pubLog('✓ 提交成功：1 篇 .md + photos/ ' + n + ' 个文件\n\n' +
+      pubLog('提交中…\n' + cfg.path);
+      await putFile(base, headers, cfg, cfg.path, b64utf8(bundleMarkdown()), 'editor: ' + (state.doc.meta.title || state.doc.id));
+      pubLog('✓ 提交成功：1 篇 .md + photos/ ' + n + ' 个文件（共 ' + (n + 1) + ' 次提交）\n\n' +
              cfg.path + '\n' + dir + '/\n\n' +
-             'md 与照片在同一文件夹，已一并提交到 ' + cfg.branch + ' 分支；' +
-             '该分支的 Actions 构建后会把 photos/ 同步进站点图片目录。');
+             'md 与照片已提交到 ' + cfg.branch + ' 分支；该分支不会自动部署，' +
+             '请在 Actions 里手动运行 `Deploy content branch`（它会执行 sync-my-posts.py 构建发布），' +
+             '或改用「导出文件夹」走本地构建。');
       status('已提交 .md + photos/ 到 ' + cfg.repo + '@' + cfg.branch, 'ok');
     } catch (e) {
       pubLog('✕ 发布失败\n' + (e && e.message ? e.message : String(e)) + '\n\n离线预览没有网络属正常，请改用「导出文件夹」。');
@@ -1772,14 +1986,6 @@
       state.section = sec; renderSections();
       status('已切到 ' + SEC_LABEL[sec] + (sec === 'body'
         ? '：选中文字用工具栏排版' : '：结构化表单，改动实时写进 frontmatter'), 'ok');
-      return;
-    }
-    var ha = b.getAttribute('data-hero-aspect');
-    if (ha !== null) {
-      var hh = isPlain(state.doc.meta.hero) ? state.doc.meta.hero : (state.doc.meta.hero = { src: '' });
-      if (ha) hh.aspect = ha; else delete hh.aspect;
-      markDirty(); renderSections(); renderPreview(); renderFooter();
-      status(ha ? '封面裁切比例：' + ha + '（默认 4K）' : '封面恢复整屏原样', 'ok');
       return;
     }
     var sa = b.getAttribute('data-sec-act');
@@ -1868,25 +2074,22 @@
       if (act === 'bind') bindPhoto(a);
       else if (act === 'hover') bindHover(a);
       else if (act === 'hero') {
-        /* 封面图 = 正文图片 + cover / city 两个 flag。
-           不再把图片从 gallery 里搬走，只是打标 + 把 hero.src 指向它，
-           这样它仍占一个 #photo-N 序号，正文照样能引用。 */
-        if (a.role === 'hero') {
-          a.role = 'gallery';
-        } else if (a.role !== 'gallery') {
-          /* 悬停 / 住宿专用素材不搬走，复制一条同文件的正文图片再打标 */
-          var copy = Object.assign({}, a, { id: 'a' + (state.seq++), role: 'gallery', cover: false, city: '' });
-          state.doc.assets.splice(state.doc.assets.indexOf(a), 0, copy);
-          a = copy;
-        }
+        /* 「设为默认封面」= 不带城市的那一档（不带 ?city= 时显示这张）。
+           与其它封面互斥：同键的旧图自动取消；hero.src 精确指向它，预览立刻换图。 */
+        var wasCity2 = a.city || '';
+        a = ensureCoverCandidate(a);
         a.cover = true;
-        if (!a.city) { var ds = destinationsJs(); a.city = ds[0] || ''; }
+        a.city = '';
+        dedupeCovers(a.id);
+        syncDefaultHero();
         var mh = isPlain(state.doc.meta.hero) ? state.doc.meta.hero : (state.doc.meta.hero = { src: '' });
         mh.src = assetPath(a);
         state.preview = 'render';
-        syncMetaFromAssets(); markDirty(); renderAssets(); renderPreview(); renderFooter();
+        syncMetaFromAssets(); markDirty(); renderAssets(); renderSections(); renderPreview(); renderFooter();
         focusPreview('.ed-render-hero');
-        status('已设为默认封面：' + a.name + (a.city ? '（对应 ' + a.city + '）' : '') + '，仍是正文图片', 'ok');
+        status('已设为默认封面：' + a.name +
+          (wasCity2 ? '（已释放「' + wasCity2 + '」的城市封面）' : '') +
+          '；不带 ?city= 时显示这张', 'ok');
       } else if (act === 'del') {
         if (!confirm('从图片集移除 ' + a.name + '？')) return;
         removeAsset(a);
@@ -1905,7 +2108,7 @@
       var v = t.type === 'checkbox' ? t.checked : t.value;
       if (k === 'tags') v = String(v).split(/[,，]/).map(function (x) { return x.trim(); }).filter(Boolean);
       else if (k === 'city' || k === 'journey.destination') {
-        var arr = String(v).split(/[、,，\/|]+/).map(function (x) { return x.trim(); }).filter(Boolean);
+        var arr = splitListJs(v);
         v = arr.length > 1 ? arr : (arr[0] || '');
       }
       setPath(state.doc.meta, k, v);
@@ -1913,19 +2116,18 @@
     }
     if (t.hasAttribute && t.hasAttribute('data-sec-field')) {
       var sp = t.getAttribute('data-sec-field'), sv = t.value;
-      if (t.hasAttribute('data-sec-num')) sv = Number(sv) || 0;
+      if (t.hasAttribute('data-sec-num')) {
+        /* schema 里 fare / nights / price 都是 number。空值要删键，非法值不要
+           悄悄变成 0（票券会显示「票价 ¥0」）；源码模式写成 '780' 的字符串也
+           会在 warnings() 里提示，避免导出后 Zod 直接拒绝构建。 */
+        var raw = String(sv).trim();
+        if (raw === '' || !isFinite(Number(raw))) { delDocPath(state.doc.meta, sp); markDirty(); renderPreview(); return; }
+        sv = Number(raw);
+      }
       setDocPath(state.doc.meta, sp, sv);
-      /* 填充方式 / 归属会改变预览的样式与分组，需要重绘本段（select 不会丢焦点）；
+      /* 归属会改变预览的分组，需要重绘本段（select 不会丢焦点）；
          纯文本字段不重绘，避免边打字边把光标弹掉。 */
-      if (/^hero\.(fit|aspect)$/.test(sp) || /^trips\.\d+\.leg$/.test(sp)) renderSections();
-      markDirty(); renderPreview(); renderFooter(); return;
-    }
-    if (t.hasAttribute && t.hasAttribute('data-hero-focus-axis')) {
-      var fh = isPlain(state.doc.meta.hero) ? state.doc.meta.hero : (state.doc.meta.hero = { src: '' });
-      var fp2 = focusParts(fh.focus), axis = t.getAttribute('data-hero-focus-axis'), fv = Number(t.value);
-      fh.focus = (axis === 'x' ? fv : fp2[0]) + '% ' + (axis === 'y' ? fv : fp2[1]) + '%';
-      var lab = $('#ed-focus-' + axis); if (lab) lab.textContent = fv + '%';
-      var stage = $('.ed-crop-stage'); if (stage) stage.style.objectPosition = fh.focus;
+      if (/^trips\.\d+\.leg$/.test(sp)) renderSections();
       markDirty(); renderPreview(); renderFooter(); return;
     }
     if (t.hasAttribute && t.hasAttribute('data-asset-camera')) {
@@ -1933,21 +2135,41 @@
       if (a1) { a1.camera = t.value; syncMetaFromAssets(); markDirty(); renderPreview(); }
       return;
     }
-    /* 两个 flag：封面 / 对应城市。输城市名时不能重建图片集，否则每敲一个字都失焦 */
+    /* 两个 flag：封面 / 对应城市。
+       改成下拉后可以整块重绘图片集（不再有「每敲一个字就失焦」的问题），
+       重绘才能把「同键的旧图被自动取消」立刻反映到其它卡片上。 */
     if (t.hasAttribute && (t.hasAttribute('data-asset-cover') || t.hasAttribute('data-asset-city'))) {
+      /* checkbox / select 会连发 input + change；第一次已重绘过图片集，
+         第二次的事件目标是已脱离文档的旧节点，别再处理一遍 */
+      if (t.isConnected === false) return;
       var fid = t.getAttribute('data-asset-cover') || t.getAttribute('data-asset-city');
       var af = state.doc.assets.filter(function (x) { return x.id === fid; })[0];
       if (af) {
         var isCoverBox = t.hasAttribute('data-asset-cover');
-        if (isCoverBox) af.cover = !!t.checked;
-        else af.city = String(t.value).trim();
-        if (af.cover && !af.city) {
-          var ds = destinationsJs();
-          if (ds.length) af.city = ds[0];
+        var wasCity = af.city || '';
+        af = ensureCoverCandidate(af);      // 置顶的独立封面资产也能被选中
+        if (isCoverBox) {
+          af.cover = !!t.checked;
+          if (!af.cover) af.city = '';
+        } else {
+          af.city = String(t.value).trim();
+          if (af.city) af.cover = true;      // 选了城市就等于勾「用作封面」
         }
+        dedupeCovers(af.id);                 // 同一城市 / 默认封面只留一张
+        var heroSrcNow = String((state.doc.meta.hero || {}).src || '');
+        if (!af.cover && heroSrcNow && assetPath(af) === heroSrcNow) delete state.doc.meta.hero.src;
+        syncDefaultHero();
         syncMetaFromAssets(); markDirty();
-        if (isCoverBox) renderAssets(); else renderCoverStatus();
-        renderPreview(); renderFooter();
+        var grid = $('#ed-asset-grid'), top = grid ? grid.scrollTop : 0;
+        renderAssets(); renderSections(); renderPreview(); renderFooter();
+        if (grid) grid.scrollTop = top;
+        var again = $('[data-asset-city="' + af.id + '"]');
+        if (again && !isCoverBox) again.focus();
+        status(af.cover
+          ? (af.city ? '「' + af.city + '」的封面已设为 ' + af.name +
+              (wasCity && wasCity !== af.city ? '（原 ' + wasCity + ' 已释放）' : '')
+                     : '默认封面已设为 ' + af.name)
+          : '已取消 ' + af.name + ' 的封面', 'ok');
       }
       return;
     }
@@ -2012,7 +2234,6 @@
       get section() { return state.section; },
       renderSections: renderSections,
       sectionAction: sectionAction,
-      heroOpts: heroOpts,
       heroDisplayUrl: heroDisplayUrl,
       setDocPath: setDocPath,
       getTiers: getTiers,
@@ -2800,7 +3021,14 @@
     var a = e.target && e.target.closest ? e.target.closest('a') : null;
     if (!a) return;
     var href = a.getAttribute('href') || '';
-    if (!/^#photo-\d+$/.test(href) && !/^hover:/.test(href)) return;
+    /* 工具栏「🔗 链接」允许手输任意地址：裸 #hash 在 srcdoc 里也会跳到外壳 notfound，
+       与 BaseLayout 的 head 捕获监听一样，凡是站内锚点 / 自定义协议一律拦下来。 */
+    if (!/^#photo-\d+$/.test(href) && !/^hover:/.test(href)) {
+      if (/^#/.test(href) || /^[a-z][a-z0-9+.-]*:/i.test(href) && !/^https?:/i.test(href)) {
+        e.preventDefault(); e.stopPropagation();
+      }
+      return;
+    }
     e.preventDefault();
     e.stopPropagation();
     showLink(a, href);
